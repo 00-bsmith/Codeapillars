@@ -39,7 +39,7 @@ The goal of this project is to create a single- and multi-player trivia game for
 ### Amount of Time Per Question
 - I think that the first timer (for players to read the question) should run at about 5 seconds
 - The second timer should run between 10-20 seconds. We can choose to either set the timer for the same amount for each question, regardless of difficulty, or we can increment it depending on the difficulty of the question. If incrementing, I suggest 10 for easy and medium, 15 for hard
-### Score per Question
+### Points Per Question
 - Do we want to award points solely due to time elapsed, or do we want to adjust overall points awarded based on difficulty as well?
 - Kahoot uses the equation (1 - [ (r/q) / 2]) * p, where r is the time after the question starts, q is the total time given for the question, and p is the number of points you earned for answering the question correctly)
 
