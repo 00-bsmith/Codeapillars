@@ -20,3 +20,7 @@ The goal of this project is to create a single- and multi-player trivia game for
 - WebSockets
 - External API calls (Open Trivia Database)
 
+## Game Design
+### Game Start
+- Players click a button to start a new game, which brings them to a landing page which waits a set amount of time until beginning
+
