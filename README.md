@@ -1,7 +1,7 @@
 # The Codeapillars
 Dev10 Capstone project with Bryan Smith, Sheryl Lange, and Sam Bachwich
 
-## Trivia Game
+## Trivia Game Project Summary
 The goal of this project is to create a single- and multi-player trivia game for people to enjoy on the web.
 ### Features and Mechanics: 
 - Regardless of game mode, the game would use the Open Trivia Database API to generate questions for each round of each game. The API includes the ability to choose the category, difficulty (easy/medium/hard), and type (True-False/Multiple-Choice) of question.
