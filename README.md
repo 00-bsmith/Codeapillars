@@ -1,2 +1,2 @@
 # The Codeapillars
-Dev10 Capstone project with Bryan Smith, Sheryl Lange, and Sam Backwich
+Dev10 Capstone project with Bryan Smith, Sheryl Lange, and Sam Bachwich
