@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS `trivia-game`.`short_high_score` (
   `score_id` INT NOT NULL AUTO_INCREMENT,
   `initials` VARCHAR(45) NOT NULL,
   `score` INT NOT NULL,
-  `date` DATETIME NOT NULL,
+  `date` timestamp NOT NULL,
   PRIMARY KEY (`score_id`),
   UNIQUE INDEX `score_id_UNIQUE` (`score_id` ASC) VISIBLE)
 ENGINE = InnoDB;
@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS `trivia-game`.`medium_high_score` (
   `score_id` INT NOT NULL AUTO_INCREMENT,
   `initials` VARCHAR(45) NOT NULL,
   `score` INT NOT NULL,
-  `date` DATETIME NOT NULL,
+  `date` timestamp NOT NULL,
   PRIMARY KEY (`score_id`),
   UNIQUE INDEX `score_id_UNIQUE` (`score_id` ASC) VISIBLE)
 ENGINE = InnoDB;
@@ -53,7 +53,7 @@ CREATE TABLE IF NOT EXISTS `trivia-game`.`long_high_score` (
   `score_id` INT NOT NULL AUTO_INCREMENT,
   `initials` VARCHAR(45) NOT NULL,
   `score` INT NOT NULL,
-  `date` DATETIME NOT NULL,
+  `date` timestamp NOT NULL,
   PRIMARY KEY (`score_id`),
   UNIQUE INDEX `score_id_UNIQUE` (`score_id` ASC) VISIBLE)
 ENGINE = InnoDB;
