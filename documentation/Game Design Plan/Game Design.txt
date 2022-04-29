@@ -29,3 +29,10 @@ Amount of Time Per Question
 Points Per Question
 - Kahoot uses the equation (1 - [ (r/q) / 1.2 ]) * p, where r is the time after the question starts, q is the total time given for the question, and p is the number of points you earned for answering the question correctly)
   - p = 100, regardless of difficulty
+
+Tiebreaker
+- If tied after last normal rounds, add three additional rounds, one of each difficulty
+- If still tied after tiebreaker rounds, call it a draw 
+
+Type of Question
+- Multiple choice for now
