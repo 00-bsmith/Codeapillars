@@ -19,4 +19,3 @@ The goal of this project is to create a single- and multi-player trivia game for
 ### New Technology:
 - WebSockets
 - External API calls (Open Trivia Database)
-
