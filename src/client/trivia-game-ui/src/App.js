@@ -7,6 +7,13 @@ import {
 } from "react-router-dom";
 
 import AuthContext from "./AuthContext";
+import Header from "./components/Header";
+import Home from "./components/Home";
+import jwt_decode from "jwt-decode";
+import Login from "./components/Login";
+import NotFound from "./components/NotFound";
+
+const TOKEN_KEY = "user-api-token";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -61,26 +68,8 @@ function App() {
           <Route exact path="/">
             <Home />
           </Route>
-          <Route path="/about">
-            <About />
-          </Route>
-          <Route exact path="/api/agent">
-            {auth.user ? <Agents /> : <Redirect to="/login" />}
-          </Route>
-          <Route path="/agent/add">
-            {auth.user ? <AddAgent /> : <Redirect to="/login" />}
-          </Route>
-          <Route path="/agent/edit/:id">
-            {auth.user ? <EditAgent /> : <Redirect to="/login" />}
-          </Route>
-          <Route path="/agent/delete/:id">
-            {auth.user ? <DeleteAgent /> : <Redirect to="/login" />}
-          </Route>
           <Route path="/login">
             <Login />
-          </Route>
-          <Route path="/register">
-            <Register />
           </Route>
           <Route path="*">
             <NotFound />
