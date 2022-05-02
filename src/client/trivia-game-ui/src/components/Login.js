@@ -5,18 +5,23 @@ import AuthContext from "../AuthContext";
 import Errors from "./Errors";
 
 const Login = () => {
+    // Create default user for useState hook
   const initUser = {
     username: "",
     password: "",
   };
 
+// UseState hooks 
   const [user, setUser] = useState(initUser);
   const [errors, setErrors] = useState([]);
 
+//   Create authcontext object for login process once token is generated
   const auth = useContext(AuthContext);
 
+//   Create history object for navigation
   const history = useHistory();
 
+//   Set user based on input after button is clicked
   const handleInputChange = (event) => {
     setUser({ ...user, [event.target.name]: event.target.value });
   };
@@ -51,7 +56,7 @@ const Login = () => {
       })
       .catch((error) => console.log(error));
   };
-  
+
   return (
     <>
       <h2 className="my-4">Login</h2>

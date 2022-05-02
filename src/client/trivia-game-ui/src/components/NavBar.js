@@ -3,12 +3,16 @@ const NavBar = () => {
   return (
     <>
       <ul>
+        {/* Link to main landing page */}
         <li>
           <Link to="/">Home</Link>
         </li>
+        {/* Link to leaderboard */}
         <li>
-          <Link to="/about">About</Link>
+          <Link to="/hiscore">Leaderboard</Link>
         </li>
+        {/* Additional links here */}
+        
       </ul>
     </>
   );
