@@ -14,7 +14,7 @@ const NavBar = () => {
       {!auth.user && (
         <>
 
-    <Navbar bg="light" variant="light" sticky="top">
+    <Navbar bg="dark" variant="dark" sticky="top">
       <Container>
         <Navbar.Brand href="/"></Navbar.Brand>
           <Nav className="me-auto">
@@ -22,10 +22,10 @@ const NavBar = () => {
             <Link to="/" className="nav-link">Home</Link>
 
             <Link to="/hiscore" className="nav-link">Leaderboard</Link>
-
-            <Link to="/login" className="nav-link">Admin Login</Link>
       
             <Link to="/rules" className="nav-link">How to Play</Link>
+
+            <Link to="/login" className="nav-link">Admin Login</Link>
           </Nav>
       </Container>
     </Navbar>
@@ -37,7 +37,7 @@ const NavBar = () => {
       <>
      
 
-  <Navbar bg="light" variant="light" sticky="top">
+  <Navbar bg="dark" variant="dark" sticky="top">
     <Container>
 
       <Navbar.Brand href="/"></Navbar.Brand>

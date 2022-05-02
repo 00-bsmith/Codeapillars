@@ -17,3 +17,9 @@ code {
   background-image: url("brain1.png");
   background-repeat: no-repeat;
   } */
+
+  /* to make images responsive */
+/* img {
+  max-inline-size: 100%;
+  block-size: auto;
+} */
