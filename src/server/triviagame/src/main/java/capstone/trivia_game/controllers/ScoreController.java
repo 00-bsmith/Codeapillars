@@ -60,20 +60,22 @@ public class ScoreController {
 
     @PostMapping("/{length}")
     public ResponseEntity<Object> add(@PathVariable String length, @RequestBody ScoreEntry scoreEntry){
+        Result<ScoreEntry> result=null;
+
         if(length.equalsIgnoreCase("short")){
-            Result<ScoreEntry> result=shortService.add(scoreEntry);
+            result=shortService.add(scoreEntry);
             if (result.isSuccess()) {
                 return new ResponseEntity<>(result.getPayload(), HttpStatus.CREATED);
             }
         }
         else if(length.equalsIgnoreCase("medium")){
-            Result<ScoreEntry> result=mediumService.add(scoreEntry);
+            result=mediumService.add(scoreEntry);
             if (result.isSuccess()) {
                 return new ResponseEntity<>(result.getPayload(), HttpStatus.CREATED);
             }
         }
         else if(length.equalsIgnoreCase("long")){
-            Result<ScoreEntry> result=longService.add(scoreEntry);
+            result=longService.add(scoreEntry);
             if (result.isSuccess()) {
                 return new ResponseEntity<>(result.getPayload(), HttpStatus.CREATED);
             }
@@ -89,22 +91,22 @@ public class ScoreController {
         if(scoreId!=scoreEntry.getScoreId()){
             return new ResponseEntity<>(HttpStatus.CONFLICT);
         }
-
+        Result<ScoreEntry> result=null;
 
         if(length.equalsIgnoreCase("short")){
-            Result<ScoreEntry> result= shortService.update(scoreEntry);
+            result= shortService.update(scoreEntry);
             if (result.isSuccess()) {
                 return new ResponseEntity<>(HttpStatus.NO_CONTENT);
             }
         }
         else if(length.equalsIgnoreCase("medium")){
-            Result<ScoreEntry> result= mediumService.update(scoreEntry);
+            result= mediumService.update(scoreEntry);
             if (result.isSuccess()) {
                 return new ResponseEntity<>(HttpStatus.NO_CONTENT);
             }
         }
         else if(length.equalsIgnoreCase("long")){
-            Result<ScoreEntry> result= longService.update(scoreEntry);
+            result= longService.update(scoreEntry);
             if (result.isSuccess()) {
                 return new ResponseEntity<>(HttpStatus.NO_CONTENT);
             }
