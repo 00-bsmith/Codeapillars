@@ -11,7 +11,7 @@ public class ScoreMapper implements RowMapper<ScoreEntry> {
     @Override
     public ScoreEntry mapRow(ResultSet resultSet, int i)throws SQLException{
         ScoreEntry scoreEntry = new ScoreEntry();
-        scoreEntry.setScoreId(resultSet.getInt("scoreId"));
+        scoreEntry.setScoreId(resultSet.getInt("score_id"));
         scoreEntry.setScore((resultSet.getInt("score")));
         scoreEntry.setInitials(resultSet.getString("initials"));
         if(resultSet.getTimestamp("date")!=null){

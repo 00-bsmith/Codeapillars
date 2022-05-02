@@ -25,14 +25,14 @@ public class LongScoreJdbcTemplateRepository implements ScoreRepository{
     @Override
     public List<ScoreEntry> findAll() {
 
-        final String sql="select scoreId, initials, score, date from long_high_score;";
+        final String sql="select score_id, initials, score, date from long_high_score;";
         return jdbcTemplate.query(sql, new ScoreMapper());
     }
 
     @Override
     @Transactional
     public List<ScoreEntry> findByInitials(String initials) {
-        final String sql = "select scoreId, initials, score, date from long_high_score " +
+        final String sql = "select score_id, initials, score, date from long_high_score " +
                 "where initials = ?;";
 
         return jdbcTemplate.query(sql, new ScoreMapper(), initials);
@@ -41,8 +41,8 @@ public class LongScoreJdbcTemplateRepository implements ScoreRepository{
     @Override
     @Transactional
     public ScoreEntry findById(int scoreId) {
-        final String sql = "select scoreId, initials, score, date from long_high_score " +
-                "where scoreId = ?;";
+        final String sql = "select score_id, initials, score, date from long_high_score " +
+                "where score_id = ?;";
 
         ScoreEntry scoreEntry = jdbcTemplate.query(sql, new ScoreMapper(), scoreId).stream()
                 .findFirst().orElse(null);
@@ -74,11 +74,11 @@ public class LongScoreJdbcTemplateRepository implements ScoreRepository{
 
     @Override
     public boolean update(ScoreEntry entry) {
-        final String sql = "update long_high_score set" +
+        final String sql = "update long_high_score set " +
                 "initials = ?, " +
                 "score = ?, " +
                 "date=? " +
-                "where scoreId = ?;";
+                "where score_id = ?;";
 
         return jdbcTemplate.update(sql,
                 entry.getInitials(),
@@ -90,6 +90,6 @@ public class LongScoreJdbcTemplateRepository implements ScoreRepository{
     @Override
     @Transactional
     public boolean deleteById(int scoreId) {
-        return jdbcTemplate.update("delete from long_high_score where scoreId = ?;", scoreId)>0;
+        return jdbcTemplate.update("delete from long_high_score where score_id = ?;", scoreId)>0;
     }
 }
