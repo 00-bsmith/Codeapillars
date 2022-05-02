@@ -33,13 +33,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/create_account").permitAll()
                 .antMatchers("/refresh_token").authenticated()
                 .antMatchers(HttpMethod.GET,
-                        "/api/agent", "/api/agent/*").hasAnyRole("USER", "ADMIN")
+                        "/api/score/{length}", "/api/score/{length}/*").hasAnyRole("USER", "ADMIN")
                 .antMatchers(HttpMethod.POST,
-                        "/api/agent").hasAnyRole("USER", "ADMIN")
+                        "/api/score/{length}").hasAnyRole("USER", "ADMIN")
                 .antMatchers(HttpMethod.PUT,
-                        "/api/agent/{agentId}").hasAnyRole("USER", "ADMIN")
+                        "/api/score/{length}/{scoreId}").hasAnyRole("USER", "ADMIN")
                 .antMatchers(HttpMethod.DELETE,
-                        "/api/agent/{agentId}").hasAnyRole("ADMIN")
+                        "/api/score/{length}/{scoreId}").hasAnyRole("ADMIN")
                 .antMatchers("/**").denyAll()
                 // require authentication for any request...
                 .anyRequest().authenticated()
