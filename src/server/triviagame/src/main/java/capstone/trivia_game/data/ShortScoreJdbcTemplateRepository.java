@@ -4,9 +4,15 @@ package capstone.trivia_game.data;
 import capstone.trivia_game.data.mappers.ScoreMapper;
 import capstone.trivia_game.models.ScoreEntry;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.sql.PreparedStatement;
+import java.sql.Statement;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 @Repository
@@ -47,18 +53,48 @@ public class ShortScoreJdbcTemplateRepository implements ScoreRepository{
     }
 
     @Override
-    public boolean add(ScoreEntry entry) {
-        return false;
+    public ScoreEntry add(ScoreEntry entry) {
+        final String sql = "insert into short_high_score (initials, score, date) values (?, ?, ?);";
+
+        KeyHolder keyHolder = new GeneratedKeyHolder();
+        int rowsAffected = jdbcTemplate.update(connection ->{
+            PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            //ps.setInt(1, entry.getScoreId());
+            ps.setString(1, entry.getInitials());
+            ps.setInt(2, entry.getScore());
+            ps.setTimestamp(3, Timestamp.valueOf(entry.getScoreDateTime()));
+            return ps;
+        }, keyHolder);
+
+        if (rowsAffected <=0){
+            return null;
+        }
+        entry.setScoreId(keyHolder.getKey().intValue());
+        return entry;
     }
 
     @Override
     public boolean update(ScoreEntry entry) {
-        return false;
+
+        final String sql = "update short_high_score set" +
+                "initials = ?, " +
+                "score = ?, " +
+                "date=? " +
+                "where scoreId = ?;";
+
+        return jdbcTemplate.update(sql,
+                entry.getInitials(),
+                entry.getScore(),
+                Timestamp.valueOf(entry.getScoreDateTime()),
+                entry.getScoreId())>0;
+
+
     }
 
     @Override
     @Transactional
     public boolean deleteById(int scoreId) {
-        return false;
+        return jdbcTemplate.update("delete from short_high_score where scoreId = ?;", scoreId)>0;
+
     }
 }

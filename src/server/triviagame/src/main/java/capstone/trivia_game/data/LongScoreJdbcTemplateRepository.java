@@ -25,8 +25,8 @@ public class LongScoreJdbcTemplateRepository implements ScoreRepository{
     }
 
     @Override
-    public boolean add(ScoreEntry entry) {
-        return false;
+    public ScoreEntry add(ScoreEntry entry) {
+        return null;
     }
 
     @Override

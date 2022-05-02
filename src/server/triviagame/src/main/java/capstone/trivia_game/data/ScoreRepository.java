@@ -13,7 +13,7 @@ public interface ScoreRepository {
 
     ScoreEntry findById(int scoreId);
 
-    boolean add (ScoreEntry entry);
+    ScoreEntry add (ScoreEntry entry);
 
     boolean update (ScoreEntry entry);
 
