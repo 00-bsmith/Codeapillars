@@ -26,11 +26,39 @@ public class ShortScoreService {
     }
 
     public Result<ScoreEntry> add(ScoreEntry scoreEntry) {
+        Result<ScoreEntry> result = validate(scoreEntry);
 
+        if (!result.isSuccess()) {
+            return result;
+        }
+
+        if (scoreEntry.getScoreId() != 0) {
+            result.addMessage("scoreId cannot be set for `add` operation", ResultType.INVALID);
+            return result;
+        }
+
+        scoreEntry = repository.add(scoreEntry);
+        result.setPayload(scoreEntry);
+        return result;
     }
 
     public Result<ScoreEntry> update(ScoreEntry scoreEntry) {
+        Result<ScoreEntry> result = validate(scoreEntry);
+        if (!result.isSuccess()) {
+            return result;
+        }
 
+        if (scoreEntry.getScoreId() <= 0) {
+            result.addMessage("scoreId must be set for `update` operation", ResultType.INVALID);
+            return result;
+        }
+
+        if (!repository.update(scoreEntry)) {
+            String msg = String.format("scoreId: %s, not found", scoreEntry.getScoreId());
+            result.addMessage(msg, ResultType.NOT_FOUND);
+        }
+
+        return result;
     }
 
     public boolean deleteById(int scoreId) {
@@ -241,9 +269,6 @@ public class ShortScoreService {
                 scoreEntry.getInitials().equalsIgnoreCase("$ac") ||
                 scoreEntry.getInitials().equalsIgnoreCase("$ak") ||
                 scoreEntry.getInitials().equalsIgnoreCase("$aq") ||
-                scoreEntry.getInitials().equalsIgnoreCase("$ac") ||
-                scoreEntry.getInitials().equalsIgnoreCase("$ak") ||
-                scoreEntry.getInitials().equalsIgnoreCase("$aq") ||
                 scoreEntry.getInitials().equalsIgnoreCase("pm$") ||
                 scoreEntry.getInitials().equalsIgnoreCase("nd$") ||
                 scoreEntry.getInitials().equalsIgnoreCase("$ol") ||
@@ -251,14 +276,20 @@ public class ShortScoreService {
                 scoreEntry.getInitials().equalsIgnoreCase("f0b") ||
                 scoreEntry.getInitials().equalsIgnoreCase("$fu") ||
                 scoreEntry.getInitials().equalsIgnoreCase("an$")
-        );
+        ){
+            result.addMessage("Please choose another set of initials", ResultType.INVALID);
+        }
 
         if (scoreEntry.getScore() < 0) {
-            result.addMessage("score cannot be less than 0", ResultType.INVALID);
+            result.addMessage("Score cannot be less than 0", ResultType.INVALID);
+        }
+
+        if (scoreEntry.getScore() > 700) {
+            result.addMessage("Score cannot be greater than 700", ResultType.INVALID);
         }
 
         if (scoreEntry.getScoreDateTime().isAfter(LocalDateTime.now())) {
-            result.addMessage("date cannot be in the future", ResultType.INVALID);
+            result.addMessage("Date cannot be in the future", ResultType.INVALID);
         }
 
         return result;
