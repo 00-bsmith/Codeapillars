@@ -12,14 +12,54 @@ code {
     monospace;
 }
 
-
+/* will have to define what pages get this background */
 /* body {
   background-image: url("brain1.png");
   background-repeat: no-repeat;
-  } */
+  }  OR
+  body {
+  background-image: url("image.jpg");
+  background-repeat: no-repeat;
+  }*/
 
+ 
   /* to make images responsive */
-/* img {
+img {
   max-inline-size: 100%;
   block-size: auto;
-} */
+}
+
+
+
+ * {
+  margin-right: 5px;
+  margin-left: 5px;
+  box-sizing: border-box;
+}
+/* HOW CAN I GET THE NAVBAR TO GO ALL THE WAY ACROSS????? */
+.mt-n1 {
+  margin-right: -0.25rem !important;
+  margin-left: -0.25rem !important;
+
+}
+
+
+
+.btn-success {
+  text-align: center;
+    background-color: #0a9396 !important
+    
+}
+
+.btn-warning {
+  text-align: center;
+  background-color: #ffb703 !important
+}
+
+.btn-success:hover {
+  background-color: #5db6b8 !important
+}
+
+.btn-warning:hover {
+  background-color: #f7d47d !important
+}

@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+// import { Container } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import AuthContext from "../AuthContext";
@@ -83,15 +84,18 @@ const Login = () => {
             value={user.password}
             onChange={handleInputChange}
           />
+          
         </div>
-        <div className="mt-5">
-          <button className="btn btn-success" type="submit">
-            <i className="bi bi-plus-circle-fill"></i> Login
+        
+        <div className="mt-5" >
+          <button className="btn btn-success mb-3" type="submit">
+             Login
           </button>
-          <Link to="/" className="btn btn-warning ml-2">
-            <i className="bi bi-x"></i> Cancel
+          <Link to="/" className="btn btn-warning  mb-3 ml-2">Cancel
           </Link>
+        
         </div>
+        
       </form>
     </>
   );

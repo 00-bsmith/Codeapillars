@@ -12,6 +12,7 @@ import Home from "./components/Home";
 import jwt_decode from "jwt-decode";
 import Login from "./components/Login";
 import NotFound from "./components/NotFound";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const TOKEN_KEY = "user-api-token";
 
