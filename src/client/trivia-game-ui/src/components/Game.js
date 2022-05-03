@@ -1,16 +1,18 @@
-import React from 'react'
-import Header from './Header';
-import Navbar from "./NavBar";
+import React from 'react';
+import ReactDOM from "react-dom";
+import CountdownClock from './Clock/CountdownClock';
+import "./Clock/styles.css";
 
 const Game = () => {
   return (
       <>
+{/* HOW TO REMOVE HEADER FROM THIS PAGE??? */}
 
       {/* countdown clock to be left aligned (or centered?) and Score right aligned to go at top, just under Navbar */}
+      <CountdownClock />
     <div>     
       <img src={"images/TP-sm-med.png"} alt="TriviaPillar" />
       Lets Play a Game! Choose length of game:
-      THE DUAL NAV BARS ARE BECAUSE OF TESTING IN APP.JS, IT WILL BE REMOVED.
     </div>
 
     {/* Show options for a short (7), medium (15), or long (30) game */}
@@ -40,5 +42,4 @@ const Game = () => {
 
   );
 }
-
 export default Game;
