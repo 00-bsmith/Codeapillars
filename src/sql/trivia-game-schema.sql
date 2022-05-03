@@ -114,6 +114,7 @@ SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
+
 insert into short_high_score (initials, score, date) values ("BJS", "699", now());
 insert into short_high_score (initials, score, date) values ("2FH", "250", now());
 insert into short_high_score (initials, score, date) values ("2FH", "1000", now());
@@ -132,3 +133,4 @@ insert into app_user_role
     values
     (1, 2),
     (2, 1);
+
