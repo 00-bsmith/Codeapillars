@@ -8,7 +8,7 @@ const Header = () => {
           {/* <h1 className="my-2">TriviaPillar</h1> */}
          
             <ImageComponent />
-            <NavBar/>
+            <NavBar />
          
       
         </>

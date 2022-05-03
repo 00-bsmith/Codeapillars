@@ -88,7 +88,7 @@ const Login = () => {
         </div>
         
         <div className="mt-5" >
-          <button className="btn btn-success mb-3" type="submit">
+          {/* <button className="btn btn-success mb-3" type="submit">
              Login
           </button>
           {/* <Link to="/admin" className="btn btn-success mb-3" type="submit">

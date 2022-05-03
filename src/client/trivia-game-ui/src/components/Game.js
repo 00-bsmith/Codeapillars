@@ -3,7 +3,6 @@ import ReactDOM from "react-dom";
 import CountdownClock from './Clock/CountdownClock';
 import "./Clock/styles.css";
 
-
 const Game = () => {
   return (
       <>
@@ -43,5 +42,4 @@ const Game = () => {
 
   );
 }
-
 export default Game;

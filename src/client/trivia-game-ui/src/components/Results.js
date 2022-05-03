@@ -6,7 +6,6 @@ const Results = () => {
       <>
     <div>Results</div>
     <div>
-    
     <Link to="/game" className="btn btn-success  mb-3 ml-2">New Game
       </Link>
   </div>
