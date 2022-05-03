@@ -10,9 +10,9 @@ const NotFound = () => {
       <h2>Not Found</h2>
       <div>Sorry, the page you're looking for could not be found!</div>
       <>
-        <li>
-          <Link to="/login">Login</Link>
-        </li>
+        {/* <li>
+          <Link to="/">Home</Link>
+        </li> */}
       </>
     </>
   );
