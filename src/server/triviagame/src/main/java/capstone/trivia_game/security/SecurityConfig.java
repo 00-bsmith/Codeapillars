@@ -1,6 +1,7 @@
 package capstone.trivia_game.security;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -9,9 +10,9 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.handler.HandlerMappingIntrospector;
 
+@Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
@@ -59,4 +60,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public PasswordEncoder getEncoder() {
         return new BCryptPasswordEncoder();
     }
+
+//    @Bean(name = "mvcHandlerMappingIntrospector")
+//    public HandlerMappingIntrospector mvcHandlerMappingIntrospector() {
+//        return new HandlerMappingIntrospector();
+//    }
 }
