@@ -21,13 +21,9 @@ const NavBar = () => {
 
             <Link to="/" className="nav-link">Home</Link>
 
-{/* Need to link both leaderboard and How to Play */}
             <Link to="/hiscore" className="nav-link">Leaderboards</Link>
       
-            <Link to="/rules" className="nav-link">How to Play</Link>
-
-{/* Need to fill in where this links to   AND do we want this here in the NavBar or in the body of Home?*/}
-            <Link to="" className="nav-link btn btn-success ml-2">New Game</Link>
+            <Link to="/howtoplay" className="nav-link">How to Play</Link>
 
             <Link to="/login" className="nav-link">Admin Login</Link>
           </Nav>

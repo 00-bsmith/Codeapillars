@@ -37,18 +37,14 @@ img {
   box-sizing: border-box;
 }
 /* HOW CAN I GET THE NAVBAR TO GO ALL THE WAY ACROSS????? */
-.mt-n1 {
-  margin-right: -0.25rem !important;
-  margin-left: -0.25rem !important;
 
-}
 
 
 
 .btn-success {
   text-align: center;
     background-color: #0a9396 !important
-    
+   
 }
 
 .btn-warning {
