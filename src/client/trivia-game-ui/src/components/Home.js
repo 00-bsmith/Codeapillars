@@ -2,6 +2,8 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import AuthContext from "../AuthContext";
 import Game from "./Game";
+import Header from "./Header";
+
 
 
 export const Home = () => {
@@ -9,6 +11,7 @@ export const Home = () => {
 
   return (
     <>
+    
       <h2>Home</h2>
       <div>
         {/* Need to fill in where this links to */}

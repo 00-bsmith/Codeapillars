@@ -1,11 +1,13 @@
 import React from 'react';
-import { Navbar } from "./NavBar";
+import Header from './Header';
+// import { Navbar } from "./Navbar";
 
 const HowToPlay = () => {
   return (
       <>
+      
     <div>HowToPlay</div>
-    <Navbar/>
+    {/* <Navbar/> */}
     <div>
         Here is how to play.....
     </div>
@@ -14,4 +16,4 @@ const HowToPlay = () => {
   );
 }
 
-export default HowToPlay
+export default HowToPlay;

@@ -4,8 +4,9 @@ import { Navbar } from 'react-bootstrap';
 const LeaderBoard = () => {
   return (
       <>
+      <Navbar />
     <div>LeaderBoard</div>
-    <Navbar />
+    
 
     </>
   )

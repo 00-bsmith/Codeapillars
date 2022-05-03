@@ -1,11 +1,12 @@
 import React from 'react'
-import NavBar from "./NavBar";
+import Header from './Header';
+import Navbar from "./NavBar";
 
 const Game = () => {
   return (
       <>
-      <NavBar />
-      {/* countdown clock to be left aligned (or centered?) and Score right aligned to go at top, just under NavBar */}
+
+      {/* countdown clock to be left aligned (or centered?) and Score right aligned to go at top, just under Navbar */}
     <div>     
       <img src={"images/TP-sm-med.png"} alt="TriviaPillar" />
       Lets Play a Game! Choose length of game:
@@ -36,7 +37,7 @@ const Game = () => {
 
     </>
 
-  )
+  );
 }
 
-export default Game
+export default Game;

@@ -13,19 +13,17 @@ const NavBar = () => {
       <>
       {!auth.user && (
         <>
-    <Navbar  bg="dark" variant="dark" sticky="top" mt-n1>
+    <Navbar  bg="dark" variant="dark" sticky="top">
       <Container>
         <Navbar.Brand href="/"></Navbar.Brand>
 
           <Nav className="me-3">
 
-{/* <img src={"images/TriviaPillarHero.jpg"} alt="TriviaPillar with Brain on orange and teal background" /> */}
             <Link to="/" className="nav-link">Home</Link>
 
-{/* Need to link both leaderboard and How to Play */}
-            <Link to="/hiscore" className="nav-link">Leaderboard</Link>
+            <Link to="/leaderboard" className="nav-link">Leaderboard</Link>
       
-            <Link to="/rules" className="nav-link">How to Play</Link>
+            <Link to="/howtoplay" className="nav-link">How to Play</Link>
 
             <Link to="/login" className="nav-link">Admin Login</Link>
           </Nav>
