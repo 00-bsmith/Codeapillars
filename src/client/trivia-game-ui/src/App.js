@@ -13,6 +13,7 @@ import jwt_decode from "jwt-decode";
 import Login from "./components/Login";
 import NotFound from "./components/NotFound";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import LeaderBoard from "./components/LeaderBoard";
 
 const TOKEN_KEY = "user-api-token";
 
@@ -71,6 +72,9 @@ function App() {
           </Route>
           <Route path="/login">
             <Login />
+          </Route>
+          <Route path="/hiscore">
+            <LeaderBoard />
           </Route>
           <Route path="*">
             <NotFound />

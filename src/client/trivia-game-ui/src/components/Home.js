@@ -12,7 +12,7 @@ export const Home = () => {
       <div>
         {/* Need to fill in where this links to */}
         {/* do we want this here, in the body of Home or in the NavBar? */}
-        <Link to="" className="btn btn-success  mb-3 ml-2">New Game
+        <Link to="" className="btn btn-success mb-3 ml-2">New Game
           </Link>
       </div>
 
