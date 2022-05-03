@@ -113,3 +113,24 @@ ENGINE = InnoDB;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+
+insert into short_high_score (initials, score, date) values ("BJS", "699", now());
+insert into short_high_score (initials, score, date) values ("2FH", "250", now());
+insert into short_high_score (initials, score, date) values ("2FH", "1000", now());
+
+insert into app_role (`name`) values
+    ('USER'),
+    ('ADMIN');
+
+-- passwords are set to "P@ssw0rd!"
+insert into app_user (username, password_hash, disabled)
+    values
+    ('john@smith.com', '$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa', 0),
+    ('sally@jones.com', '$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa', 0);
+
+insert into app_user_role
+    values
+    (1, 2),
+    (2, 1);
+
