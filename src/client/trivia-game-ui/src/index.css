@@ -44,11 +44,9 @@ img {
 }
 
 
-
 .btn-success {
   text-align: center;
-    background-color: #0a9396 !important
-    
+    background-color: #0a9396 !important 
 }
 
 .btn-warning {
@@ -62,4 +60,17 @@ img {
 
 .btn-warning:hover {
   background-color: #f7d47d !important
+}
+
+
+/* did this do anything??? */
+/* @media screen (max-width: 480px) {
+  .text {
+    font-size: 16px;
+  }
+} */
+
+img {
+
+
 }
