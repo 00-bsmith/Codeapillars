@@ -1,0 +1,65 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* will have to define what pages get this background */
+/* body {
+  background-image: url("brain1.png");
+  background-repeat: no-repeat;
+  }  OR
+  body {
+  background-image: url("image.jpg");
+  background-repeat: no-repeat;
+  }*/
+
+ 
+  /* to make images responsive */
+img {
+  max-inline-size: 100%;
+  block-size: auto;
+}
+
+
+
+ * {
+  margin-right: 5px;
+  margin-left: 5px;
+  box-sizing: border-box;
+}
+/* HOW CAN I GET THE NAVBAR TO GO ALL THE WAY ACROSS????? */
+.mt-n1 {
+  margin-right: -0.25rem !important;
+  margin-left: -0.25rem !important;
+
+}
+
+
+
+.btn-success {
+  text-align: center;
+    background-color: #0a9396 !important
+    
+}
+
+.btn-warning {
+  text-align: center;
+  background-color: #ffb703 !important
+}
+
+.btn-success:hover {
+  background-color: #5db6b8 !important
+}
+
+.btn-warning:hover {
+  background-color: #f7d47d !important
+}
