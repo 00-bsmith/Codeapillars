@@ -14,8 +14,10 @@ import Login from "./components/Login";
 import NotFound from "./components/NotFound";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import LeaderBoard from "./components/LeaderBoard";
+
 import Game from "./components/Game";
 import HowToPlay from "./components/HowToPlay";
+
 
 const TOKEN_KEY = "user-api-token";
 
@@ -75,19 +77,9 @@ function App() {
           <Route path="/login">
             <Login />
           </Route>
-
-          <Route path="/game">
-            <Game />
-          </Route>
-
-          <Route path="/leaderboard">
+          <Route path="/hiscore">
             <LeaderBoard />
           </Route>
-
-          <Route path="/howtoplay">
-            <HowToPlay />
-          </Route>
-
           <Route path="*">
             <NotFound />
           </Route>

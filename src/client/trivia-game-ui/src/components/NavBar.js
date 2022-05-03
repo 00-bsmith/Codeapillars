@@ -21,7 +21,8 @@ const NavBar = () => {
 
             <Link to="/" className="nav-link">Home</Link>
 
-            <Link to="/leaderboard" className="nav-link">Leaderboard</Link>
+{/* Need to link both leaderboard and How to Play */}
+            <Link to="/hiscore" className="nav-link">Leaderboards</Link>
       
             <Link to="/howtoplay" className="nav-link">How to Play</Link>
 
