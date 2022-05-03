@@ -30,6 +30,42 @@ const LeaderBoard = () => {
     getShortData();
   }, []);
 
+  const getMediumData = async () => {
+    const init = {
+      method: 'GET',
+      // headers: {
+      //   Authorization: `Bearer ${auth.user.token}`,
+      // }
+    };
+
+    fetch("http://localhost:8080/api/score/medium", init)
+      .then((response) => response.json())
+      .then((data) => setShortScoreEntries(data))
+      .catch((error) => console.log(error));
+  };
+  
+  useEffect(() => {
+    getMediumData();
+  }, []);
+
+  const getLongData = async () => {
+    const init = {
+      method: 'GET',
+      // headers: {
+      //   Authorization: `Bearer ${auth.user.token}`,
+      // }
+    };
+
+    fetch("http://localhost:8080/api/score/long", init)
+      .then((response) => response.json())
+      .then((data) => setShortScoreEntries(data))
+      .catch((error) => console.log(error));
+  };
+  
+  useEffect(() => {
+    getLongData();
+  }, []);
+
   return (
       <>
     <h1>Leaderboards</h1>
@@ -49,6 +85,44 @@ const LeaderBoard = () => {
               <td>{shortScoreEntry.initials}</td>
               <td>{shortScoreEntry.score}</td>
               <td>{shortScoreEntry.date}</td>
+            </tr>
+          )) }
+        </tbody>
+      </table>
+      <h2 className='my-4'>Medium Round Leaderboard</h2>
+      <table className='table table-striped table-hover'>
+        <thead>
+          <tr>
+            <th scope='col'>Initials</th>
+            <th scope='col'>Score</th>
+            <th scope='col'>Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          {mediumScoreEntries.map((mediumScoreEntry) => (
+            <tr key={mediumScoreEntry.score}>
+              <td>{mediumScoreEntry.initials}</td>
+              <td>{mediumScoreEntry.score}</td>
+              <td>{mediumScoreEntry.date}</td>
+            </tr>
+          )) }
+        </tbody>
+      </table>
+      <h2 className='my-4'>Long Round Leaderboard</h2>
+      <table className='table table-striped table-hover'>
+        <thead>
+          <tr>
+            <th scope='col'>Initials</th>
+            <th scope='col'>Score</th>
+            <th scope='col'>Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          {longScoreEntries.map((longScoreEntry) => (
+            <tr key={longScoreEntry.score}>
+              <td>{longScoreEntry.initials}</td>
+              <td>{longScoreEntry.score}</td>
+              <td>{longScoreEntry.date}</td>
             </tr>
           )) }
         </tbody>
