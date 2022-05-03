@@ -17,6 +17,8 @@ import LeaderBoard from "./components/LeaderBoard";
 
 import Game from "./components/Game";
 import HowToPlay from "./components/HowToPlay";
+import NavBar from "./components/NavBar";
+import Admin from "./components/Admin";
 
 
 const TOKEN_KEY = "user-api-token";
@@ -77,6 +79,17 @@ function App() {
           <Route path="/login">
             <Login />
           </Route>
+
+      
+          <Route path="/game">
+            <Game />
+          </Route>
+
+          <Route path="/admin">
+            <Admin />
+          </Route>
+
+
           <Route path="/hiscore">
             <LeaderBoard />
           </Route>

@@ -10,6 +10,7 @@ const Game = () => {
     <div>     
       <img src={"images/TP-sm-med.png"} alt="TriviaPillar" />
       Lets Play a Game! Choose length of game:
+      THE DUAL NAV BARS ARE BECAUSE OF TESTING IN APP.JS, IT WILL BE REMOVED.
     </div>
 
     {/* Show options for a short (7), medium (15), or long (30) game */}
