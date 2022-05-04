@@ -35,7 +35,6 @@ code {
 img {
   max-inline-size: 100%;
   block-size: auto;
-  /* padding-right: 1px; */
   margin-left: -.05px;
 }
 
@@ -46,8 +45,18 @@ img {
 
 .table {
   margin: 18px;
-
 }
+
+.container {
+  justify-content: center;
+  
+}
+
+.row {
+  background-color: #f77f00;
+  
+}
+
 
 .btn-success {
   text-align: center;
