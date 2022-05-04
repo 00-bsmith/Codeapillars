@@ -1,6 +1,6 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { Navbar } from 'react-bootstrap';
-import AuthContext from '../AuthContext';
+import React, { useContext, useEffect, useState } from "react";
+import { Navbar } from "react-bootstrap";
+import AuthContext from "../AuthContext";
 
 const LeaderBoard = () => {
   const [shortScoreEntries, setShortScoreEntries] = useState([]);
@@ -15,7 +15,7 @@ const LeaderBoard = () => {
 
   const getShortData = async () => {
     const init = {
-      method: 'GET',
+      method: "GET",
       // headers: {
       //   Authorization: `Bearer ${auth.user.token}`,
       // }
@@ -26,14 +26,14 @@ const LeaderBoard = () => {
       .then((data) => setShortScoreEntries(data))
       .catch((error) => console.log(error));
   };
-  
+
   useEffect(() => {
     getShortData();
   }, []);
 
   const getMediumData = async () => {
     const init = {
-      method: 'GET',
+      method: "GET",
       // headers: {
       //   Authorization: `Bearer ${auth.user.token}`,
       // }
@@ -44,14 +44,14 @@ const LeaderBoard = () => {
       .then((data) => setShortScoreEntries(data))
       .catch((error) => console.log(error));
   };
-  
+
   useEffect(() => {
     getMediumData();
   }, []);
 
   const getLongData = async () => {
     const init = {
-      method: 'GET',
+      method: "GET",
       // headers: {
       //   Authorization: `Bearer ${auth.user.token}`,
       // }
@@ -62,7 +62,7 @@ const LeaderBoard = () => {
       .then((data) => setShortScoreEntries(data))
       .catch((error) => console.log(error));
   };
-  
+
   useEffect(() => {
     getLongData();
   }, []);
@@ -75,12 +75,14 @@ const LeaderBoard = () => {
           method: "DELETE",
           headers: {
             Authorization: `Bearer ${auth.user.token}`,
-          }
+          },
         }
       );
 
       if (response.status === 204) {
-        const newScoreEntry = shortScoreEntries.filter((entry) => entry.scoreId !== scoreId);
+        const newScoreEntry = shortScoreEntries.filter(
+          (entry) => entry.scoreId !== scoreId
+        );
         setShortScoreEntries(newScoreEntry);
       } else {
         throw new Error("Server Error: Something unexpected went wrong.");
@@ -98,12 +100,14 @@ const LeaderBoard = () => {
           method: "DELETE",
           headers: {
             Authorization: `Bearer ${auth.user.token}`,
-          }
+          },
         }
       );
 
       if (response.status === 204) {
-        const newScoreEntry = mediumScoreEntries.filter((entry) => entry.scoreId !== scoreId);
+        const newScoreEntry = mediumScoreEntries.filter(
+          (entry) => entry.scoreId !== scoreId
+        );
         setMediumScoreEntries(newScoreEntry);
       } else {
         throw new Error("Server Error: Something unexpected went wrong.");
@@ -121,12 +125,14 @@ const LeaderBoard = () => {
           method: "DELETE",
           headers: {
             Authorization: `Bearer ${auth.user.token}`,
-          }
+          },
         }
       );
 
       if (response.status === 204) {
-        const newScoreEntry = longScoreEntries.filter((entry) => entry.scoreId !== scoreId);
+        const newScoreEntry = longScoreEntries.filter(
+          (entry) => entry.scoreId !== scoreId
+        );
         setLongScoreEntries(newScoreEntry);
       } else {
         throw new Error("Server Error: Something unexpected went wrong.");
@@ -137,17 +143,18 @@ const LeaderBoard = () => {
   };
 
   return (
-      <>
-    <h1 style={{margin: "18px" }} >Leaderboards</h1>
-    <Navbar />
-    <h2 style={{margin: "18px" }} className='my-4'>Short Round Leaderboard</h2>
-      <table className='table table-striped table-hover'>
+    <>
+      <h1 style={{ margin: "18px" }}>Leaderboards</h1>
+      <h2 style={{ margin: "18px" }} className="my-4">
+        Short Round Leaderboard
+      </h2>
+      <table className="table table-striped table-hover">
         <thead>
           <tr>
-            <th scope='col'>Initials</th>
-            <th scope='col'>Score</th>
-            <th scope='col'>Date</th>
-            <th scope='col'>&nbsp;</th>
+            <th scope="col">Initials</th>
+            <th scope="col">Score</th>
+            <th scope="col">Date</th>
+            <th scope="col">&nbsp;</th>
           </tr>
         </thead>
         <tbody>
@@ -157,29 +164,31 @@ const LeaderBoard = () => {
               <td>{shortScoreEntry.score}</td>
               <td>{shortScoreEntry.scoreDateTime}</td>
               <td>
-              { auth.user ? (
-              <button
-                  onClick={
-                    () => handleShortDelete(shortScoreEntry.scoreId)
-                  }
-                  className="btn btn-danger btn-sm ml-2"
-                >
-                  Delete
-                </button>) : ("")
-              }
+                {auth.user ? (
+                  <button
+                    onClick={() => handleShortDelete(shortScoreEntry.scoreId)}
+                    className="btn btn-danger btn-sm ml-2"
+                  >
+                    Delete
+                  </button>
+                ) : (
+                  ""
+                )}
               </td>
             </tr>
-          )) }
+          ))}
         </tbody>
       </table>
-      <h2 style={{margin: "18px" }} className='my-4'>Medium Round Leaderboard</h2>
-      <table className='table table-striped table-hover'>
+      <h2 style={{ margin: "18px" }} className="my-4">
+        Medium Round Leaderboard
+      </h2>
+      <table className="table table-striped table-hover">
         <thead>
           <tr>
-            <th scope='col'>Initials</th>
-            <th scope='col'>Score</th>
-            <th scope='col'>Date</th>
-            <th scope='col'>&nbsp;</th>
+            <th scope="col">Initials</th>
+            <th scope="col">Score</th>
+            <th scope="col">Date</th>
+            <th scope="col">&nbsp;</th>
           </tr>
         </thead>
         <tbody>
@@ -189,29 +198,31 @@ const LeaderBoard = () => {
               <td>{mediumScoreEntry.score}</td>
               <td>{mediumScoreEntry.scoreDateTime}</td>
               <td>
-              { auth.user ? (
-              <button
-                  onClick={
-                    () => handleMediumDelete(mediumScoreEntry.scoreId)
-                  }
-                  className="btn btn-danger btn-sm ml-2"
-                >
-                  Delete
-                </button>) : ("")
-              }
+                {auth.user ? (
+                  <button
+                    onClick={() => handleMediumDelete(mediumScoreEntry.scoreId)}
+                    className="btn btn-danger btn-sm ml-2"
+                  >
+                    Delete
+                  </button>
+                ) : (
+                  ""
+                )}
               </td>
             </tr>
-          )) }
+          ))}
         </tbody>
       </table>
-      <h2 style={{margin: "18px" }} className='my-4'>Long Round Leaderboard</h2>
-      <table className='table table-striped table-hover'>
+      <h2 style={{ margin: "18px" }} className="my-4">
+        Long Round Leaderboard
+      </h2>
+      <table className="table table-striped table-hover">
         <thead>
           <tr>
-            <th scope='col'>Initials</th>
-            <th scope='col'>Score</th>
-            <th scope='col'>Date</th>
-            <th scope='col'>&nbsp;</th>
+            <th scope="col">Initials</th>
+            <th scope="col">Score</th>
+            <th scope="col">Date</th>
+            <th scope="col">&nbsp;</th>
           </tr>
         </thead>
         <tbody>
@@ -221,23 +232,23 @@ const LeaderBoard = () => {
               <td>{longScoreEntry.score}</td>
               <td>{longScoreEntry.scoreDateTime}</td>
               <td>
-              { auth.user ? (
-              <button
-                  onClick={
-                    () => handleLongDelete(longScoreEntry.scoreId)
-                  }
-                  className="btn btn-danger btn-sm ml-2"
-                >
-                  Delete
-                </button>) : ("")
-              }
+                {auth.user ? (
+                  <button
+                    onClick={() => handleLongDelete(longScoreEntry.scoreId)}
+                    className="btn btn-danger btn-sm ml-2"
+                  >
+                    Delete
+                  </button>
+                ) : (
+                  ""
+                )}
               </td>
             </tr>
-          )) }
+          ))}
         </tbody>
       </table>
     </>
-  )
-}
+  );
+};
 
-export default LeaderBoard
+export default LeaderBoard;
