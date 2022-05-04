@@ -6,7 +6,6 @@ import { Container } from "react-bootstrap";
 import { Nav } from "react-bootstrap";
 
 
-
 const NavBar = () => {
 
   const auth = useContext(AuthContext);
@@ -17,7 +16,8 @@ const NavBar = () => {
     <Navbar style={{paddingLeft: "5px"}}bg="dark" variant="dark" sticky="top">
       <Container>
         <Navbar.Brand href="/"></Navbar.Brand>
-          <Nav className="me-auto">
+
+          <Nav className="me-3">
 
             <Link to="/" className="nav-link">Home</Link>
 
@@ -27,6 +27,7 @@ const NavBar = () => {
 
             <Link to="/login" className="nav-link">Admin Login</Link>
           </Nav>
+          
       </Container>
     </Navbar>
 

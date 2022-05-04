@@ -4,7 +4,6 @@ import ReactDOM from "react-dom";
 // import "./Clock/styles.css";
 import { Link } from 'react-router-dom';
 
-
 const Game = () => {
   return (
       <>
@@ -46,5 +45,4 @@ const Game = () => {
 
   );
 }
-
 export default Game;
