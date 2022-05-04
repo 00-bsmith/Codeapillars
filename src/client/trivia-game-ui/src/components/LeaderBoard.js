@@ -33,7 +33,7 @@ const LeaderBoard = () => {
 
   const getMediumData = async () => {
     const init = {
-      method: "GET",
+      method: 'GET',
       // headers: {
       //   Authorization: `Bearer ${auth.user.token}`,
       // }
@@ -44,14 +44,13 @@ const LeaderBoard = () => {
       .then((data) => setMediumScoreEntries(data))
       .catch((error) => console.log(error));
   };
-
   useEffect(() => {
     getMediumData();
   }, []);
 
   const getLongData = async () => {
     const init = {
-      method: "GET",
+      method: 'GET',
       // headers: {
       //   Authorization: `Bearer ${auth.user.token}`,
       // }
@@ -62,7 +61,6 @@ const LeaderBoard = () => {
       .then((data) => setLongScoreEntries(data))
       .catch((error) => console.log(error));
   };
-
   useEffect(() => {
     getLongData();
   }, []);

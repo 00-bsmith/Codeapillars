@@ -14,11 +14,11 @@ import Login from "./components/Login";
 import NotFound from "./components/NotFound";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import LeaderBoard from "./components/LeaderBoard";
-
+import Admin from "./components/Admin";
 import Game from "./components/Game";
+import Results from "./components/Results";
 import HowToPlay from "./components/HowToPlay";
 import NavBar from "./components/NavBar";
-import Admin from "./components/Admin";
 
 
 const TOKEN_KEY = "user-api-token";
@@ -73,29 +73,40 @@ function App() {
       <Router>
         <Header />
         <Switch>
+
           <Route exact path="/">
             <Home />
           </Route>
+
           <Route path="/login">
             <Login />
           </Route>
 
-      
-          <Route path="/game">
-            <Game />
-          </Route>
 
           <Route path="/admin">
             <Admin />
           </Route>
 
+          <Route path="/game">
+            <Game />
+          </Route>
+
+          <Route path="/results">
+            <Results />
+          </Route>
+
+          <Route path="/howtoplay">
+            <HowToPlay />
+          </Route>
 
           <Route path="/hiscore">
             <LeaderBoard />
           </Route>
+
           <Route path="*">
             <NotFound />
           </Route>
+
         </Switch>
       </Router>
     </AuthContext.Provider>

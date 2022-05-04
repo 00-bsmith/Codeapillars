@@ -13,7 +13,7 @@ const NavBar = () => {
       <>
       {!auth.user && (
         <>
-    <Navbar  bg="dark" variant="dark" sticky="top">
+    <Navbar style={{paddingLeft: "5px"}}bg="dark" variant="dark" sticky="top">
       <Container>
         <Navbar.Brand href="/"></Navbar.Brand>
 
@@ -21,7 +21,6 @@ const NavBar = () => {
 
             <Link to="/" className="nav-link">Home</Link>
 
-{/* Need to link both leaderboard and How to Play */}
             <Link to="/hiscore" className="nav-link">Leaderboards</Link>
       
             <Link to="/howtoplay" className="nav-link">How to Play</Link>

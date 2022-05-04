@@ -1,11 +1,11 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 const Results = () => {
   return (
       <>
     <div>Results</div>
     <div>
-    {/* Need to fill in where this links to */}
     <Link to="/game" className="btn btn-success  mb-3 ml-2">New Game
       </Link>
   </div>
@@ -13,4 +13,4 @@ const Results = () => {
   )
 }
 
-export default Results
+export default Results;
