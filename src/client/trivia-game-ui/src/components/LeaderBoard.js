@@ -139,7 +139,6 @@ const LeaderBoard = () => {
   return (
       <>
     <h1 style={{margin: "18px" }} >Leaderboards</h1>
-    <Navbar />
     <h2 style={{margin: "18px" }} className='my-4'>Short Round Leaderboard</h2>
       <table className='table table-striped table-hover'>
         <thead>
