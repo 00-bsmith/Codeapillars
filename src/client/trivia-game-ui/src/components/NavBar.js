@@ -17,14 +17,14 @@ const NavBar = () => {
       <Container>
         <Navbar.Brand href="/"></Navbar.Brand>
 
-          <Nav className="me-3">
+          <Nav className="me-auto">
 
             <Link to="/" className="nav-link">Home</Link>
 
-            <Link to="/hiscore" className="nav-link">Leaderboards</Link>
-      
             <Link to="/howtoplay" className="nav-link">How to Play</Link>
 
+            <Link to="/hiscore" className="nav-link">Leaderboards</Link>
+      
             <Link to="/login" className="nav-link">Admin Login</Link>
           </Nav>
           
@@ -47,7 +47,9 @@ const NavBar = () => {
 
           <Link to="/" className="nav-link">Home</Link>
 
-          <Link to="/agents" className="nav-link">Agents</Link>
+          <Link to="/howtoplay" className="nav-link">How to Play</Link>
+
+          <Link to="/hiscore" className="nav-link">Leaderboards</Link>
 
           <Nav.Link Link to="/" className="nav-link" onClick={() => auth.logout()} >Admin Logout</Nav.Link>
       </Nav>
