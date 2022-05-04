@@ -4,9 +4,12 @@ const HowToPlay = () => {
   return (
       <>
       
-    <div>HowToPlay</div>
+    <h2>How To Play</h2>
     <div>
-        Here is how to play.....
+      &nbsp;
+    </div>
+    <div>
+      Here is how to play.....
     </div>
 
     </>

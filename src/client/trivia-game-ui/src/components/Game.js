@@ -12,7 +12,7 @@ const Game = () => {
       <CountdownClock />
     <div>     
       <img src={"images/TP-sm-med.png"} alt="TriviaPillar" />
-      Lets Play a Game! Choose length of game:
+      Let's Play a Game! Choose length of game:
     </div>
 
     {/* Show options for a short (7), medium (15), or long (30) game */}
