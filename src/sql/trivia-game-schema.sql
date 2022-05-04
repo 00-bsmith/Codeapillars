@@ -114,10 +114,35 @@ SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
+delimiter //
+create procedure get_known_good_state()
+begin
 
-insert into short_high_score (initials, score, date) values ("BJS", "699", now());
-insert into short_high_score (initials, score, date) values ("2FH", "250", now());
-insert into short_high_score (initials, score, date) values ("2FH", "1000", now());
+	delete from short_high_score;
+    alter table short_high_score auto_increment = 1;
+    delete from medium_high_score;
+    alter table medium_high_score auto_increment = 1;
+    delete from long_high_score;
+    alter table long_high_score auto_increment = 1;
+
+    insert into short_high_score(initials, score, `date`) values
+        ("BJS", "499", now()),
+        ("2FH", "250", now()),
+        ("2FH", "500", now());
+
+	insert into medium_high_score(initials, score, `date`) values
+        ("BJS", "899", now()),
+        ("2FH", "750", now()),
+        ("2FH", "1200", now());
+        
+	insert into long_high_score(initials, score, `date`) values
+        ("BJS", "2499", now()),
+        ("2FH", "2250", now()),
+        ("2FH", "2500", now());
+
+end //
+-- 4. Change the statement terminator back to the original.
+delimiter ;
 
 insert into app_role (`name`) values
     ('USER'),
@@ -127,10 +152,12 @@ insert into app_role (`name`) values
 insert into app_user (username, password_hash, disabled)
     values
     ('john@smith.com', '$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa', 0),
-    ('sally@jones.com', '$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa', 0);
+    ('sally@jones.com', '$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa', 0),
+    ('srbachwich', '$2a$10$zfA/Z60nPEY52a6VS8Q1/eWyvT6B2RwNimgVqhyGus0AgsWTkU6PW', 0);
 
 insert into app_user_role
     values
     (1, 2),
-    (2, 1);
+    (2, 1),
+    (3, 1);
 
