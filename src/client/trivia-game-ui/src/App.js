@@ -19,6 +19,7 @@ import Game from "./components/Game";
 import Results from "./components/Results";
 import HowToPlay from "./components/HowToPlay";
 import NavBar from "./components/NavBar";
+import { Navbar } from "react-bootstrap";
 
 const TOKEN_KEY = "user-api-token";
 
@@ -83,18 +84,22 @@ function App() {
           </Route>
 
           <Route path="/admin">
+            <Navbar />
             <Admin />
           </Route>
 
           <Route path="/game">
+            <NavBar />
             <Game />
           </Route>
 
           <Route path="/results">
+            <NavBar />
             <Results />
           </Route>
 
           <Route path="/howtoplay">
+            <Header />
             <HowToPlay />
           </Route>
 
@@ -104,6 +109,7 @@ function App() {
           </Route>
 
           <Route path="*">
+            <NavBar />
             <NotFound />
           </Route>
         </Switch>
