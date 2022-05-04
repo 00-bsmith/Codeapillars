@@ -22,23 +22,17 @@ code {
   background-repeat: no-repeat;
   }*/
 
- 
-  /* to make images responsive */
-img {
-  max-inline-size: 100%;
-  block-size: auto;
-}
-
-
-
  * {
   margin-right: 5px;
   margin-left: 5px;
   box-sizing: border-box;
 }
-/* HOW CAN I GET THE NAVBAR TO GO ALL THE WAY ACROSS????? */
-.navbar>.container {
-  
+
+img {
+  max-inline-size: 100%;
+  block-size: auto;
+  /* padding-right: 1px; */
+  margin-left: -.05px;
 }
 
 .table {
