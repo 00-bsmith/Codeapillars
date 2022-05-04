@@ -41,6 +41,10 @@ img {
     padding: 0;
 }
 
+.table {
+  margin: 18px;
+}
+
 
 .btn-success {
   text-align: center;
