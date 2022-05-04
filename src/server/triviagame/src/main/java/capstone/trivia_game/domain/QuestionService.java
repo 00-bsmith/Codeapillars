@@ -17,6 +17,7 @@ public class QuestionService {
     List<Question> findAll(){
         return database.getQuestionList();
     }
+
     Question getNext(){
         Random rand=new Random();
 
