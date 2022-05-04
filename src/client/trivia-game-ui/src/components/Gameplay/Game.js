@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from "react-dom";
-import CountdownClock from './Clock/CountdownClock';
+import CountdownClock from '../Clock/CountdownClock';
+import Score from './Score';
+import Round from './Round';
 
 
 const Game = () => {
@@ -12,7 +14,8 @@ const Game = () => {
 
     <div className="col">
       <div className='text-center'>
-      Round #
+        <p className='columnHeader'>Round #</p>
+          <Round />
       </div>
     </div>
 
@@ -24,7 +27,8 @@ const Game = () => {
 
     <div className="col">
       <div className='text-center'>
-      Score:
+        <p className='columnHeader'>Score:</p>
+          <Score />
       </div>
     </div>
 
@@ -41,7 +45,7 @@ const Game = () => {
     {/* once selected, have a message like: Get ready! and then the count down clock starts 3 seconds */}
 
 <div>
-<h2>Question:</h2>
+{/* <h2>Question:</h2> */}
     {/* FETCH/pull in the question have it hold for a 5 seconds to allow for reading the question*/}
 
     {/* then FETCH/pull in the answer options each as buttons */}
