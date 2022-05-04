@@ -60,6 +60,12 @@ const HowToPlay = () => {
     <div>
       If you receive a high enough final score, you will be prompted to put in your initials and will be shown on our leaderboard!
     </div>
+    <div>
+      &nbsp;
+    </div>
+    <div>
+      &nbsp;
+    </div>
     </>
   );
 }
