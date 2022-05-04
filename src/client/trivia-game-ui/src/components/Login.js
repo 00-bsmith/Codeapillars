@@ -88,13 +88,10 @@ const Login = () => {
         </div>
         
         <div className="mt-5" >
-          {/* <button className="btn btn-success mb-3" type="submit">
+          <button className="btn btn-success mb-3" type="submit">
              Login
           </button>
-          {/* <Link to="/admin" className="btn btn-success mb-3" type="submit">
-             Login
-          </Link> */}
-          <Link to="/" className="btn btn-warning  mb-3 ml-2">Cancel
+          <Link to="/login" className="btn btn-warning  mb-3 ml-2">Cancel
           </Link>
         
         </div>

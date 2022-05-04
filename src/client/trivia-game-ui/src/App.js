@@ -12,18 +12,13 @@ import Home from "./components/Home";
 import jwt_decode from "jwt-decode";
 import Login from "./components/Login";
 import NotFound from "./components/NotFound";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 import LeaderBoard from "./components/LeaderBoard";
 import Admin from "./components/Admin";
 import Game from "./components/Game";
 import Results from "./components/Results";
 import HowToPlay from "./components/HowToPlay";
-
-import Game from "./components/Game";
-import HowToPlay from "./components/HowToPlay";
 import NavBar from "./components/NavBar";
-import Admin from "./components/Admin";
-
 
 const TOKEN_KEY = "user-api-token";
 
@@ -36,15 +31,15 @@ function App() {
     var tokenObj;
     try {
       tokenObj = jwt_decode(token);
-    } catch(error) {
+    } catch (error) {
       console.log(error);
     }
-    
+
     console.log(tokenObj);
 
     const { sub: username, authorities: roleString } = tokenObj;
 
-    const roles = roleString.split(',');
+    const roles = roleString.split(",");
 
     const user = {
       username,
@@ -52,8 +47,8 @@ function App() {
       token,
       hasRole(role) {
         return roles.includes(role);
-      }
-    }
+      },
+    };
     console.log(user);
 
     setUser(user);
@@ -71,21 +66,21 @@ function App() {
     login,
     logout,
   };
-  
+
   return (
     <AuthContext.Provider value={auth}>
       <Router>
-        <Header />
+        {/* <Header /> */}
         <Switch>
-
           <Route exact path="/">
+            <Header />
             <Home />
           </Route>
 
           <Route path="/login">
+            <Header />
             <Login />
           </Route>
-
 
           <Route path="/admin">
             <Admin />
@@ -104,13 +99,13 @@ function App() {
           </Route>
 
           <Route path="/hiscore">
+            <Header />
             <LeaderBoard />
           </Route>
 
           <Route path="*">
             <NotFound />
           </Route>
-
         </Switch>
       </Router>
     </AuthContext.Provider>
