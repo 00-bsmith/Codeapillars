@@ -39,7 +39,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.PUT,
                         "/api/score/{length}/{scoreId}").permitAll()
                 .antMatchers(HttpMethod.DELETE,
-                        "/api/score/{length}/{scoreId}").hasAnyRole("ADMIN")
+                        "/api/score/{length}/{scoreId}").hasAnyRole("USER", "ADMIN")
                 .antMatchers("/**").permitAll()
                 // require authentication for any request...
                 .anyRequest().authenticated()
