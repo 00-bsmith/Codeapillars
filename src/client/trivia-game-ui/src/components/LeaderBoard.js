@@ -68,9 +68,9 @@ const LeaderBoard = () => {
 
   return (
       <>
-    <h1>Leaderboards</h1>
+    <h1 style={{margin: "18px" }}>Leaderboards</h1>
     <Navbar />
-    <h2 className='my-4'>Short Round Leaderboard</h2>
+    <h2 style={{margin: "18px" }}className='my-4'>Short Round Leaderboard</h2>
       <table className='table table-striped table-hover'>
         <thead>
           <tr>
@@ -89,7 +89,7 @@ const LeaderBoard = () => {
           )) }
         </tbody>
       </table>
-      <h2 className='my-4'>Medium Round Leaderboard</h2>
+      <h2 style={{margin: "18px" }}className='my-4'>Medium Round Leaderboard</h2>
       <table className='table table-striped table-hover'>
         <thead>
           <tr>
@@ -108,7 +108,7 @@ const LeaderBoard = () => {
           )) }
         </tbody>
       </table>
-      <h2 className='my-4'>Long Round Leaderboard</h2>
+      <h2 style={{margin: "18px" }}className='my-4'>Long Round Leaderboard</h2>
       <table className='table table-striped table-hover'>
         <thead>
           <tr>
