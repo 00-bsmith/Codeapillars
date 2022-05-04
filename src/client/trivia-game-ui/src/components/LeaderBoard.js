@@ -179,6 +179,7 @@ const LeaderBoard = () => {
             <th scope='col'>Initials</th>
             <th scope='col'>Score</th>
             <th scope='col'>Date</th>
+            
           </tr>
         </thead>
         <tbody>
@@ -210,6 +211,7 @@ const LeaderBoard = () => {
             <th scope='col'>Initials</th>
             <th scope='col'>Score</th>
             <th scope='col'>Date</th>
+            
           </tr>
         </thead>
         <tbody>
