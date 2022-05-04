@@ -55,12 +55,21 @@ img {
   background-color: #ffb703 !important
 }
 
+.btn-danger {
+  text-align: center;
+  background-color: #ae2012 !important
+}
+
 .btn-success:hover {
   background-color: #5db6b8 !important
 }
 
 .btn-warning:hover {
   background-color: #f7d47d !important
+}
+
+.btn-danger:hover {
+  background-color: #eb665a !important
 }
 
 /* for use with the question buttons if desired - used from quizbee app */
