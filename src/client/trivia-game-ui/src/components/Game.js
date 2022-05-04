@@ -11,7 +11,7 @@ const Game = () => {
 
 {/* HOW TO REMOVE HEADER FROM THIS PAGE??? */}
 
-      {/* countdown clock to be left aligned (or centered?) and Score right aligned to go at top, just under Navbar */}
+      {/* countdown clock to be left aligned (or centered?) and Score right aligned to go at top, just under Navbar  - it is a block element, taking up the full width and right now it is centered but not rendering on the page. it sometimes loads but on a white page.*/}
       {/* <CountdownClock /> */}
     <div>     
       <img src={"images/TP-sm-med.png"} alt="TriviaPillar" />
