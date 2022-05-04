@@ -41,7 +41,7 @@ const LeaderBoard = () => {
 
     fetch("http://localhost:8080/api/score/medium", init)
       .then((response) => response.json())
-      .then((data) => setShortScoreEntries(data))
+      .then((data) => setMediumScoreEntries(data))
       .catch((error) => console.log(error));
   };
 
@@ -59,7 +59,7 @@ const LeaderBoard = () => {
 
     fetch("http://localhost:8080/api/score/long", init)
       .then((response) => response.json())
-      .then((data) => setShortScoreEntries(data))
+      .then((data) => setLongScoreEntries(data))
       .catch((error) => console.log(error));
   };
 
