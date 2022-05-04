@@ -38,10 +38,72 @@ img {
   margin-left: -.05px;
 }
 
+.triviapillar {
+  justify-content: center;
+}
+
 .container-fluid {
   margin: 0;
   padding: 0;
 }
+
+/* for the How to Play boxes */
+
+.containerH2Pa {
+  border: 2px solid #f77f00;
+  /* background-color: #fdf0cf; */
+  border-radius: 5px;
+  padding: 16px;
+  margin: 16px 0
+  
+}
+
+.containerH2Pb {
+  border: 2px solid #0a9396;
+  /* background-color: #dbf8ee; */
+  border-radius: 5px;
+  padding: 16px;
+  margin: 16px 0
+}
+
+.containerH2Pc {
+  border: 2px solid #ae2012;
+  /* background-color: #fceae8; */
+  border-radius: 5px;
+  padding: 16px;
+  margin: 16px 0
+}
+
+.containerH2P::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.containerH2P img {
+  float: left;
+  margin-right: 20px;
+  /* border-radius: 50%; */
+}
+
+.containerH2Pa, .containerH2Pb, .containerH2Pc {
+  font-size: 18px;
+  font-weight: normal;
+  margin-right: 15px;
+}
+
+@media (max-width: 500px) {
+  .containerH2P {
+      text-align: center;
+  }
+  .containerH2P img {
+      margin: auto;
+      float: none;
+      display: block;
+     
+  }
+}
+/* ======================= */
 
 .table {
   margin: 18px;
@@ -51,6 +113,10 @@ img {
   /* background-color: #f77f00; */
   /* margin-bottom: 20px; */
   font-weight: bold;
+}
+
+.col {
+  text-align: center;
 }
 
 .score {
