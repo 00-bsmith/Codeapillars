@@ -28,10 +28,7 @@ h1 {
     font-size: 40px;
   }
 
-  .timer-wrapper {
-    display: flex;
-    justify-content: center;
-  }
+
   
   .time-wrapper {
     position: relative;

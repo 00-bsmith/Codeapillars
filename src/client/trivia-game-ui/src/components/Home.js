@@ -5,7 +5,6 @@ import Game from "./Game";
 
 
 
-
 export const Home = () => {
   const auth = useContext(AuthContext);
 
@@ -14,17 +13,12 @@ export const Home = () => {
     
       <h2>Home</h2>
       <div>
+      <img src={"images/TP-sm-med.png"} alt="TriviaPillar" />
         <Link to="/game" className="btn btn-success mb-3 ml-2">New Game
           </Link>
+          
       </div>
 
-      {/* this next div and image was an experiment */}
-      <div>
-      <img src={"images/TP-sm-med.png"} alt="TriviaPillar" />
-      
-        Hi! I am the TriviaPillar, and I challenge you to a game of wits!
-      
-      </div>
     </>
   );
 };

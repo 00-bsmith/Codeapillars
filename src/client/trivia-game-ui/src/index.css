@@ -28,6 +28,10 @@ code {
   box-sizing: border-box;
 }
 
+.h1 {
+  text-align: center;
+}
+
 img {
   max-inline-size: 100%;
   block-size: auto;
