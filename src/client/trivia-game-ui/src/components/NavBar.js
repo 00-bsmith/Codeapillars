@@ -14,7 +14,7 @@ const NavBar = () => {
       <>
       {!auth.user && (
         <>
-    <Navbar bg="dark" variant="dark" sticky="top" mt-n1>
+    <Navbar style={{paddingLeft: "5px" }}bg="dark" variant="dark" sticky="top">
       <Container>
         <Navbar.Brand href="/"></Navbar.Brand>
           <Nav className="me-auto">

@@ -13,8 +13,11 @@ const NotFound = () => {
 
       {/* since we have the NavBar, it has the home link, do we really need another home link on the page?  OR Perhaps go home when they hit enter? OR tell them to go back to the home page? */}
         {/* <li>
-          <Link to="/login">Login</Link>
+          <Link to="/">Home</Link>
         </li> */}
+      <div>
+        <Link to="/" className="btn btn-success mb-3 ml-2">Home</Link>
+      </div>
       </>
     </>
   );

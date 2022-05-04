@@ -1,16 +1,18 @@
 import React from 'react';
 import ReactDOM from "react-dom";
-import CountdownClock from './Clock/CountdownClock';
-import "./Clock/styles.css";
+// import CountdownClock from './Clock/CountdownClock';
+// import "./Clock/styles.css";
+import { Link } from 'react-router-dom';
 
 
 const Game = () => {
   return (
       <>
+
 {/* HOW TO REMOVE HEADER FROM THIS PAGE??? */}
 
       {/* countdown clock to be left aligned (or centered?) and Score right aligned to go at top, just under Navbar */}
-      <CountdownClock />
+      {/* <CountdownClock /> */}
     <div>     
       <img src={"images/TP-sm-med.png"} alt="TriviaPillar" />
       Lets Play a Game! Choose length of game:
@@ -30,6 +32,7 @@ const Game = () => {
 
 
 {/* after the final question, direct to results screen to show the final score and correct answers */}
+  
 </div>
     
     
