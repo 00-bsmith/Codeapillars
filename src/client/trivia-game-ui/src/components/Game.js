@@ -18,7 +18,6 @@ const Game = () => {
 
     <div className="col">
     <div className='text-center'>
-      CLOCK
       <CountdownClock />
       </div>
     </div>

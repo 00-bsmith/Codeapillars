@@ -3,21 +3,22 @@ import "./styles.css";
 import ReactDOM from "react-dom";
 import { CountdownCircleTimer, useCountdown } from "react-countdown-circle-timer";
 
-const CountdownClock = ({ remainingTime }) => {
-  if (remainingTime === 0) {
-    return <div className="timer">Start Guessing...</div>;
-  }
+function CountdownClock() {
 
-  return (
-    <div className="timer">
-      <div className="text">Get Ready</div>
-      <div className="value">{remainingTime}</div>
-      <div className="text">seconds</div>
-    </div>
-  );
-};
+  const CountdownClock = ({ remainingTime }) => {
+    if (remainingTime === 0) {
+      return <div className="timer">Start Guessing...</div>;
+    }
+  
+    return (
+      <div className="timer">
+        <div className="text">Get Ready</div>
+        <div className="value">{remainingTime}</div>
+        <div className="text">seconds</div>
+      </div>
+    );
+  };
 
-function App() {
   return (
     <div className="App">    
       <div className="timer-wrapper">
@@ -36,8 +37,8 @@ function App() {
   );
 }
 
-const rootElement = document.getElementById("root");
-ReactDOM.render(<App />, rootElement);
+// const rootElement = document.getElementById("root");
+// ReactDOM.render(<App />, rootElement);
 
 export default CountdownClock;
 
