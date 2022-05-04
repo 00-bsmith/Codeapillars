@@ -15,6 +15,7 @@ public class Question {
     private Boolean answered;
     private Boolean correct;
     private int earnedPoints;
+    private int id;//ID and Index are intended to be the same value, you can use question.id to find
 
     public Question(int pointValue, List<String> allAnswers, String question, Boolean answered, Boolean correct, int earnedPoints) {
         this.pointValue = pointValue;
@@ -93,4 +94,11 @@ public class Question {
         return list;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 }

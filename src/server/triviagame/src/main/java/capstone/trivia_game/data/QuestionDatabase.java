@@ -147,7 +147,9 @@ public class QuestionDatabase {
         questionList.addAll(easyList);
         questionList.addAll(medList);
         questionList.addAll(hardList);
-
+        for (int i = 0; i < questionList.size(); i++) {
+            questionList.get(i).setId(i);
+        }
     }
 
 

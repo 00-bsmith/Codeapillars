@@ -4,6 +4,7 @@ import capstone.trivia_game.data.QuestionDatabase;
 import capstone.trivia_game.models.Question;
 
 import javax.xml.crypto.Data;
+import java.io.IOException;
 import java.util.List;
 import java.util.Random;
 
@@ -12,6 +13,9 @@ public class QuestionService {
 
     public QuestionService(QuestionDatabase database) {
         this.database = database;
+    }
+    public QuestionService(int type) throws IOException, InterruptedException {
+        this.database=new QuestionDatabase(type);
     }
 
     List<Question> findAll(){
@@ -38,5 +42,12 @@ public class QuestionService {
 
     Question getQuestionAt(int index){
         return database.getQuestionList().get(index);
+    }
+
+    void updateQuestion(int index, Boolean answered, Boolean correct, int earnedPoints){
+       Question question = database.getQuestionList().get(index);
+       question.setAnswered(answered);
+       question.setCorrect(correct);
+       question.setEarnedPoints(earnedPoints);
     }
 }
