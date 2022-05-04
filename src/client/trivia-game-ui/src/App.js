@@ -18,11 +18,7 @@ import Admin from "./components/Admin";
 import Game from "./components/Game";
 import Results from "./components/Results";
 import HowToPlay from "./components/HowToPlay";
-
-import Game from "./components/Game";
-import HowToPlay from "./components/HowToPlay";
 import NavBar from "./components/NavBar";
-import Admin from "./components/Admin";
 
 
 const TOKEN_KEY = "user-api-token";

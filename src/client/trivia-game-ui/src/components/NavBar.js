@@ -13,7 +13,7 @@ const NavBar = () => {
       <>
       {!auth.user && (
         <>
-    <Navbar  bg="dark" variant="dark" sticky="top">
+    <Navbar style={{paddingLeft: "5px"}}bg="dark" variant="dark" sticky="top">
       <Container>
         <Navbar.Brand href="/"></Navbar.Brand>
 
