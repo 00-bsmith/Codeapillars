@@ -17,7 +17,7 @@ const NavBar = () => {
       <Container>
         <Navbar.Brand href="/"></Navbar.Brand>
 
-          <Nav className="me-3">
+          <Nav className="me-auto">
 
             <Link to="/" className="nav-link">Home</Link>
 
@@ -48,7 +48,7 @@ const NavBar = () => {
 
           <Link to="/" className="nav-link">Home</Link>
 
-          <Link to="/agents" className="nav-link">Agents</Link>
+          <Link to="/hiscore" className="nav-link">LeaderBoard</Link>
 
           <Nav.Link Link to="/" className="nav-link" onClick={() => auth.logout()} >Admin Logout</Nav.Link>
       </Nav>
