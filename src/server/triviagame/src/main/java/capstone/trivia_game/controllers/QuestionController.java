@@ -14,5 +14,7 @@ public class QuestionController {
         this.service = service;
     }
 
-
+    // array of question services
+    // when game makes a call, call a particular service within the array
+    // spin up new service each time a new game is made, then purge service from list/array when finished with it
 }
