@@ -35,6 +35,11 @@ img {
   margin-left: -.05px;
 }
 
+.container-fluid {
+  margin: 0;
+  padding: 0;
+}
+
 .table {
   margin: 18px;
 
