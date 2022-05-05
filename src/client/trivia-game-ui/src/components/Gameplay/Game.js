@@ -2,7 +2,7 @@ import React from "react";
 import CountdownClock from "../Clock/CountdownClock";
 import Score from "./Score";
 import Round from "./Round";
-import { CountdownClock2 } from "../Clock/CountdownClock2";
+// import { CountdownClock2 } from "../Clock/CountdownClock2";
 
 const Game = () => {
   return (
@@ -38,7 +38,6 @@ const Game = () => {
       Good Luck!</h4>
     </div>
 
-<div>
 {/* <h2>Question:</h2> */}
     {/* FETCH/pull in the question have it hold for a 5 seconds to allow for reading the question*/}
 
@@ -49,24 +48,7 @@ const Game = () => {
 
 
 {/* after the final question, direct to results screen to show the final score and correct answers */}
-</div>
-    
-    
 
-
-
-
-
-
-      
-    <div className="col">
-    <div className='text-center'>
-      <CountdownClock />
-      {/* currentClock == currentClock ? <CountdownClock /> : <CountdownClock2 /> */}
-    
-      </div>
-      
-    </div>
     </>
   );
 };
