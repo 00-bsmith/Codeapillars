@@ -2,6 +2,8 @@ import React from 'react';
 import CountdownClock from '../Clock/CountdownClock';
 import Score from './Score';
 import Round from './Round';
+import { CountdownClock2 } from '../Clock/CountdownClock2';
+
 
 
 const Game = () => {
@@ -21,6 +23,7 @@ const Game = () => {
     <div className="col">
     <div className='text-center'>
       <CountdownClock />
+    
       </div>
     </div>
 
