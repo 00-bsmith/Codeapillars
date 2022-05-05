@@ -1,15 +1,14 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Navbar } from "react-bootstrap";
 import AuthContext from "../AuthContext";
 
 const LeaderBoard = () => {
   const [shortScoreEntries, setShortScoreEntries] = useState([]);
   const [mediumScoreEntries, setMediumScoreEntries] = useState([]);
   const [longScoreEntries, setLongScoreEntries] = useState([]);
-  const [scoreId, setScoreId] = useState(0);
-  const [initials, setInitials] = useState("");
-  const [score, setScore] = useState(0);
-  const [scoreDateTime, setScoreDateTime] = useState("");
+  // const [scoreId, setScoreId] = useState(0);
+  // const [initials, setInitials] = useState("");
+  // const [score, setScore] = useState(0);
+  // const [scoreDateTime, setScoreDateTime] = useState("");
 
   const auth = useContext(AuthContext);
 
