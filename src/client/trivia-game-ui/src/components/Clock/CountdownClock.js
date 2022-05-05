@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./styles.css";
 import ReactDOM from "react-dom";
 import { CountdownCircleTimer, useCountdown } from "react-countdown-circle-timer";
@@ -6,13 +6,18 @@ import { CountdownClock2 } from "./CountdownClock2";
 
 function CountdownClock() {
 
+  const [currentClock, setCurrentClock] = useState(false);
+
   const CountdownClock = ({ remainingTime }) => {
     if (remainingTime === 0) {
     //   return <div className="timer">Start Guessing...</div>;
     // }
     return <CountdownClock2 />
+    // return {currentClock};
+    
   }
-  
+  // console.log (currentClock);
+
     return (
       <div className="timer">
         <div className="text">Get Ready</div>

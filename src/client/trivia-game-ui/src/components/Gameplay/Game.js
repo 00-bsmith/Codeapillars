@@ -23,6 +23,7 @@ const Game = () => {
     <div className="col">
     <div className='text-center'>
       <CountdownClock />
+      {/* currentClock == currentClock ? <CountdownClock /> : <CountdownClock2 /> */}
     
       </div>
     </div>
