@@ -19,10 +19,10 @@ public class QuestionService {
         this.database=new QuestionDatabase(type);
     }
 
-    List<Question> findAll(){
+    public List<Question> findAll(){
         return database.getQuestionList();
     }
-    Question getNext(){
+    public Question getNext(){
         Random rand=new Random();
         int precaution=0;
 
@@ -38,19 +38,32 @@ public class QuestionService {
         }while(precaution<3);
         return null;
     }
-    int getNumAvailable(){
+    public int getNumAvailable(){
         return database.getAvailable().size();
     }
 
-    Question getQuestionAt(int index){
+    public Question getQuestionAt(int index){
         return database.getQuestionList().get(index);
     }
 
-    void updateQuestion(int index, Boolean answered, Boolean correct, int earnedPoints){
+    public void updateQuestion(int index, Boolean answered, Boolean correct, int earnedPoints){
        Question question = database.getQuestionList().get(index);
        question.setAnswered(answered);
        question.setCorrect(correct);
        question.setEarnedPoints(earnedPoints);
+    }
+
+    public Result<Question> updateQuestion(Question question) {
+        Result<Question> result = new Result<>();
+        Question storedQuestion = database.getQuestionList().get(question.getId());
+        if (!storedQuestion.getQuestion().equalsIgnoreCase(question.getQuestion())) {
+            result.addMessage("Question mismatch", ResultType.INVALID);
+        } else {
+            storedQuestion.setAnswered(question.getAnswered());
+            storedQuestion.setCorrect(question.getCorrect());
+            storedQuestion.setEarnedPoints(question.getEarnedPoints());
+        }
+        return result;
     }
 
     public int getId() {
