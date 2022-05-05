@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from "react-dom";
 import CountdownClock from '../Clock/CountdownClock';
 import Score from './Score';
 import Round from './Round';
