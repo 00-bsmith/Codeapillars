@@ -31,16 +31,11 @@ const Game = () => {
         </div>
       </div>
 
-      <div>
-        {/* <h2>Question:</h2> */}
-        {/* FETCH/pull in the question have it hold for a 5 seconds to allow for reading the question*/}
-
-        {/* then FETCH/pull in the answer options each as buttons */}
-
-        {/* as soon as these appear, start the countdown clock again 15 seconds */}
-        {/* once an answer is chosen, the clock stops and the next question comes up */}
-
-        {/* after the final question, direct to results screen to show the final score and correct answers */}
+    <div className="col">
+    <div className='text-center'>
+      <CountdownClock />
+      {/* currentClock == currentClock ? <CountdownClock /> : <CountdownClock2 /> */}
+    
       </div>
     </>
   );

@@ -1,16 +1,12 @@
-import NavBar from "./NavBar";
 import ImageComponent from "./ImageComponent";
-
+import NavBar from "./NavBar";
 
 const Header = () => {
     return (
         <>
-          {/* <h1 className="my-2">TriviaPillar</h1> */}
-         
             <ImageComponent />
             <NavBar />
          
-      
         </>
     );
 }
