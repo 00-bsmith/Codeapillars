@@ -8,8 +8,10 @@ function CountdownClock() {
 
   const CountdownClock = ({ remainingTime }) => {
     if (remainingTime === 0) {
-      return <div className="timer">Start Guessing...</div>;
-    }
+    //   return <div className="timer">Start Guessing...</div>;
+    // }
+    return <CountdownClock2 />
+  }
   
     return (
       <div className="timer">
@@ -42,5 +44,5 @@ function CountdownClock() {
 
 }
 
-export default CountdownClock
+export default CountdownClock;
 

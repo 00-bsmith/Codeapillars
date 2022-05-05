@@ -22,7 +22,7 @@ export function CountdownClock2() {
 
   return (
     <div className="App">    
-      <div className="timer-wrapper">
+      <div className="timer-wrapper2">
         <CountdownCircleTimer
           isPlaying
           duration={15}
