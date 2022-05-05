@@ -10,6 +10,7 @@ import java.util.Random;
 
 public class QuestionService {
     private final QuestionDatabase database;
+    private int id;
 
     public QuestionService(QuestionDatabase database) {
         this.database = database;
@@ -21,9 +22,9 @@ public class QuestionService {
     List<Question> findAll(){
         return database.getQuestionList();
     }
-
     Question getNext(){
         Random rand=new Random();
+        int precaution=0;
 
         if (database.getAvailable().size()==0){
             return null;
@@ -33,8 +34,9 @@ public class QuestionService {
             if(database.getQuestionList().get(database.getAvailable().get(randInt)).getAnswered()==false){
                 return database.getQuestionList().get(database.getAvailable().remove(randInt));
             }
-        }while(true);
-
+            precaution++;
+        }while(precaution<3);
+        return null;
     }
     int getNumAvailable(){
         return database.getAvailable().size();
@@ -49,5 +51,13 @@ public class QuestionService {
        question.setAnswered(answered);
        question.setCorrect(correct);
        question.setEarnedPoints(earnedPoints);
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
