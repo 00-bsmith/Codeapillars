@@ -33,7 +33,7 @@ const GameLength = () => {
         <br />
 
         <div className="row">
-          <label htmlFor="length">Length</label>
+          {/* <label htmlFor="length">Length</label> */}
           <select id="length" name="length">
             <option value="">[Select Game Length]</option>
             <option value="short">Short (7 Rounds)</option>
