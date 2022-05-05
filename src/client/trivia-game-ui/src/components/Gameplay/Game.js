@@ -1,51 +1,42 @@
-import React from 'react';
-import CountdownClock from '../Clock/CountdownClock';
-import Score from './Score';
-import Round from './Round';
-import { CountdownClock2 } from '../Clock/CountdownClock2';
-
-
+import React from "react";
+import CountdownClock from "../Clock/CountdownClock";
+import Score from "./Score";
+import Round from "./Round";
+import { CountdownClock2 } from "../Clock/CountdownClock2";
 
 const Game = () => {
   return (
-      <>
+    <>
+      <div className="container mt-2">
+        <div className="row">
 
-<div className="container mt-2">
-  <div className="row">
+          <div className="col">
+            <div className="text-center">
+              <p className="columnHeader">Round #</p>
+              <Round />
+            </div>
+          </div>
 
-    <div className="col">
-      <div className='text-center'>
-        <p className='columnHeader'>Round #</p>
-          <Round />
+          <div className="col">
+            <div className="text-center">
+              <CountdownClock />
+            </div>
+          </div>
+
+          <div className="col">
+            <div className="text-center">
+              <p className="columnHeader">Score:</p>
+              <Score />
+            </div>
+          </div>
+
+        </div>
       </div>
-    </div>
-
-    <div className="col">
-    <div className='text-center'>
-      <CountdownClock />
-      {/* currentClock == currentClock ? <CountdownClock /> : <CountdownClock2 /> */}
-    
-      </div>
-    </div>
-
-    <div className="col">
-      <div className='text-center'>
-        <p className='columnHeader'>Score:</p>
-          <Score />
-      </div>
-    </div>
-
-  </div>
-</div>
-
 
     <div>     
       <h4><img src={"images/TP-sm-med.png"} alt="TriviaPillar" />
       Good Luck!</h4>
     </div>
-
-    {/* Show options for a short (7), medium (15), or long (30) game */}
-    {/* once selected, have a message like: Get ready! and then the count down clock starts 3 seconds */}
 
 <div>
 {/* <h2>Question:</h2> */}
@@ -68,7 +59,6 @@ const Game = () => {
 
 
     </>
-
   );
-}
+};
 export default Game;

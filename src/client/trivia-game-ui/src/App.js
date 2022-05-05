@@ -88,7 +88,7 @@ function App() {
             <Admin />
           </Route>
 
-          <Route path="/gameLength">
+          <Route path="/gamelength">
             <NavBar />
             <GameLength />
           </Route>
