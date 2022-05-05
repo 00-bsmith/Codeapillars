@@ -28,7 +28,7 @@ const GameLength = () => {
 
 
 
-      <div>
+      <div className='row'>
           <label htmlFor="length">Length</label>
           <select id="length" name="length">
             <option value="">[Select Game Length]</option>
@@ -43,10 +43,13 @@ const GameLength = () => {
         </div> */}
       
       <br />
+      <br />
+      <br />
+      <br />
 
         <div className="row">
           <div className="col">
-            <Link to="/game" className="btn btn-success mb-3 ml-2">Start Game</Link>
+            <Link to="/game" className="btn btn-success mb-3 ml-2" type="submit">Start Game</Link>
           </div>
         </div>
 
