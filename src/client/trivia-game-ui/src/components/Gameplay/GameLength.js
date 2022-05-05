@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Dropdown } from "react-bootstrap";
   
 const GameLength = () => {
   return (
@@ -11,30 +12,30 @@ const GameLength = () => {
 
     <div className="container">
       <div className="row">
-          <div className="col"><h4 className='gameLength'>Short Game - 7 Questions</h4></div>
+          <div className="col"><h4 className='gameLength'>Short Game - 7 Rounds</h4></div>
       </div>
 
       <div className="row">
         <div className="col">
-          <h4 className='gameLength'>Medium Game - 15 Questions</h4>
+          <h4 className='gameLength'>Medium Game - 15 Rounds</h4>
         </div>
       </div>
 
       <div className="row">
         <div className="col">
-          <h4 className='gameLength'>Long Game - 30 Questions</h4>
+          <h4 className='gameLength'>Long Game - 30 Rounds</h4>
         </div>
       </div>
 
-
+      <br />
 
       <div className='row'>
-          <label htmlFor="length">Length</label>
+          {/* <label htmlFor="length">Length</label> */}
           <select id="length" name="length">
             <option value="">[Select Game Length]</option>
-            <option value="chemistry">Short (7 Rounds)</option>
-            <option value="philosophy">Medium (15 Rounds)</option>
-            <option value="math">Long (30 Rounds)</option>
+            <option value="short">Short (7 Rounds)</option>
+            <option value="medium">Medium (15 Rounds)</option>
+            <option value="long">Long (30 Rounds)</option>
           </select>
         </div>
 
@@ -55,26 +56,7 @@ const GameLength = () => {
 
     </div>
       
-        {/* <img src={"images/TP-sm-med.png"} alt="TriviaPillar" />
-        Let's Play a Game! Choose length of game:
-      </div>
-      <div>&nbsp;</div>
-      <div>
-        <label htmlFor="length">Length</label>
-        <select id="length" name="length">
-          <option value="">[Select Game Length]</option>
-          <option value="short">Short (7 Rounds)</option>
-          <option value="medium">Medium (15 Rounds)</option>
-          <option value="long">Long (30 Rounds)</option>
-        </select>
-      </div>
-      <div>&nbsp;</div>
-      <button className="btn btn-success mb-3" type="submit">
-        Submit
-      </button> */}
-
-      {/* Show options for a short (7), medium (15), or long (30) game */}
-      {/* once selected, have a message like: Get ready! and then the count down clock starts 3 seconds */}
+      
     </>
   );
 };
