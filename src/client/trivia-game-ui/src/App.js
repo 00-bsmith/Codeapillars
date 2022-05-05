@@ -20,6 +20,7 @@ import HowToPlay from "./components/HowToPlay/HowToPlay";
 import NavBar from "./components/NavBar";
 import { Navbar } from "react-bootstrap";
 import GameLength from "./components/Gameplay/GameLength";
+import { Dropdown } from "react-bootstrap";
 
 const TOKEN_KEY = "user-api-token";
 
