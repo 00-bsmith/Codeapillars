@@ -33,6 +33,7 @@ function CountdownClock() {
           // need to switch to CountdownClock2 as soon as this one finishes
         >
           {CountdownClock}
+          
         </CountdownCircleTimer>
       </div>
     </div>
@@ -41,5 +42,5 @@ function CountdownClock() {
 
 }
 
-export default CountdownClock;
+export default CountdownClock
 

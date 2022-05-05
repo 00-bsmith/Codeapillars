@@ -27,6 +27,8 @@ export const Home = () => {
           <h4 className='highScore'>Let's play a game!</h4>
         </div>
       </div>
+      
+      <br />
 
         <div className="row">
           <div className="col">

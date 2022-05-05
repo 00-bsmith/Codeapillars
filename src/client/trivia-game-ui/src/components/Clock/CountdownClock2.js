@@ -29,7 +29,7 @@ export function CountdownClock2() {
           // size={2px}
           colors={["#94d2bd", "#ffb703", "#f77f00", "#ae2012"]}
           colorsTime={[10, 7, 6, 0]}
-          onComplete={() => ({ shouldRepeat: true, delay: 2 })}
+          onComplete={() => ({ shouldRepeat: false, delay: 2 })}
         >
           {CountdownClock2}
         </CountdownCircleTimer>
@@ -38,3 +38,5 @@ export function CountdownClock2() {
   );
 
   }
+
+  export default CountdownClock2;
