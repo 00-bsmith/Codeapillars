@@ -40,8 +40,8 @@ const Game = () => {
 
 
     <div>     
-      <img src={"images/TP-sm-med.png"} alt="TriviaPillar" />
-      Let's Play a Game! Choose length of game:
+      <h4><img src={"images/TP-sm-med.png"} alt="TriviaPillar" />
+      Good Luck!</h4>
     </div>
 
     {/* Show options for a short (7), medium (15), or long (30) game */}

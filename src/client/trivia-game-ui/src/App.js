@@ -19,6 +19,7 @@ import Results from "./components/Gameplay/Results";
 import HowToPlay from "./components/HowToPlay/HowToPlay";
 import NavBar from "./components/NavBar";
 import { Navbar } from "react-bootstrap";
+import GameLength from "./components/Gameplay/GameLength";
 
 const TOKEN_KEY = "user-api-token";
 
@@ -85,6 +86,11 @@ function App() {
           <Route path="/admin">
             <Navbar />
             <Admin />
+          </Route>
+
+          <Route path="/gameLength">
+            <NavBar />
+            <GameLength />
           </Route>
 
           <Route path="/game">
