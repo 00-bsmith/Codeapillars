@@ -2,16 +2,23 @@ package capstone.trivia_game.domain;
 
 import capstone.trivia_game.data.QuestionRepository;
 import capstone.trivia_game.models.Question;
+import org.springframework.stereotype.Service;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class QuestionSqlService {
 
     private final QuestionRepository repository;
 
     public QuestionSqlService(QuestionRepository repository) {
         this.repository = repository;
+    }
+
+    public int buildGame(int type) throws IOException, InterruptedException {
+        return repository.buildGame(type);
     }
 
     public List<Question> getAll() {
@@ -68,7 +75,7 @@ public class QuestionSqlService {
         result.setPayload(question);
         return result;
     }
-    
+
     private Result<Question> validate(Question question) {
         Result<Question> result = new Result<>();
 
