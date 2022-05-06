@@ -60,12 +60,12 @@ const Login = () => {
 
   return (
     <>
-      <h2 className="my-4">Login</h2>
+      <h2 style={{margin: "22px"}} className="my-4">Login</h2>
       <Errors errors={errors} />
       <form onSubmit={handleSubmit}>
-        <div className="form-group">
+        <div style={{margin: "18px"}}className="form-group">
           <label htmlFor="username">Username:</label>
-          <input
+          <input 
             className="form-control"
             type="text"
             id="username"
@@ -74,7 +74,7 @@ const Login = () => {
             onChange={handleInputChange}
           />
         </div>
-        <div className="form-group">
+        <div style={{margin: "18px"}}className="form-group">
           <label htmlFor="password">Password:</label>
           <input
             className="form-control"

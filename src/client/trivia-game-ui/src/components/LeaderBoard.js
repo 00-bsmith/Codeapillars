@@ -43,7 +43,6 @@ const LeaderBoard = () => {
       .then((data) => setMediumScoreEntries(data))
       .catch((error) => console.log(error));
   };
-
   useEffect(() => {
     getMediumData();
   }, []);
@@ -61,7 +60,6 @@ const LeaderBoard = () => {
       .then((data) => setLongScoreEntries(data))
       .catch((error) => console.log(error));
   };
-
   useEffect(() => {
     getLongData();
   }, []);
