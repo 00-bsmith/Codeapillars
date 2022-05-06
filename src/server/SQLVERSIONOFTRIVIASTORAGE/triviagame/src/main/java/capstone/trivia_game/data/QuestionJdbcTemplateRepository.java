@@ -166,7 +166,7 @@ public class QuestionJdbcTemplateRepository implements QuestionRepository{
     }
 
     @Override
-    public  Question add(Question question){
+    public Question add(Question question){
         final String sql="insert into game_storage (game_id, question, correct, answered, earned_points, correct_answer, incorrect_answer_1, incorrect_answer_2, incorrect_answer_3) " +
                 "values (?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
