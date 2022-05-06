@@ -2,6 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const GameLength = () => {
+  
+  const handleSubmit = async () => {
+    //Fetch Http response here
+  }
+
   return (
     <>
       <div>
@@ -33,7 +38,6 @@ const GameLength = () => {
         <br />
 
         <div className="row">
-          {/* <label htmlFor="length">Length</label> */}
           <select id="length" name="length">
             <option value="">[Select Game Length]</option>
             <option value="short">Short (7 Rounds)</option>
@@ -41,10 +45,6 @@ const GameLength = () => {
             <option value="long">Long (30 Rounds)</option>
           </select>
         </div>
-
-        {/* <div>
-          <button type="submit">Submit</button>
-        </div> */}
 
         <br />
         <br />
@@ -57,6 +57,7 @@ const GameLength = () => {
               to="/game"
               className="btn btn-success mb-3 ml-2"
               type="submit"
+              onClick={() => handleSubmit() } // API call here
             >
               Start Game
             </Link>
