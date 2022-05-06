@@ -124,8 +124,8 @@ CREATE TABLE IF NOT EXISTS `trivia-game`.`game_storage` (
   `incorrect_answer_3` VARCHAR(100) NOT NULL,
   `question` VARCHAR(200) NOT NULL,
   `earned_points` INT NOT NULL DEFAULT 0,
-  `answered` BIT(1) NOT NULL DEFAULT 0,
-  `correct` BIT(1) NOT NULL DEFAULT 0,
+  `answered` boolean NOT NULL DEFAULT FALSE,
+  `correct` boolean NOT NULL DEFAULT FALSE,
   PRIMARY KEY (`question_id`))
 ENGINE = InnoDB;
 
@@ -133,3 +133,15 @@ ENGINE = InnoDB;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+select question_id, question, correct, answered, earned_points, correct_answer, incorrect_answer_1, incorrect_answer_2, incorrect_answer_3, game_id from game_storage
+where game_id=1 and answered=false;
+
+select * from game_storage;
+
+insert into game_storage (game_id, question, correct, answered, earned_points, correct_answer, incorrect_answer_1, incorrect_answer_2, incorrect_answer_3) 
+values (1, "How are you?", false, false, 0, "Great", "bad", "no", "Go away");
+
+insert into game_storage (game_id, question, correct, answered, earned_points, correct_answer, incorrect_answer_1, incorrect_answer_2, incorrect_answer_3) 
+values (1, "Wanna Snuggle again??", true, true, 67, "Great", "bad", "no", "Go away");
+
+select MAX(game_id) from game_storage;
