@@ -3,7 +3,7 @@ import React from "react";
 import Score from "./Score";
 import Round from "./Round";
 import Timer from "../Clock/Timer";
-// import { CountdownClock2 } from "../Clock/CountdownClock2";
+import Question from "./Question";
 
 const Game = () => {
   return (

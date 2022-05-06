@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import Game from './Game';
+import Timer from '../Clock/Timer';
 
 function Round() {
+
+    const [counter, setCounter] = useState(1);
 
     return (
         <>
@@ -9,11 +12,11 @@ function Round() {
 
             <div className="row">
                 {/* need to make this dynamic */}
-                <div className="col"><h1 className='round'>1</h1></div>
+                <div className="col"><h1 className='round'>{(Timer.counter.valueOf()).toString()}
+            
+                </h1></div>
             </div>
-            {/* <div className="row">
-                <div className="col"><h1 className='round'>6 to go</h1></div> 
-            </div> */}
+
 
         </div>
         </>
