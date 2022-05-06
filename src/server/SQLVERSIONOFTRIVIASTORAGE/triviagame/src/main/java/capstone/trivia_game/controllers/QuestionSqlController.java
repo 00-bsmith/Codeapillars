@@ -33,11 +33,13 @@ public class QuestionSqlController {
         return service.getAvailableFromGame(gameId);
     }
 
+    //Todo: Check why nonexistent IDs return 200 for findByQuestionId
     @GetMapping("/{questionId}")
     public Question findByQuestionId(@PathVariable int questionId) {
         return service.findByQuestionId(questionId);
     }
 
+    //Todo: Check why nonexistent IDs return 200 for findByGameId
     @GetMapping("/game/{gameId}")
     public List<Question> findByGameId(@PathVariable int gameId) {
         return service.findByGameId(gameId);

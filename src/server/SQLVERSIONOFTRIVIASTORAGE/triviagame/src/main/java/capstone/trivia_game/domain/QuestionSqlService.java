@@ -12,6 +12,7 @@ import java.util.List;
 public class QuestionSqlService {
 
     private final QuestionRepository repository;
+    private final int MAX_SCORE = 100;
 
     public QuestionSqlService(QuestionRepository repository) {
         this.repository = repository;
@@ -88,11 +89,40 @@ public class QuestionSqlService {
             result.addMessage("Question is required", ResultType.INVALID);
         }
 
+        if (question.getAllAnswers() == null) {
+            result.addMessage("Question must have answers", ResultType.INVALID);
+        }
+
+        if (question.getAllAnswers().size() != 4) {
+            result.addMessage("Question must have four answers", ResultType.INVALID);
+        }
+
         for (String answer : question.getAllAnswers()) {
             if (Validations.isNullOrBlank(answer)) {
                 result.addMessage("Four answers are required", ResultType.INVALID);
             }
         }
+
+        if (question.getGameID() <= 0) {
+            result.addMessage("Question must have valid Game ID", ResultType.INVALID);
+        }
+
+        if (question.getCorrect() == null) {
+            result.addMessage("Question must be correct or incorrect", ResultType.INVALID);
+        }
+
+        if (question.getAnswered() == null) {
+            result.addMessage("Question must be answered or unanswered", ResultType.INVALID);
+        }
+
+        if (question.getEarnedPoints() < 0 || question.getEarnedPoints() > MAX_SCORE) {
+            result.addMessage("Question must have earned valid points", ResultType.INVALID);
+        }
+
+        if (question.getPointValue() != MAX_SCORE) {
+            result.addMessage("Question must have consistent max score", ResultType.INVALID);
+        }
+
         return result;
     }
 }
