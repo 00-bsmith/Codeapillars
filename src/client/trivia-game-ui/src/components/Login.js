@@ -87,17 +87,23 @@ const Login = () => {
           
         </div>
         
-        <div style={{margin: "18px"}} className="mt-5" >
-          {/* <button className="btn btn-success mb-3" type="submit">
+        <div className="mt-5" >
+          <button className="btn btn-success mb-3" type="submit">
              Login
           </button>
-          {/* <Link to="/admin" className="btn btn-success mb-3" type="submit">
-             Login
-          </Link> */}
           <Link to="/" className="btn btn-warning  mb-3 ml-2">Cancel
           </Link>
         
         </div>
+
+        {/* <div className="mt-5" >
+          <Link to="/login"  className="btn btn-success mb-3" type="submit">
+             Login
+             </Link>
+          <Link to="/" className="btn btn-warning  mb-3 ml-2">Cancel
+          </Link>
+        
+        </div> */}
         
       </form>
     </>

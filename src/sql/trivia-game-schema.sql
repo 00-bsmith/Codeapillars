@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS `trivia-game`.`short_high_score` (
   `score` INT NOT NULL,
   `date` timestamp NOT NULL,
   PRIMARY KEY (`score_id`),
-  UNIQUE INDEX `score_id_UNIQUE` (`score_id` ASC) VISIBLE)
+  UNIQUE INDEX `score_id_UNIQUE` (`score_id` ASC) )
 ENGINE = InnoDB;
 
 
@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS `trivia-game`.`medium_high_score` (
   `score` INT NOT NULL,
   `date` timestamp NOT NULL,
   PRIMARY KEY (`score_id`),
-  UNIQUE INDEX `score_id_UNIQUE` (`score_id` ASC) VISIBLE)
+  UNIQUE INDEX `score_id_UNIQUE` (`score_id` ASC) )
 ENGINE = InnoDB;
 
 
@@ -55,7 +55,7 @@ CREATE TABLE IF NOT EXISTS `trivia-game`.`long_high_score` (
   `score` INT NOT NULL,
   `date` timestamp NOT NULL,
   PRIMARY KEY (`score_id`),
-  UNIQUE INDEX `score_id_UNIQUE` (`score_id` ASC) VISIBLE)
+  UNIQUE INDEX `score_id_UNIQUE` (`score_id` ASC) )
 ENGINE = InnoDB;
 
 
@@ -70,7 +70,7 @@ CREATE TABLE IF NOT EXISTS `trivia-game`.`app_user` (
   `password_hash` VARCHAR(2048) NOT NULL,
   `disabled` BIT(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`app_user_id`),
-  UNIQUE INDEX `username_UNIQUE` (`username` ASC) VISIBLE)
+  UNIQUE INDEX `username_UNIQUE` (`username` ASC) )
 ENGINE = InnoDB;
 
 
@@ -83,7 +83,7 @@ CREATE TABLE IF NOT EXISTS `trivia-game`.`app_role` (
   `app_role_id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(50) NOT NULL,
   PRIMARY KEY (`app_role_id`),
-  UNIQUE INDEX `name_UNIQUE` (`name` ASC) VISIBLE)
+  UNIQUE INDEX `name_UNIQUE` (`name` ASC) )
 ENGINE = InnoDB;
 
 
@@ -96,7 +96,7 @@ CREATE TABLE IF NOT EXISTS `trivia-game`.`app_user_role` (
   `app_user_id` INT NOT NULL,
   `app_role_id` INT NOT NULL,
   PRIMARY KEY (`app_user_id`, `app_role_id`),
-  INDEX `fk_app_user_role_app_role1_idx` (`app_role_id` ASC) VISIBLE,
+  INDEX `fk_app_user_role_app_role1_idx` (`app_role_id` ASC) ,
   CONSTRAINT `fk_app_user_role_app_user`
     FOREIGN KEY (`app_user_id`)
     REFERENCES `trivia-game`.`app_user` (`app_user_id`)

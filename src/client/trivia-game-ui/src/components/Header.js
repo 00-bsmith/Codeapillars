@@ -1,17 +1,12 @@
-import NavBar from "./NavBar";
 import ImageComponent from "./ImageComponent";
-import { Container } from "react-bootstrap";
-
+import NavBar from "./NavBar";
 
 const Header = () => {
     return (
         <>
-          
-         <Container fluid>
             <ImageComponent />
-            <NavBar/>
-        </Container>
-      
+            <NavBar />
+         
         </>
     );
 }

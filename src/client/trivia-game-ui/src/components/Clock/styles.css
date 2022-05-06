@@ -6,6 +6,7 @@ h1 {
   -moz-osx-font-smoothing: grayscale;
     text-align: center;
     margin-bottom: 40px;
+    
   }
   
   .timer-wrapper {
@@ -14,7 +15,10 @@ h1 {
   }
   
   .timer {
-    font-family: "Roboto";
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+    font-weight: bold;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -28,4 +32,49 @@ h1 {
     font-size: 40px;
   }
 
+  .columnHeader {
+    text-align: center;
+  }
   
+  .time-wrapper1 {
+    position: relative;
+    width: 80px;
+    height: 60px;
+    font-size: 48px;
+    font-family: "Roboto";
+  }
+
+  .time-wrapper2 {
+    position: relative;
+    width: 82px;
+    height: 62px;
+    font-size: 48px;
+    font-family: "Roboto";
+  }
+  
+  .time-wrapper .time {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(0);
+    opacity: 1;
+    transition: all 0.2s;
+  }
+  
+  .time-wrapper .time.up {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  
+  .time-wrapper .time.down {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  
+  
+ 

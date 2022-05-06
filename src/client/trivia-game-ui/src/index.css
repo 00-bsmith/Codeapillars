@@ -22,18 +22,53 @@ code {
   background-repeat: no-repeat;
   }*/
 
- 
  * {
   margin-right: 5px;
   margin-left: 5px;
   box-sizing: border-box;
 }
 
+.h1 {
+  text-align: center;
+}
+
 img {
   max-inline-size: 100%;
   block-size: auto;
-  /* padding-right: 1px; */
   margin-left: -.05px;
+}
+
+.triviapillar {
+  justify-content: center;
+}
+
+.container-fluid {
+  margin: 0;
+  padding: 0;
+}
+
+
+.table {
+  margin: 18px;
+}
+
+.row {
+  /* background-color: #f77f00; */
+  /* margin-bottom: 20px; */
+  font-weight: bold;
+}
+
+.col {
+  text-align: center;
+  margin-top: 5px;;
+}
+
+.score {
+  font-size: 16px;
+}
+
+.round {
+  font-size: 40px;
 }
 
 .container-fluid {
@@ -55,12 +90,21 @@ img {
   background-color: #ffb703 !important
 }
 
+.btn-danger {
+  text-align: center;
+  background-color: #ae2012 !important
+}
+
 .btn-success:hover {
   background-color: #5db6b8 !important
 }
 
 .btn-warning:hover {
   background-color: #f7d47d !important
+}
+
+.btn-danger:hover {
+  background-color: #eb665a !important
 }
 
 /* for use with the question buttons if desired - used from quizbee app */

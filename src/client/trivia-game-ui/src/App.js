@@ -3,7 +3,6 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Redirect,
 } from "react-router-dom";
 
 import AuthContext from "./AuthContext";
@@ -12,13 +11,16 @@ import Home from "./components/Home";
 import jwt_decode from "jwt-decode";
 import Login from "./components/Login";
 import NotFound from "./components/NotFound";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 import LeaderBoard from "./components/LeaderBoard";
 import Admin from "./components/Admin";
-import Game from "./components/Game";
-import Results from "./components/Results";
-import HowToPlay from "./components/HowToPlay";
+import Game from "./components/Gameplay/Game";
+import Results from "./components/Gameplay/Results";
+import HowToPlay from "./components/HowToPlay/HowToPlay";
 import NavBar from "./components/NavBar";
+import { Navbar } from "react-bootstrap";
+import GameLength from "./components/Gameplay/GameLength";
+
 
 
 const TOKEN_KEY = "user-api-token";
@@ -32,15 +34,15 @@ function App() {
     var tokenObj;
     try {
       tokenObj = jwt_decode(token);
-    } catch(error) {
+    } catch (error) {
       console.log(error);
     }
-    
+
     console.log(tokenObj);
 
     const { sub: username, authorities: roleString } = tokenObj;
 
-    const roles = roleString.split(',');
+    const roles = roleString.split(",");
 
     const user = {
       username,
@@ -48,8 +50,8 @@ function App() {
       token,
       hasRole(role) {
         return roles.includes(role);
-      }
-    }
+      },
+    };
     console.log(user);
 
     setUser(user);
@@ -67,46 +69,56 @@ function App() {
     login,
     logout,
   };
-  
+
   return (
     <AuthContext.Provider value={auth}>
       <Router>
-        <Header />
+        {/* <Header /> */}
         <Switch>
-
           <Route exact path="/">
+            <Header />
             <Home />
           </Route>
 
           <Route path="/login">
+            <Header />
             <Login />
           </Route>
 
-
           <Route path="/admin">
+            <Navbar />
             <Admin />
           </Route>
 
+          <Route path="/gamelength">
+            <NavBar />
+            <GameLength />
+          </Route>
+
           <Route path="/game">
+            <NavBar />
             <Game />
           </Route>
 
           <Route path="/results">
+            <NavBar />
             <Results />
           </Route>
 
           <Route path="/howtoplay">
+            <Header />
             <HowToPlay />
           </Route>
 
           <Route path="/hiscore">
+            <Header />
             <LeaderBoard />
           </Route>
 
           <Route path="*">
+            <NavBar />
             <NotFound />
           </Route>
-
         </Switch>
       </Router>
     </AuthContext.Provider>
