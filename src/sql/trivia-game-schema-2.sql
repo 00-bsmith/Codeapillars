@@ -145,3 +145,35 @@ insert into game_storage (game_id, question, correct, answered, earned_points, c
 values (1, "Wanna Snuggle again??", true, true, 67, "Great", "bad", "no", "Go away");
 
 select MAX(game_id) from game_storage;
+
+insert into short_high_score(initials, score, `date`) values
+        ("BJS", "499", now()),
+        ("2FH", "250", now()),
+        ("2FH", "500", now());
+
+	insert into medium_high_score(initials, score, `date`) values
+        ("BJS", "899", now()),
+        ("2FH", "750", now()),
+        ("2FH", "1200", now());
+        
+	insert into long_high_score(initials, score, `date`) values
+        ("BJS", "2499", now()),
+        ("2FH", "2250", now()),
+        ("2FH", "2500", now());
+        
+        insert into app_role (`name`) values
+    ('USER'),
+    ('ADMIN');
+
+-- passwords are set to "P@ssw0rd!"
+insert into app_user (username, password_hash, disabled)
+    values
+    ('john@smith.com', '$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa', 0),
+    ('sally@jones.com', '$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa', 0),
+    ('srbachwich', '$2a$10$zfA/Z60nPEY52a6VS8Q1/eWyvT6B2RwNimgVqhyGus0AgsWTkU6PW', 0);
+
+insert into app_user_role
+    values
+    (1, 2),
+    (2, 1),
+    (3, 1);
