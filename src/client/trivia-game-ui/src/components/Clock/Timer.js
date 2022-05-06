@@ -22,7 +22,7 @@ function Timer(props) {
 
   const [remainingTime, setRemainingTime] = useState(duration);
 
-// below is my attempt at dynamic text inside the clock
+// below is my attempt at dynamic text inside the clock. I don't know what to put in the ()
   // const [timerText, setTimerText] = useState("");
 
 
@@ -77,7 +77,8 @@ console.log("Duration: " + duration);
 
     colors={["#0a9396", "#ffb703", "#f77f00", "#ae2012"]}
 
-    colorsTime={[5, 3, 1, 0]}
+     colorsTime={[5, 3, 1, 0]}
+    
 
     // timerText={timerText}
 
