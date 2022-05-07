@@ -1,9 +1,8 @@
 import React from "react";
-// import CountdownClock from "../Clock/CountdownClock";
 import Score from "./Score";
 import Round from "./Round";
 import Timer from "../Clock/Timer";
-import Question from "./Question";
+// import Question from "./Question";
 
 const Game = () => {
   return (
@@ -27,7 +26,7 @@ const Game = () => {
 
           <div className="col">
             <div className="text-center">
-              <p className="columnHeader">Score:</p>
+              <p className="columnHeader">Total Score:</p>
               <Score />
             </div>
           </div>

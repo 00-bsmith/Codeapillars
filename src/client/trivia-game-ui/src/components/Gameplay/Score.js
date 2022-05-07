@@ -7,6 +7,8 @@ function Score() {
         <>
         <div className="container">
 
+
+{/* We need to grab the score from Timer.js and pass it here to be put into an array.  Add previous score to incoming score and display. First round would be zero plus the current score = total score. */}
             <div className="row">
                 <div className="col"><h3 className='score'>Player One</h3></div>
                 {/* need to make the score dynamic */}

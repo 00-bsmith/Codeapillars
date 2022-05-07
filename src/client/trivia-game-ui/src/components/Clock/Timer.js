@@ -1,65 +1,94 @@
 import React from 'react';
 import { useState } from 'react';
+import ReactDOM from "react-dom";
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 import "./styles.css";
 
 
 function Timer(props) {
-
+  const [currentTime, setCurrentTime] = React.useState(0);
   const [key, setKey] = useState(0);
-
   const [isPlaying, setIsPlaying] = useState(true);
-
-  const [counter, setCounter] = useState(0);
+  const [seconds, setSeconds] = useState(0);
+  const [counter, setCounter] = useState(1);
+  const [elapsedTime, setElapsedTime] = useState(0);
+  const [score, setScore] = useState(0);
 
   // const [difficulty, setDifficulty] = useState("Easy");
-
-  const [difficulty, setDifficulty] = useState("Medium");
-
-  // const [difficulty, setDifficulty] = useState("Hard");
+  // const [difficulty, setDifficulty] = useState("Medium");
+  const [difficulty, setDifficulty] = useState("Hard");
 
   const [duration, setDuration] = useState(5);
-
   const [remainingTime, setRemainingTime] = useState(duration);
 
-// below is my attempt at dynamic text inside the clock. I don't know what to put in the ()
-  // const [timerText, setTimerText] = useState("");
-
-
-
 console.log("Counter: " + counter);
-
 console.log("Duration: " + duration);
 
+const stopTimer = () => {
+  setSeconds(currentTime);
+  setIsPlaying(false);
+  calculateScore();
+    console.log("secs: " + currentTime);
+    console.log("dur: " + duration);
+    console.log("Time Stopped @: " + currentTime);
+  };
+
+  const calculateScore = () => {
+    const time = duration - currentTime;
+    const a = time / duration;
+      console.log("a: " + a);
+    const b = a / 1.2;
+      console.log("b: " + b);
+    const c = 1 - b;
+      console.log("c: " + c);
+    const d = c * 100;
+      console.log("d: " + d);
+    const score = d;
+      console.log("a: " + a);
+    setScore(Math.round(score));
+    };
+    
+    // probably wont need this restart functionality here. Perhaps on the results page to get next question?
+    const restartTimer = () => {
+    setCurrentTime(seconds);
+    setIsPlaying(true);
+    };
+    
+    // not sure about this reset. Currently it isn't working here. 
+    const resetTimer = () => {
+    setIsPlaying(true);
+    setDuration(15);
+    };
 
 
-  const renderTime = ({ remainingTime, shouldRepeat }) => {
 
-    if (remainingTime === 0) {
+    const renderTime = ({ remainingTime }) => {
+      setCurrentTime(remainingTime);
+      if (remainingTime === 0) {
+        return <div className="timer">Time is Up!</div>;
+      }  
+      
+      if (duration === 5) {
+        return (
+          <div className="timer">
+            <div className="text">Get Ready...</div>
+            <div className="value">{remainingTime}</div>
+            <div className="text">seconds</div>
+          </div>
+          );  
+      } else {
+        return (
+          <div className="timer">
+            <div className="text">Choose Answer</div>
+            <div className="value">{remainingTime}</div>
+            <div className="text">seconds</div>
+          </div>
+          );
+        }
+    };
 
-    return <div className="timer">Time is up!</div>;
-
-    } 
-
-
-
-  return (
-
-    <div className="timer">
-
-    {/* Since I couldn't get the text to be dynamic, I chose to have no text */}
-    {/* <div className="text">Get Ready...</div> */}
-    {/* <div className="text">{timerText}</div> */}
-
-    <div className="value">{remainingTime}</div>
-
-    <div className="text">seconds</div>
-
-    </div>
-
- );
-
-};
+                     // Open the console to check the value for currentTime
+                     console.log(currentTime);
 
  
  return (
@@ -67,128 +96,101 @@ console.log("Duration: " + duration);
 
   <div className="timer-wrapper">
 
+{/* this needs to not be here, but need to grab it's value and pass the dynamic-ness of it to Round.js to display. */}
+  <p><strong>(dynamic)Round: {(counter.valueOf()).toString()}</strong></p>
+
     <CountdownCircleTimer
-
     key={key}
-
     isPlaying={isPlaying}
-
     duration={duration}  // durationn is a number i.e. duration={5}
-
     colors={["#0a9396", "#ffb703", "#f77f00", "#ae2012"]}
-
-     colorsTime={[5, 3, 1, 0]}
+    colorsTime={[5, 3, 1, 0]}
     
-
-    // timerText={timerText}
-
     //  original parameter:   onComplete={() => ({ shouldRepeat: true, delay: 0 })}
 
     onComplete={() => {
-
-      if (difficulty === "Easy") {
-
-        if(counter === 1) {
-
+      if(counter === 3 && duration === 15) {
+        // counter is the number of rounds this needs to be dynamic!!!
+        if(counter === 3) {
           setRemainingTime(0);
-
           setIsPlaying(false);
-
         } else {
+          if (duration === 5) {
+            setDuration(15);
+          } else {
+            setCounter(counter+1);
+            setDuration(5);
+          }
+        setKey((prevKey) => prevKey + 1);
+        }
+        
+      } else if (difficulty === "Medium") {
+        if(counter === 3 && duration === 15) {
+          setRemainingTime(0);
+          setIsPlaying(false);
+        } else {
+          if (duration === 5) {
+            setDuration(15);
+          } else {
+            setCounter(counter+1);
+            setDuration(5);
+          }
+        setKey((prevKey) => prevKey + 1);
+        }
 
-
-          setDuration(duration + 20);
-
+      } else if (difficulty === "Hard") {
+        if(counter === 3 && duration === 15) {
+          setRemainingTime(0);
+          setIsPlaying(false);
+        } else {
+            if (duration === 5) {
+              setDuration(15);
+            } else {
+              setCounter(counter+1);
+              setDuration(5);
+            }
           setKey((prevKey) => prevKey + 1);
+        }
+      }  
+    // if(counter === 5) {
+    //     setRemainingTime(0);
+    //     setIsPlaying(false);
+    //   }
+      return { shouldRepeat:true, delay: 1.5 }
+    }}
+  >
+    {/* {({ remainingTime }) => remainingTime} */}
+    
+    {renderTime}
+  </CountdownCircleTimer>
+</div>
 
-          setCounter(1);
+{/* Dont need this bit for functionality, it's just displayed to vew functionality for now. */}
+<p id="counter">
+{currentTime}   Current time (PRINTED OUT) 
+{setCurrentTime}
+</p>
 
-          // setTimerText("Guess")  //not sure what should be in the ()
+<div className="counter-container">
 
-         }
+<button type="submit" className="btn btn-primary stop-button" onClick={stopTimer}>Submit</button>
+{/* probably dont need a restart button, just here to play with for now */}
+<button type="submit" className="btn btn-success stop-button" onClick={restartTimer}>restart</button>
 
-       } else if (difficulty === "Medium") {
+{/* Dont need this bit for functionality, it's just displayed to vew functionality for now.*/}
+  <p id="counter">
+    <br />
+      Elapsed Time: {duration - seconds}  (PRINTED OUT)
+    <br />
+      {/* {isPlaying.toString()} (PRINTED OUT) */}
+    <br />
+      SCORE: {score}  (PRINTED OUT)
+  </p>
 
-         if(counter === 1) {
-
-           setRemainingTime(0);
-
-           setIsPlaying(false);
-
-         } else {
-
-             // originally was (duration + 15) changed to 10 so timer would be 15 seconds.
-             // the other two (easy and hard) are not rendering since their useState const is commented out at the top.
-           setDuration(duration + 10); 
-
-             setKey((prevKey) => prevKey + 1);
-
-             setCounter(1);
-
-         }
-
-       } else if (difficulty === "Hard") {
-
-         if(counter === 1) {
-
-           setRemainingTime(0);
-
-           setIsPlaying(false);
-
-         } else {
-
-           setDuration(duration + 10);
-
-           setKey((prevKey) => prevKey + 1);
-
-           setCounter(1);
-
-         }
-
-       } 
-
-         if(counter === 1) {
-
-             setRemainingTime(0);
-
-             setIsPlaying(false);
-
-         }
-
-           return { shouldRepeat:true, delay: 0 }
-
-   }}
-
-     >
-
-         {/* {({ remainingTime }) => remainingTime} */}
-
-   
-
-         {renderTime}
-
-       </CountdownCircleTimer>
-
-        {/* this button resets the timer to the second duration amount */}
-            {/* <div className="button-wrapper">
-
-              <button onClick={() => setKey((prevKey) => prevKey + 1)}>
-
-              Next Question
-
-              </button>
-
-            </div> */}
-         
-
-     </div>
-
-     </>
-
- );
-
+</div>
+</>
+);
+      
 }
-
-
 
 export default Timer;

@@ -12,9 +12,12 @@ function Round() {
 
             <div className="row">
                 {/* need to make this dynamic */}
-                <div className="col"><h1 className='round'>{(Timer.counter.valueOf()).toString()}
-            
+
+               <div className="col"><h1 className='round'> 
+               {/* this isn't working here. need to grab round from Timer, and display it here to be passed to Game.js */}
+                {/* {(Timer.counter.valueOf()).toString()} */}
                 </h1></div>
+                
             </div>
 
 
