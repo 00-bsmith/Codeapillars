@@ -14,6 +14,7 @@ const Game = () => {
             <div className="text-center">
               <p className="columnHeader">Round #</p>
               <Round />
+              {/* Perhaps pass dynamic {round} to be displayed here directly rather than pass to Round.js first?? */}
             </div>
           </div>
 
@@ -28,6 +29,7 @@ const Game = () => {
             <div className="text-center">
               <p className="columnHeader">Total Score:</p>
               <Score />
+              {/* Dynamic {score} will need to go first to Score.js to be added to previous score and then displayed as Total Score...OR can that be done here as well? */}
             </div>
           </div>
 

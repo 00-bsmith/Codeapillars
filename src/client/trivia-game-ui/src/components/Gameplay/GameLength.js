@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const GameLength = () => {
+const GameLength = (props) => {
   
   const handleSubmit = async () => {
     //Fetch Http response here
@@ -63,6 +63,8 @@ const GameLength = () => {
             </Link>
           </div>
         </div>
+
+    
       </div>
  
     </>

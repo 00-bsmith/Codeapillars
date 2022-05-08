@@ -4,6 +4,7 @@ import ReactDOM from "react-dom";
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 import "./styles.css";
 import Round from '../Gameplay/Round';
+import Score from '../Gameplay/Score';
 
 
 function Timer(props) {
@@ -12,9 +13,11 @@ function Timer(props) {
   const [isPlaying, setIsPlaying] = useState(true);
   const [seconds, setSeconds] = useState(0);
   // const [counter, setCounter] = useState(1);  //switched counter to round
-  const [round, setRound] = useState(1);
+  const [round, setRound] = React.useState(1);
   // const [elapsedTime, setElapsedTime] = useState(0);
-  const [score, setScore] = useState(0);
+  const [score, setScore] = React.useState(0);
+
+  // NEED to find a way to set the final score to 0 if 0 time is left
   const [zero, setZero] = useState(0);
 
   // const [difficulty, setDifficulty] = useState("Easy");
@@ -103,8 +106,26 @@ const stopTimer = () => {
 
                      // Open the console to check the value for currentTime
                      console.log(currentTime);
-                     
 
+// ////////////////Trying to set this up to share the round with Round.js//////////
+// class Timer extends React.Component {
+//     constructor(props) {
+//     super(props);
+//     this.state = {
+//         data: {round}
+//       }
+//     }
+//     render() {
+//       return (
+                  
+//          <div>
+//             <div>{this.state.round}</div>
+//              <Round value={this.state.round} />
+//             </div>
+//       );
+//     }
+// }                 
+// ///////////////////////////////////////////////////////////////
  
  return (
  <>
@@ -211,7 +232,11 @@ const stopTimer = () => {
 
 </div>
 
-<Round timerToRound={round}/>
+{/* this ends up just displaying down beneath the clock rather than being passed to Round.js */}
+{/* <div>
+  <Round round={round} />
+</div> */}
+
 </>
 );
       
