@@ -3,6 +3,7 @@ import { useState } from 'react';
 import ReactDOM from "react-dom";
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 import "./styles.css";
+import Round from '../Gameplay/Round';
 
 
 function Timer(props) {
@@ -10,9 +11,11 @@ function Timer(props) {
   const [key, setKey] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
   const [seconds, setSeconds] = useState(0);
-  const [counter, setCounter] = useState(1);
-  const [elapsedTime, setElapsedTime] = useState(0);
+  // const [counter, setCounter] = useState(1);  //switched counter to round
+  const [round, setRound] = useState(1);
+  // const [elapsedTime, setElapsedTime] = useState(0);
   const [score, setScore] = useState(0);
+  const [zero, setZero] = useState(0);
 
   // const [difficulty, setDifficulty] = useState("Easy");
   // const [difficulty, setDifficulty] = useState("Medium");
@@ -21,7 +24,7 @@ function Timer(props) {
   const [duration, setDuration] = useState(5);
   const [remainingTime, setRemainingTime] = useState(duration);
 
-console.log("Counter: " + counter);
+console.log("Round: " + round);
 console.log("Duration: " + duration);
 
 const stopTimer = () => {
@@ -47,7 +50,19 @@ const stopTimer = () => {
       console.log("a: " + a);
     setScore(Math.round(score));
     };
-    
+
+    // When the timer runs out, the score is 17. It should be zero
+    //if current time === 0 then score should 0 now 17.
+
+    // const zeroScore = () => {
+    //   if (remainingTime === 0 && currentTime ===0) {
+    //     const z = ({score} - 17);
+    //     const zero = z;
+    //     setZero(0);
+    //   }
+    // }
+
+  
     // probably wont need this restart functionality here. Perhaps on the results page to get next question?
     const restartTimer = () => {
     setCurrentTime(seconds);
@@ -60,18 +75,17 @@ const stopTimer = () => {
     setDuration(15);
     };
 
-
+    
 
     const renderTime = ({ remainingTime }) => {
       setCurrentTime(remainingTime);
       if (remainingTime === 0) {
         return <div className="timer">Time is Up!</div>;
       }  
-      
       if (duration === 5) {
         return (
           <div className="timer">
-            <div className="text">Get Ready...</div>
+            <div className="text">Read Question</div>
             <div className="value">{remainingTime}</div>
             <div className="text">seconds</div>
           </div>
@@ -89,6 +103,7 @@ const stopTimer = () => {
 
                      // Open the console to check the value for currentTime
                      console.log(currentTime);
+                     
 
  
  return (
@@ -97,7 +112,8 @@ const stopTimer = () => {
   <div className="timer-wrapper">
 
 {/* this needs to not be here, but need to grab it's value and pass the dynamic-ness of it to Round.js to display. */}
-  <p><strong>(dynamic)Round: {(counter.valueOf()).toString()}</strong></p>
+  {/* <p><strong>(dynamic)Round: {(counter.valueOf()).toString()}</strong></p> */}
+  {/* <p><strong>(dynamic)Round: {(round.valueOf()).toString()}</strong></p> */}
 
     <CountdownCircleTimer
     key={key}
@@ -109,50 +125,53 @@ const stopTimer = () => {
     //  original parameter:   onComplete={() => ({ shouldRepeat: true, delay: 0 })}
 
     onComplete={() => {
-      if(counter === 3 && duration === 15) {
+      if(round === 3 && duration === 15) {
         // counter is the number of rounds this needs to be dynamic!!!
-        if(counter === 3) {
+        if(round === 3 && duration === 15) {
           setRemainingTime(0);
           setIsPlaying(false);
+          // setZero(0);
         } else {
           if (duration === 5) {
             setDuration(15);
           } else {
-            setCounter(counter+1);
+            setRound(round+1);
             setDuration(5);
           }
         setKey((prevKey) => prevKey + 1);
         }
         
       } else if (difficulty === "Medium") {
-        if(counter === 3 && duration === 15) {
+        if(round === 3 && duration === 15) {
           setRemainingTime(0);
           setIsPlaying(false);
+          // setZero(0);
         } else {
           if (duration === 5) {
             setDuration(15);
           } else {
-            setCounter(counter+1);
+            setRound(round+1);
             setDuration(5);
           }
         setKey((prevKey) => prevKey + 1);
         }
 
       } else if (difficulty === "Hard") {
-        if(counter === 3 && duration === 15) {
+        if(round === 3 && duration === 15) {
           setRemainingTime(0);
           setIsPlaying(false);
+          // setZero(0);
         } else {
             if (duration === 5) {
               setDuration(15);
             } else {
-              setCounter(counter+1);
+              setRound(round+1);
               setDuration(5);
             }
           setKey((prevKey) => prevKey + 1);
         }
       }  
-    // if(counter === 5) {
+    // if(round === 5) {
     //     setRemainingTime(0);
     //     setIsPlaying(false);
     //   }
@@ -165,32 +184,38 @@ const stopTimer = () => {
   </CountdownCircleTimer>
 </div>
 
-{/* Dont need this bit for functionality, it's just displayed to vew functionality for now. */}
-<p id="counter">
+{/* GRAB round and pass to Round.js to display */}
+<p id="round">
 {currentTime}   Current time (PRINTED OUT) 
 {setCurrentTime}
 </p>
 
-<div className="counter-container">
+<div className="round-container">
 
-<button type="submit" className="btn btn-primary stop-button" onClick={stopTimer}>Submit</button>
+{/* This stop-timer-button needs to ALSO submit answer !!!*/}
+<button type="submit" className="btn btn-primary stop-timer-button" onClick={stopTimer}>Submit</button>
 {/* probably dont need a restart button, just here to play with for now */}
 <button type="submit" className="btn btn-success stop-button" onClick={restartTimer}>restart</button>
 
 {/* Dont need this bit for functionality, it's just displayed to vew functionality for now.*/}
-  <p id="counter">
+  <p id="round">
     <br />
-      Elapsed Time: {duration - seconds}  (PRINTED OUT)
+      Round: {round} (PRINTED OUT)
     <br />
-      {/* {isPlaying.toString()} (PRINTED OUT) */}
+      Duration Time: {duration - seconds}  (PRINTED OUT)
+    <br />
+      isPlaying: {isPlaying.toString()} (PRINTED OUT)
     <br />
       SCORE: {score}  (PRINTED OUT)
   </p>
 
 </div>
+
+<Round timerToRound={round}/>
 </>
 );
       
 }
 
 export default Timer;
+
