@@ -19,4 +19,5 @@ public interface QuestionRepository {
     @Transactional
     boolean deleteByGame(int id);
     Question add(Question question);
+    Question getNext(int gameId);
 }

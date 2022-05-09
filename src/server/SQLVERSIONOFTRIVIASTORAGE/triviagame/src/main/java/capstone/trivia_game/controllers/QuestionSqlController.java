@@ -106,4 +106,13 @@ public class QuestionSqlController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
+    @GetMapping("/{gameId}/next")
+    public ResponseEntity<Question> getNext(@PathVariable int gameId){
+        if(service.getNext(gameId)==null){
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
+        else{
+            return new ResponseEntity<>(service.getNext(gameId), HttpStatus.NO_CONTENT);
+        }
+    }
 }

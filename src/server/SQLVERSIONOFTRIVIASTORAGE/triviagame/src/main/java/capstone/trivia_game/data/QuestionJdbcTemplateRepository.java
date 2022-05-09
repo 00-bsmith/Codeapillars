@@ -21,6 +21,7 @@ import java.sql.PreparedStatement;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 @Repository
 public class QuestionJdbcTemplateRepository implements QuestionRepository{
@@ -189,5 +190,13 @@ public class QuestionJdbcTemplateRepository implements QuestionRepository{
         }
         question.setId(keyHolder.getKey().intValue());
         return question;
+    }
+
+    @Override
+    public Question getNext(int gameId){
+        List<Question> available = getAvailableFromGame(gameId);
+        Random rand = new Random();
+        int index = rand.nextInt(available.size());//if size=6, then rand should be 0-5
+        return available.get(index);
     }
 }

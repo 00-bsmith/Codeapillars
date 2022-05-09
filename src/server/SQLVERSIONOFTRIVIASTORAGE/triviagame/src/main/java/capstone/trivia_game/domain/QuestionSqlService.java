@@ -125,4 +125,8 @@ public class QuestionSqlService {
 
         return result;
     }
+
+    public Question getNext(int gameId){
+        return  repository.getNext(gameId);
+    }
 }
