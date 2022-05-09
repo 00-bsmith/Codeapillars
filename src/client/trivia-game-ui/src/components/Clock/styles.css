@@ -35,6 +35,7 @@ h1 {
   .columnHeader {
     text-align: center;
   }
+
   
   .time-wrapper1 {
     position: relative;
@@ -44,13 +45,6 @@ h1 {
     font-family: "Roboto";
   }
 
-  .time-wrapper2 {
-    position: relative;
-    width: 82px;
-    height: 62px;
-    font-size: 48px;
-    font-family: "Roboto";
-  }
   
   .time-wrapper .time {
     position: absolute;
@@ -76,33 +70,7 @@ h1 {
     transform: translateY(100%);
   }
   
-  
-.btn-success {
-  text-align: center;
-    background-color: #0a9396 !important
-}
-
-.btn-warning {
-  text-align: center;
-  background-color: #ffb703 !important
-}
-
-.btn-danger {
-  text-align: center;
-  background-color: #ae2012 !important
-}
-
-.btn-success:hover {
-  background-color: #5db6b8 !important
-}
-
-.btn-warning:hover {
-  background-color: #f7d47d !important
-}
-
-.btn-danger:hover {
-  background-color: #eb665a !important
-}
+ 
 
 
 

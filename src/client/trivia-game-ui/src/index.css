@@ -63,13 +63,6 @@ img {
   margin-top: 5px;;
 }
 
-.score {
-  font-size: 16px;
-}
-
-.round {
-  font-size: 40px;
-}
 
 .container-fluid {
     margin: 0;
@@ -111,6 +104,7 @@ btn-primary {
 .btn-danger:hover {
   background-color: #eb665a !important
 }
+
 
 
 
