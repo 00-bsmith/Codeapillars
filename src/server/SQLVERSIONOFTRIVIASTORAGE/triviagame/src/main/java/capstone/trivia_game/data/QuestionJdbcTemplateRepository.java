@@ -195,6 +195,9 @@ public class QuestionJdbcTemplateRepository implements QuestionRepository{
     @Override
     public Question getNext(int gameId){
         List<Question> available = getAvailableFromGame(gameId);
+        if(available.isEmpty()){
+            return null;
+        }
         Random rand = new Random();
         int index = rand.nextInt(available.size());//if size=6, then rand should be 0-5
         return available.get(index);

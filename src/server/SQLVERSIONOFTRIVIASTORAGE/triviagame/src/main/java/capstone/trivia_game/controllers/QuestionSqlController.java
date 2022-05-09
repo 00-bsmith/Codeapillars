@@ -44,7 +44,7 @@ public class QuestionSqlController {
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         }
        else{
-           return new ResponseEntity<>(service.findByQuestionId(questionId), HttpStatus.NO_CONTENT);
+           return new ResponseEntity<>(service.findByQuestionId(questionId), HttpStatus.OK);
         }
     }
 
@@ -54,12 +54,12 @@ public class QuestionSqlController {
 //        return service.findByGameId(gameId);
 //    }
     @GetMapping("/game/{gameId}")
-    public ResponseEntity<List<Question>> findByGameId(@PathVariable int gameId) {
+    public ResponseEntity<Object> findByGameId(@PathVariable int gameId) {
         if(service.findByGameId(gameId)==null){
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         }
         else{
-            return new ResponseEntity<>(service.findByGameId(gameId), HttpStatus.NO_CONTENT);
+            return new ResponseEntity<>(service.findByGameId(gameId), HttpStatus.OK);
         }
 
     }
@@ -112,7 +112,7 @@ public class QuestionSqlController {
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         }
         else{
-            return new ResponseEntity<>(service.getNext(gameId), HttpStatus.NO_CONTENT);
+            return new ResponseEntity<>(service.getNext(gameId), HttpStatus.OK);
         }
     }
 }
