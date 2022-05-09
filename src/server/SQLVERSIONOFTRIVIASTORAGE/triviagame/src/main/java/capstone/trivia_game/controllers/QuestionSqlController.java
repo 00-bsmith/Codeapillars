@@ -34,15 +34,34 @@ public class QuestionSqlController {
     }
 
     //Todo: Check why nonexistent IDs return 200 for findByQuestionId
+//    @GetMapping("/{questionId}")
+//    public Question findByQuestionId(@PathVariable int questionId) {
+//        return service.findByQuestionId(questionId);
+//    }
     @GetMapping("/{questionId}")
-    public Question findByQuestionId(@PathVariable int questionId) {
-        return service.findByQuestionId(questionId);
+    public ResponseEntity<Question> findByQuestionId(@PathVariable int questionId) {
+        if(service.findByQuestionId(questionId)==null){
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
+       else{
+           return new ResponseEntity<>(service.findByQuestionId(questionId), HttpStatus.NO_CONTENT);
+        }
     }
 
     //Todo: Check why nonexistent IDs return 200 for findByGameId
+//    @GetMapping("/game/{gameId}")
+//    public List<Question> findByGameId(@PathVariable int gameId) {
+//        return service.findByGameId(gameId);
+//    }
     @GetMapping("/game/{gameId}")
-    public List<Question> findByGameId(@PathVariable int gameId) {
-        return service.findByGameId(gameId);
+    public ResponseEntity<List<Question>> findByGameId(@PathVariable int gameId) {
+        if(service.findByGameId(gameId)==null){
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
+        else{
+            return new ResponseEntity<>(service.findByGameId(gameId), HttpStatus.NO_CONTENT);
+        }
+
     }
 
     @PostMapping("/build/{type}")
