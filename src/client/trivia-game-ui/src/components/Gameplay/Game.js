@@ -1,10 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import Score from "./Score";
 import Round from "./Round";
 import Timer from "../Clock/Timer";
-// import Question from "./Question";
+
 
 const Game = () => {
+
+  const [currentScore, setCurrentScore] = useState(0);
+  const [currentRound, SetCurrentRound] = useState(1);
+
+  const getScore = (newScore) => {
+    setCurrentScore(currentScore + newScore);
+
+  }
+
+  const getRound = (newRound) => {
+    SetCurrentRound(currentRound + newRound);
+  }
+
   return (
     <>
       <div className="container mt-2">
@@ -13,23 +26,20 @@ const Game = () => {
           <div className="col">
             <div className="text-center">
               <p className="columnHeader">Round #</p>
-              <Round />
-              {/* Perhaps pass dynamic {round} to be displayed here directly rather than pass to Round.js first?? */}
+              <Round currentRound={currentRound}/>
             </div>
           </div>
 
           <div className="col">
             <div className="text-center">
-              {/* <CountdownClock /> */}
-              <Timer />
+              <Timer getScore={getScore} getRound={getRound}/>
             </div>
           </div>
 
           <div className="col">
             <div className="text-center">
               <p className="columnHeader">Total Score:</p>
-              <Score />
-              {/* Dynamic {score} will need to go first to Score.js to be added to previous score and then displayed as Total Score...OR can that be done here as well? */}
+              <Score currentScore={currentScore}/>
             </div>
           </div>
 

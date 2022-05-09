@@ -1,17 +1,12 @@
 import React from 'react';
-import { render } from 'react-dom';
-import Timer from '../Clock/Timer';
 
-const Round = ({round}) =>  {
-// I don't think {round} goes inside of the ()
+const Round = ({currentRound}) =>  {
+
    
     return (
         <>
         <div>
-           <p>42</p>
-           <div>
-             {/* {{round}} */}
-            </div>
+           <p>{currentRound}</p>
         </div>
         </>
     );

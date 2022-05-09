@@ -1,6 +1,5 @@
 import React from 'react';
 import { useState } from 'react';
-import ReactDOM from "react-dom";
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 import "./styles.css";
 import Round from '../Gameplay/Round';
@@ -52,7 +51,10 @@ const stopTimer = () => {
     const score = d;
       console.log("a: " + a);
     setScore(Math.round(score));
+    props.getScore(Math.round(score));
     };
+
+
 
     // When the timer runs out, the score is 17. It should be zero
     //if current time === 0 then score should 0 now 17.
@@ -108,6 +110,13 @@ const stopTimer = () => {
                      console.log(currentTime);
 
 // ////////////////Trying to set this up to share the round with Round.js//////////
+
+// const getRound = (newRound) => {
+//   props.getRound;
+// }
+
+
+
 // class Timer extends React.Component {
 //     constructor(props) {
 //     super(props);
@@ -131,11 +140,7 @@ const stopTimer = () => {
  <>
 
   <div className="timer-wrapper">
-
-{/* this needs to not be here, but need to grab it's value and pass the dynamic-ness of it to Round.js to display. */}
-  {/* <p><strong>(dynamic)Round: {(counter.valueOf()).toString()}</strong></p> */}
-  {/* <p><strong>(dynamic)Round: {(round.valueOf()).toString()}</strong></p> */}
-
+ 
     <CountdownCircleTimer
     key={key}
     isPlaying={isPlaying}
@@ -192,10 +197,7 @@ const stopTimer = () => {
           setKey((prevKey) => prevKey + 1);
         }
       }  
-    // if(round === 5) {
-    //     setRemainingTime(0);
-    //     setIsPlaying(false);
-    //   }
+
       return { shouldRepeat:true, delay: 1.5 }
     }}
   >
@@ -206,10 +208,10 @@ const stopTimer = () => {
 </div>
 
 {/* GRAB round and pass to Round.js to display */}
-<p id="round">
+{/* <p id="round">
 {currentTime}   Current time (PRINTED OUT) 
 {setCurrentTime}
-</p>
+</p> */}
 
 <div className="round-container">
 
@@ -231,11 +233,6 @@ const stopTimer = () => {
   </p>
 
 </div>
-
-{/* this ends up just displaying down beneath the clock rather than being passed to Round.js */}
-{/* <div>
-  <Round round={round} />
-</div> */}
 
 </>
 );

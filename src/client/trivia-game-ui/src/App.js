@@ -70,6 +70,8 @@ function App() {
     logout,
   };
 
+  
+
   return (
     <AuthContext.Provider value={auth}>
       <Router>
