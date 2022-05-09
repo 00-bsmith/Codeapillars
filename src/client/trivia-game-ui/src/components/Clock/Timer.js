@@ -28,7 +28,6 @@ function Timer(props) {
 
   const stopTimer = () => {
     setSeconds(currentTime);
-    // setIsPlaying(false);
     if (isPlaying === true) {
       calculateScore();
     }
