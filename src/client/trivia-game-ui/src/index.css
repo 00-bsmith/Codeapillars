@@ -50,7 +50,11 @@ img {
 
 .table {
   margin: 18px;
+  padding-right: 10px;
+  text-align: center;
+  
 }
+
 
 .row {
   /* background-color: #f77f00; */
