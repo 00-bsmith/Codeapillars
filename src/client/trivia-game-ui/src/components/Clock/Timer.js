@@ -2,8 +2,6 @@ import React from "react";
 import { useState } from "react";
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
 import "./styles.css";
-import Round from "../Gameplay/Round";
-import Score from "../Gameplay/Score";
 
 function Timer(props) {
   const [currentTime, setCurrentTime] = React.useState(0);
@@ -31,7 +29,7 @@ function Timer(props) {
   const stopTimer = () => {
     setSeconds(currentTime);
     // setIsPlaying(false);
-    if (isPlaying == true) {
+    if (isPlaying === true) {
       calculateScore();
     }
     setIsPlaying(false);
@@ -155,15 +153,15 @@ const playRound = () => {
     }}
         >
 
-          {renderTime}
-        </CountdownCircleTimer>
-      </div>
+      {renderTime}
+     </CountdownCircleTimer>
 
-      <div className="round-container">
+      </div>
+      <div style={{margin: "18px"}} className="round-container">
         {/* This stop-timer-button needs to ALSO submit answer !!!*/}
         <button
           type="submit"
-          className="btn btn-primary stop-timer-button"
+          className="btn btn-success stop-timer-button"
           onClick={stopTimer}
         >
           Submit
@@ -171,14 +169,14 @@ const playRound = () => {
         {/* probably dont need a restart button, just here to play with for now */}
         <button
           type="submit"
-          className="btn btn-success stop-button"
+          className="btn btn-warning stop-button"
           onClick={restartTimer}
         >
           restart
         </button>
 
         {/* Dont need this bit for functionality, it's just displayed to vew functionality for now.*/}
-        <p id="round">
+        {/* <p id="round">
           <br />
           Round: {round} (PRINTED OUT)
           <br />
@@ -187,7 +185,7 @@ const playRound = () => {
           isPlaying: {isPlaying.toString()} (PRINTED OUT)
           <br />
           SCORE: {score} (PRINTED OUT)
-        </p>
+        </p> */}
       </div>
     </>
   );

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Score from "./Score";
 import Round from "./Round";
 import Timer from "../Clock/Timer";
+import Question from "../Gameplay/Question"
 
 
 const Game = () => {
@@ -51,6 +52,12 @@ const Game = () => {
       Good Luck!</h4>
     </div>
 
+
+<div className="container mt-4">
+    <div className="row">
+      <Question />
+    </div>
+ </div>
 
     </>
   );

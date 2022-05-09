@@ -85,6 +85,11 @@ img {
     background-color: #0a9396 !important
 }
 
+btn-primary {
+  text-align: center;
+    background-color: #0a9396 !important
+}
+
 .btn-warning {
   text-align: center;
   background-color: #ffb703 !important
