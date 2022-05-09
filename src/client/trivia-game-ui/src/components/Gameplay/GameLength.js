@@ -1,10 +1,17 @@
-import React from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
+const DEFAULT_LENGTH = {
+  length: "short"
+};
+
 const GameLength = (props) => {
+
+  const [gameLength, setGameLength] = useState(DEFAULT_LENGTH);
   
   const handleSubmit = async () => {
     //Fetch Http response here
+
   }
 
   return (
