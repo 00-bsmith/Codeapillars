@@ -108,17 +108,17 @@ function Timer(props) {
   // Open the console to check the value for currentTime
   console.log(currentTime);
 
-  // ////////////////Trying to set this up to share the round with Round.js//////////
 
 const playRound = () => {
+  // there is no current difficulty, this can be modified in future iterations to include easy, medium and hard questions changing the larger duration number accordingly
   if (difficulty === "Hard") {
-    if(round === 5 && duration === 5) {
+    if(round === 3 && duration === 15) {
       setRemainingTime(0);
       setIsPlaying(false);
       // setZero(0);
     } else {
         if (duration === 5) {
-          setDuration(6);
+          setDuration(15);
         } else {
           setRound(round+1);
           setDuration(5)
@@ -129,16 +129,7 @@ const playRound = () => {
   } 
 }
 
-  //          <div>
-  //             <div>{this.state.round}</div>
-  //              <Round value={this.state.round} />
-  //             </div>
-  //       );
-  //     }
-  // }
-  // ///////////////////////////////////////////////////////////////
-
- 
+  
  return (
  <>
 
@@ -156,74 +147,17 @@ const playRound = () => {
     onComplete={() => {
 
       playRound();
-      if(round === 5 && duration === 5) {
-        // counter is the number of rounds this needs to be dynamic!!!
-        // playRound();
-
-      //   if(round === 3 && duration === 15) {
-      //     setRemainingTime(0);
-      //     setIsPlaying(false);
-      //     // setZero(0);
-      //   } else {
-      //     if (duration === 5) {
-      //       setDuration(15);
-      //     } else {
-      //       setRound(round+1);
-      //       setDuration(5);
-
-      //     }
-      //   setKey((prevKey) => prevKey + 1);
-      //   }
-        
-      // } 
-      // else if (difficulty === "Medium") {
-      //   if(round === 3 && duration === 15) {
-      //     setRemainingTime(0);
-      //     setIsPlaying(false);
-      //     // setZero(0);
-      //   } else {
-      //     if (duration === 5) {
-      //       setDuration(15);
-      //     } else {
-      //       setRound(round+1);
-      //       setDuration(5);
-      //     }
-      //   setKey((prevKey) => prevKey + 1);
-      //   }
+      if(round === 5 && duration === 15) {
 
       } 
-      // else 
-      
-      // if (difficulty === "Hard") {
-      //   if(round === 3 && duration === 15) {
-      //     setRemainingTime(0);
-      //     setIsPlaying(false);
-      //     // setZero(0);
-      //   } else {
-      //       if (duration === 5) {
-      //         setDuration(15);
-      //       } else {
-      //         setRound(round+1);
-      //         setDuration(5);
-      //       }
-      //     setKey((prevKey) => prevKey + 1);
-      //   }
-      // }  
-
-            return { shouldRepeat: true, delay: 1.5 };
-          }}
+    
+      return { shouldRepeat: true, delay: 1.5 };
+    }}
         >
-          {/* {({ remainingTime }) => remainingTime} */}
 
           {renderTime}
         </CountdownCircleTimer>
       </div>
-
-      {/* GRAB round and pass to Round.js to display */}
-      {/* <p id="round">
-{currentTime}   Current time (PRINTED OUT) 
-{setCurrentTime}
-</p> */}
 
       <div className="round-container">
         {/* This stop-timer-button needs to ALSO submit answer !!!*/}
