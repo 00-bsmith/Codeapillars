@@ -26,10 +26,27 @@ code {
   margin-right: 5px;
   margin-left: 5px;
   box-sizing: border-box;
+  
 }
 
 .h1 {
   text-align: center;
+}
+
+body {
+  
+  /* width: 270px;
+  height: 270px; */
+  margin: auto;
+  margin-top: 3%;
+  text-align: center;
+  border: 10px solid rgba(247, 127, 0, .7);
+  /* border: 10px solid rgba(10, 147, 150, .5); */
+
+  background: rgba(0, 0, 0, .4);
+  background-clip: padding-box;
+  border-radius: 5px;
+  padding: 5px;
 }
 
 
@@ -37,6 +54,7 @@ img {
   max-inline-size: 100%;
   block-size: auto;
   margin-left: -.05px;
+  margin-top: 10px;
 }
 
 .triviapillar {

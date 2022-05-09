@@ -108,12 +108,14 @@ function App() {
           </Route>
 
           <Route path="/howtoplay">
-            <Header />
+            {/* <Header /> */}
+            <NavBar />
             <HowToPlay />
           </Route>
 
           <Route path="/hiscore">
-            <Header />
+            {/* <Header /> */}
+              <NavBar />
             <LeaderBoard />
           </Route>
 
