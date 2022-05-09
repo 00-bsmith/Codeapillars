@@ -6,9 +6,9 @@ h1 {
   -moz-osx-font-smoothing: grayscale;
     text-align: center;
     margin-bottom: 40px;
-    
   }
-  
+
+
   .timer-wrapper {
     display: flex;
     justify-content: center;

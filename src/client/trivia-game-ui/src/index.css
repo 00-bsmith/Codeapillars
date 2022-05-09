@@ -32,6 +32,7 @@ code {
   text-align: center;
 }
 
+
 img {
   max-inline-size: 100%;
   block-size: auto;
@@ -52,7 +53,6 @@ img {
   margin: 18px;
   padding-right: 10px;
   text-align: center;
-  
 }
 
 
@@ -73,9 +73,6 @@ img {
     padding: 0;
 }
 
-.table {
-  margin: 18px;
-}
 
 .btn-success {
   text-align: center;

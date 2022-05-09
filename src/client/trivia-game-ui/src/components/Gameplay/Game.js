@@ -48,11 +48,12 @@ const Game = () => {
         </div>
       </div>
 
-    <div>     
+     
+    <div style={{display: 'flex', justifyContent: 'center'}}>  
       <h4><img src={"images/TP-sm-med.png"} alt="TriviaPillar" />
       Good Luck!</h4>
     </div>
-
+    
 
 <div className="container mt-4">
     <div className="row">
