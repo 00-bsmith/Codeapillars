@@ -14,8 +14,8 @@ const Game = () => {
 
   }
 
-  const getRound = (newRound) => {
-    SetCurrentRound(currentRound + newRound);
+  const getRound = (round) => {
+    SetCurrentRound(round + 1);
   }
 
   return (

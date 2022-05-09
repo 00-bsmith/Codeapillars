@@ -109,32 +109,26 @@ const stopTimer = () => {
                      // Open the console to check the value for currentTime
                      console.log(currentTime);
 
-// ////////////////Trying to set this up to share the round with Round.js//////////
+const playRound = () => {
+  if (difficulty === "Hard") {
+    if(round === 5 && duration === 5) {
+      setRemainingTime(0);
+      setIsPlaying(false);
+      // setZero(0);
+    } else {
+        if (duration === 5) {
+          setDuration(6);
+        } else {
+          setRound(round+1);
+          setDuration(5)
+          props.getRound(round);
+        }
+      setKey((prevKey) => prevKey + 1);
+    }
+  } 
+}
 
-// const getRound = (newRound) => {
-//   props.getRound;
-// }
 
-
-
-// class Timer extends React.Component {
-//     constructor(props) {
-//     super(props);
-//     this.state = {
-//         data: {round}
-//       }
-//     }
-//     render() {
-//       return (
-                  
-//          <div>
-//             <div>{this.state.round}</div>
-//              <Round value={this.state.round} />
-//             </div>
-//       );
-//     }
-// }                 
-// ///////////////////////////////////////////////////////////////
  
  return (
  <>
@@ -151,52 +145,61 @@ const stopTimer = () => {
     //  original parameter:   onComplete={() => ({ shouldRepeat: true, delay: 0 })}
 
     onComplete={() => {
-      if(round === 3 && duration === 15) {
-        // counter is the number of rounds this needs to be dynamic!!!
-        if(round === 3 && duration === 15) {
-          setRemainingTime(0);
-          setIsPlaying(false);
-          // setZero(0);
-        } else {
-          if (duration === 5) {
-            setDuration(15);
-          } else {
-            setRound(round+1);
-            setDuration(5);
-          }
-        setKey((prevKey) => prevKey + 1);
-        }
-        
-      } else if (difficulty === "Medium") {
-        if(round === 3 && duration === 15) {
-          setRemainingTime(0);
-          setIsPlaying(false);
-          // setZero(0);
-        } else {
-          if (duration === 5) {
-            setDuration(15);
-          } else {
-            setRound(round+1);
-            setDuration(5);
-          }
-        setKey((prevKey) => prevKey + 1);
-        }
 
-      } else if (difficulty === "Hard") {
-        if(round === 3 && duration === 15) {
-          setRemainingTime(0);
-          setIsPlaying(false);
-          // setZero(0);
-        } else {
-            if (duration === 5) {
-              setDuration(15);
-            } else {
-              setRound(round+1);
-              setDuration(5);
-            }
-          setKey((prevKey) => prevKey + 1);
-        }
-      }  
+      playRound();
+      if(round === 5 && duration === 5) {
+        // counter is the number of rounds this needs to be dynamic!!!
+        // playRound();
+
+      //   if(round === 3 && duration === 15) {
+      //     setRemainingTime(0);
+      //     setIsPlaying(false);
+      //     // setZero(0);
+      //   } else {
+      //     if (duration === 5) {
+      //       setDuration(15);
+      //     } else {
+      //       setRound(round+1);
+      //       setDuration(5);
+
+      //     }
+      //   setKey((prevKey) => prevKey + 1);
+      //   }
+        
+      // } 
+      // else if (difficulty === "Medium") {
+      //   if(round === 3 && duration === 15) {
+      //     setRemainingTime(0);
+      //     setIsPlaying(false);
+      //     // setZero(0);
+      //   } else {
+      //     if (duration === 5) {
+      //       setDuration(15);
+      //     } else {
+      //       setRound(round+1);
+      //       setDuration(5);
+      //     }
+      //   setKey((prevKey) => prevKey + 1);
+      //   }
+
+      } 
+      // else 
+      
+      // if (difficulty === "Hard") {
+      //   if(round === 3 && duration === 15) {
+      //     setRemainingTime(0);
+      //     setIsPlaying(false);
+      //     // setZero(0);
+      //   } else {
+      //       if (duration === 5) {
+      //         setDuration(15);
+      //       } else {
+      //         setRound(round+1);
+      //         setDuration(5);
+      //       }
+      //     setKey((prevKey) => prevKey + 1);
+      //   }
+      // }  
 
       return { shouldRepeat:true, delay: 1.5 }
     }}
