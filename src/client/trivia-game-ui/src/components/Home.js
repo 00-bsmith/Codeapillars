@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import AuthContext from "../AuthContext";
-import { gsap } from "gsap";
+// import { gsap } from "gsap";
 
 
 
