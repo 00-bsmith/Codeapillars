@@ -56,18 +56,7 @@ function Timer(props) {
     }
   };
 
-  // When the timer runs out, the score is 17. It should be zero
-  //if current time === 0 then score should 0 now 17.
-
-  // const zeroScore = () => {
-  //   if (remainingTime === 0 && currentTime ===0) {
-  //     const z = ({score} - 17);
-  //     const zero = z;
-  //     setZero(0);
-  //   }
-  // }
-
-  // probably wont need this restart functionality here. Perhaps on the results page to get next question?
+  // probably wont need this restart functionality here. Perhaps on the results page to get next question? 
   const restartTimer = () => {
     setCurrentTime(seconds);
     setIsPlaying(true);
@@ -108,12 +97,11 @@ function Timer(props) {
 
 
 const playRound = () => {
-  // there is no current difficulty, this can be modified in future iterations to include easy, medium and hard questions changing the larger duration number accordingly
+  // there is no current difficulty, this can be modified in future iterations to include easy, medium and hard, changing the larger duration number accordingly.
   if (difficulty === "Hard") {
     if(round === 3 && duration === 15) {
       setRemainingTime(0);
       setIsPlaying(false);
-      // setZero(0);
     } else {
         if (duration === 5) {
           setDuration(15);

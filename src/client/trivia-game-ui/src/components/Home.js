@@ -1,22 +1,12 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import AuthContext from "../AuthContext";
-// import { gsap } from "gsap";
+import { gsap } from "gsap";
 
 
 
 export const Home = () => {
   const auth = useContext(AuthContext);
-
-// GreenSock===================
-  // const onEnter = ({ currentTarget }) => {
-  //   gsap.to(currentTarget, { backgroundColor: "#0a9396" });
-  // };
-  
-  // const onLeave = ({ currentTarget }) => {
-  //   gsap.to(currentTarget, { backgroundColor: "#f77f00" });
-  // };
-// GreenSock===================
 
   return (
     <>
@@ -42,7 +32,6 @@ export const Home = () => {
 
         <div className="row">
         <div className="col">
-          {/* <div className="box" onMouseEnter={onEnter} onMouseLeave={onLeave}> */}
             {/* <img src={"images/TP-sm-med.png"}  alt="TriviaPillar" /> */}
             <Link to="/gamelength" className="btn btn-success mb-3 ml-2">New Game</Link>
           </div>

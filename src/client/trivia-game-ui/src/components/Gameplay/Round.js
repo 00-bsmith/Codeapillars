@@ -5,10 +5,19 @@ const Round = ({currentRound}) =>  {
    
     return (
         <>
+        <div className="container">
+
         <div>
-           <p>{currentRound}</p>
+           <p style={{fontSize: 25}}>{currentRound}</p>
         </div>
+
+        </div>
+
         </>
+
+
+ 
+        
     );
    
 
