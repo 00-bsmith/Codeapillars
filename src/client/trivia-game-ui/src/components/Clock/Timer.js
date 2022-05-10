@@ -23,8 +23,8 @@ function Timer(props) {
   const [duration, setDuration] = useState(5);
   const [remainingTime, setRemainingTime] = useState(duration);
 
-  console.log("Round: " + round);
-  console.log("Duration: " + duration);
+  // console.log("Round: " + round);
+  // console.log("Duration: " + duration);
 
   const stopTimer = () => {
     setSeconds(currentTime);
@@ -32,9 +32,9 @@ function Timer(props) {
       calculateScore();
     }
     setIsPlaying(false);
-    console.log("secs: " + currentTime);
-    console.log("dur: " + duration);
-    console.log("Time Stopped @: " + currentTime);
+    // console.log("secs: " + currentTime);
+    // console.log("dur: " + duration);
+    // console.log("Time Stopped @: " + currentTime);
   };
 
   const calculateScore = () => {
@@ -49,7 +49,7 @@ function Timer(props) {
       const d = c * 100;
       console.log("d: " + d);
       const score = d;
-      console.log("a: " + a);
+      // console.log("a: " + a);
       setScore(Math.round(score));
       props.getScore(Math.round(score));
     }
@@ -92,7 +92,7 @@ function Timer(props) {
   };
 
   // Open the console to check the value for currentTime
-  console.log(currentTime);
+  // console.log(currentTime);
 
 
 const playRound = () => {

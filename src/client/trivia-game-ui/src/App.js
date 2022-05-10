@@ -28,6 +28,9 @@ const TOKEN_KEY = "user-api-token";
 function App() {
   const [user, setUser] = useState(null);
 
+  const [type, setType] = useState(1);
+
+
   const login = (token) => {
     console.log(token);
     localStorage.setItem(TOKEN_KEY, token);
@@ -94,12 +97,18 @@ function App() {
 
           <Route path="/gamelength">
             <NavBar />
-            <GameLength />
+            <GameLength 
+            type = {type}
+            setType = {setType}
+            />
           </Route>
 
           <Route path="/game">
             <NavBar />
-            <Game />
+            <Game 
+            type = {type}
+            setType = {setType}
+            />
           </Route>
 
           <Route path="/results">
