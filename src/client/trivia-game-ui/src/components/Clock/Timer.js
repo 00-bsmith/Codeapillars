@@ -132,7 +132,7 @@ const playRound = () => {
     onComplete={() => {
 
       playRound();
-      if(round === 5 && duration === 15) {
+      if(round === 3 && duration === 15) {
 
       } 
     
@@ -153,7 +153,7 @@ const playRound = () => {
         >
           Submit
         </button>
-        {/* probably dont need a restart button, just here to play with for now */}
+        {/* probably dont need a restart button, just here to play with for now Maybe it is utilized on the Results page?*/}
         <button
           type="submit"
           className="btn btn-warning stop-button"
