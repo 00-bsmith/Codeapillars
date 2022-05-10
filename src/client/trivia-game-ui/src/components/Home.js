@@ -39,6 +39,24 @@ export const Home = () => {
 
 
     </div>
+    
+    <div className="row">
+
+      <div className="col">
+        <p>These buttons are here just to access the pages for styling and functionality</p>
+      </div>
+        <div className="col">
+            {/* <img src={"images/TP-sm-med.png"}  alt="TriviaPillar" /> */}
+            <Link to="/results" className="btn btn-warning mb-3 ml-2">Results</Link>
+          </div>
+        
+
+        
+        <div className="col">
+            {/* <img src={"images/TP-sm-med.png"}  alt="TriviaPillar" /> */}
+            <Link to="/finalResults" className="btn btn-danger mb-3 ml-2">Final Results</Link>
+          </div>
+  </div>  
       
     </>
   );
