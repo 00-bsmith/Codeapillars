@@ -24,7 +24,7 @@ const Results = () => {
       <div>
         <Link to="/game" className="btn btn-success  mb-3 ml-2">
           Next Question
-          {/* this needs to just START the NEXT round timer and increment the round*/}
+          {/* this needs to just START the NEXT round timer and increment the round right now it just brings you back to Game.js and the timer starts all over again from the first round*/}
         </Link>
       </div>
 

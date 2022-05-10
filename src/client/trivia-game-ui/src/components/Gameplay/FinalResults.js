@@ -8,7 +8,7 @@ const FinalResults = () => {
   
   return (
       <>
-    <div>Final Results</div>
+    <div>Final Results - this isn't grabbing the the correct score yet.</div>
 
     <div className="container mt-2">
 
