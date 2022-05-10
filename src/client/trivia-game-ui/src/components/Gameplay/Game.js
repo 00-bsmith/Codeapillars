@@ -1,11 +1,25 @@
-import React from "react";
-// import CountdownClock from "../Clock/CountdownClock";
+import React, { useState } from "react";
 import Score from "./Score";
 import Round from "./Round";
 import Timer from "../Clock/Timer";
-import Question from "./Question";
+import Question from "../Gameplay/Question";
+import './Game.css';
+
 
 const Game = () => {
+
+  const [currentScore, setCurrentScore] = useState(0);
+  const [currentRound, SetCurrentRound] = useState(1);
+
+  const getScore = (newScore) => {
+    setCurrentScore(currentScore + newScore);
+
+  }
+
+  const getRound = (round) => {
+    SetCurrentRound(round + 1);
+  }
+
   return (
     <>
       <div className="container mt-2">
@@ -14,42 +28,39 @@ const Game = () => {
           <div className="col">
             <div className="text-center">
               <p className="columnHeader">Round #</p>
-              <Round />
+              <Round currentRound={currentRound}/>
             </div>
           </div>
 
           <div className="col">
             <div className="text-center">
-              {/* <CountdownClock /> */}
-              <Timer />
+              <Timer getScore={getScore} getRound={getRound}/>
             </div>
           </div>
 
           <div className="col">
             <div className="text-center">
-              <p className="columnHeader">Score:</p>
-              <Score />
+              <p className="columnHeader">Total Score:</p>
+              <Score currentScore={currentScore}/>
             </div>
           </div>
 
         </div>
       </div>
 
-    <div>     
+     
+    <div style={{display: 'flex', justifyContent: 'center'}}>  
       <h4><img src={"images/TP-sm-med.png"} alt="TriviaPillar" />
       Good Luck!</h4>
     </div>
+    
 
-{/* <h2>Question:</h2> */}
-    {/* FETCH/pull in the question have it hold for a 5 seconds to allow for reading the question*/}
-
-    {/* then FETCH/pull in the answer options each as buttons */}
-
-    {/* as soon as these appear, start the countdown clock again 15 seconds */}
-    {/* once an answer is chosen, the clock stops and the next question comes up */}
-
-
-{/* after the final question, direct to results screen to show the final score and correct answers */}
+<div className="container mt-4">
+    <div className="row">
+      {/* <Question /> */}
+      {/* <AnswerOptions /> */}
+    </div>
+ </div>
 
     </>
   );

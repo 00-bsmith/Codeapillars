@@ -1,25 +1,26 @@
-import React, { useState } from 'react';
-import Game from './Game';
-import Timer from '../Clock/Timer';
+import React from 'react';
 
-function Round() {
+const Round = ({currentRound}) =>  {
 
-    const [counter, setCounter] = useState(1);
-
+   
     return (
         <>
-        <div className="container1">
+        <div className="container">
 
-            <div className="row">
-                {/* need to make this dynamic */}
-                <div className="col"><h1 className='round'>{(Timer.counter.valueOf()).toString()}
-            
-                </h1></div>
-            </div>
-
+        <div>
+           <p style={{fontSize: 25}}>{currentRound}</p>
+        </div>
 
         </div>
+
         </>
-    );}
+
+
+ 
+        
+    );
+   
+
+}
 
 export default Round;

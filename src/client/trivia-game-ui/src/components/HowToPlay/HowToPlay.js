@@ -28,10 +28,11 @@ const HowToPlay = () => {
 
     <div className="containerH2Pb">
   <p> If you answer the question correctly, you will be awarded points based on how quickly you answered the question, with your maximum score being 100 points per round. If you answered incorrectly or did not submit an answer in time, you will be awarded zero points.</p>
+  <p>*EDIT* You will be shown the question along with the correct answer and the score for the round</p>
 </div>
 
 <div className="containerH2Pc">
-  <p>      After the final round concludes, you will be shown a list of the questions you were asked, along with the correct answers and your final score. </p>
+  <p>      *EDIT* After the final round concludes, you will be shown a list of the questions you were asked, along with the correct answers and your final score. </p>
   <p>  If you receive a high enough final score, you will be prompted to enter your initials and will be shown on our leaderboard!</p>
 </div>
     

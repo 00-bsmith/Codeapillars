@@ -5,7 +5,15 @@
     sans-serif;
 }
 
-.container {
+.h1 {
+  text-align: center;
+}
+
+
+
+
+/* this styling is from the quizbee app. needs to be updated or deleted for our puposes */
+/* .container {
   position: absolute;
   width: 1024px;
   height: 800px;
@@ -19,18 +27,18 @@
   left: 0px;
   right: 0px;
   margin: auto;
-}
+} */
 
-.title {
+/* .title {
   position: relative;
   background-color: rgba(0, 0, 0, 1);
   color: rgb(255, 255, 255);
   padding: 20px;
   font-size: 1.8em;
   border-radius: 5px;
-}
+} */
 
-.question {
+/* .question {
   font-size: 1.2em;
   font-weight: bold;
   margin-bottom: 5px;
@@ -86,4 +94,4 @@
   margin: auto;
   outline: none;
   cursor: pointer;
-}
+} */
