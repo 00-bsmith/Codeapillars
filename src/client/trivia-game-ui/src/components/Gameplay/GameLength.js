@@ -19,7 +19,7 @@ const GameLength = (props) => {
     if (response.status === 201 || response.status === 400) {
       const data = await response.json();
       // This may be the part that isn't  
-      if (data.gameId) {
+      if (data.gameId != 0) {
         setGameId(data.gameId)
         console.log("Game ID:" + gameId);
       } else {
