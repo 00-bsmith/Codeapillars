@@ -20,6 +20,7 @@ import HowToPlay from "./components/HowToPlay/HowToPlay";
 import NavBar from "./components/NavBar";
 import { Navbar } from "react-bootstrap";
 import GameLength from "./components/Gameplay/GameLength";
+import FinalResults from "./components/Gameplay/FinalResults";
 
 
 
@@ -85,6 +86,18 @@ function App() {
             <Home />
           </Route>
 
+          <Route path="/howtoplay">
+            {/* <Header /> */}
+            <NavBar />
+            <HowToPlay />
+          </Route>
+
+          <Route path="/hiscore">
+            {/* <Header /> */}
+              <NavBar />
+            <LeaderBoard />
+          </Route>
+
           <Route path="/login">
             <Header />
             <Login />
@@ -116,22 +129,18 @@ function App() {
             <Results />
           </Route>
 
-          <Route path="/howtoplay">
-            {/* <Header /> */}
+          <Route path="/finalResults">
             <NavBar />
-            <HowToPlay />
+            <FinalResults />
           </Route>
 
-          <Route path="/hiscore">
-            {/* <Header /> */}
-              <NavBar />
-            <LeaderBoard />
-          </Route>
+
 
           <Route path="*">
             <NavBar />
             <NotFound />
           </Route>
+
         </Switch>
       </Router>
     </AuthContext.Provider>

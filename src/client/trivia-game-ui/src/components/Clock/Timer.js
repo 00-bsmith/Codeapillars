@@ -8,13 +8,9 @@ function Timer(props) {
   const [key, setKey] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
   const [seconds, setSeconds] = useState(0);
-  // const [counter, setCounter] = useState(1);  //switched counter to round
   const [round, setRound] = React.useState(1);
   // const [elapsedTime, setElapsedTime] = useState(0);
   const [score, setScore] = React.useState(0);
-
-  // NEED to find a way to set the final score to 0 if 0 time is left
-  const [zero, setZero] = useState(0);
 
   // const [difficulty, setDifficulty] = useState("Easy");
   // const [difficulty, setDifficulty] = useState("Medium");
