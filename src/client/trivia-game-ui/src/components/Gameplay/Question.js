@@ -6,15 +6,14 @@ export const Question = (props) => {
   const [questionTitle, setQuestionTitle] = useState("");
   const [answers, setAnswers] = useState([]);
   const [shuffledAnswers, setShuffledAnswers] = useState([]);
-  const [correctAnswer, setCorrectAnswer] = useState("");
-  const [questionId, setQuestionId] = useState(0);
+//   const [correctAnswer, setCorrectAnswer] = useState("");
+//   const [questionId, setQuestionId] = useState(0);
   const [pointValue, setPointValue] = useState(0);
   const [answered, setAnswered] = useState(false);
   const [correct, setCorrect] = useState(false);
-  const [earnedPoints, setEarnedPoints] = useState(0);
   const [errors, setErrors] = useState([]);
 
-  const [answer, setAnswer] = useState("");
+//   const [answer, setAnswer] = useState("");
 
   const getData = async () => {
     fetch(`http://localhost:8080/api/question/${props.gameId}/next`)
@@ -22,14 +21,14 @@ export const Question = (props) => {
       .then((data) => {
         setQuestion(data);
         console.log(data);
-        setQuestionId(data.id);
+        props.setQuestionId(data.id);
         setQuestionTitle(data.question);
         setAnswers(data.allAnswers);
-        setCorrectAnswer(data.allAnswers[0]);
+        props.setCorrectAnswer(data.allAnswers[0]);
         setPointValue(data.pointValue);
         setAnswered(data.answered);
         setCorrect(data.correct);
-        setEarnedPoints(data.earnedPoints);
+        props.setEarnedPoints(data.earnedPoints);
       })
       .catch((error) => console.log(error));
   };
@@ -40,13 +39,13 @@ export const Question = (props) => {
   }, []);
 
   useEffect(() => {
-    console.log(correctAnswer);
+    console.log(props.correctAnswer);
     console.log(answers);
     shuffle(answers);
     setShuffledAnswers(answers);
     console.log(answers);
-    console.log(correctAnswer);
-  }, [correctAnswer]);
+    console.log(props.correctAnswer);
+  }, [props.correctAnswer]);
 
   function shuffle(array) {
     let currentIndex = array.length,
@@ -69,12 +68,12 @@ export const Question = (props) => {
   }
 
   const handleChange = (event) => {
-    setAnswer(event.target.id);
+    props.setAnswer(event.target.id);
   };
 
   useEffect(() => {
-    console.log(questionId);
-  }, [questionId]);
+    console.log(props.questionId);
+  }, [props.questionId]);
 
   useEffect(() => {
     console.log(props.gameId);
@@ -88,52 +87,52 @@ export const Question = (props) => {
     console.log(correct);
   }, [correct]);
 
-  const handleSubmit = async () => {
-    let tempCorrect = false;
-    console.log("Answer: " + answer);
-    console.log("Correct Answer: " + correctAnswer);
-    if (answer === correctAnswer) {
-      tempCorrect = true;
-      console.log("Correct!");
-    }
-    let tempAnswered = true;
-    console.log("Answered!");
+//   const handleSubmit = async () => {
+//     let tempCorrect = false;
+//     console.log("Answer: " + answer);
+//     console.log("Correct Answer: " + correctAnswer);
+//     if (answer === correctAnswer) {
+//       tempCorrect = true;
+//       console.log("Correct!");
+//     }
+//     let tempAnswered = true;
+//     console.log("Answered!");
 
-    const updatedQuestion = {
-      id: questionId,
-      gameId: props.gameId,
-      answered: tempAnswered,
-      correct: tempCorrect,
-      earnedPoints: earnedPoints,
-    };
-    console.log(updatedQuestion);
-    const body = JSON.stringify(updatedQuestion);
+//     const updatedQuestion = {
+//       id: questionId,
+//       gameId: props.gameId,
+//       answered: tempAnswered,
+//       correct: tempCorrect,
+//       earnedPoints: props.earnedPoints,
+//     };
+//     console.log(updatedQuestion);
+//     const body = JSON.stringify(updatedQuestion);
 
-    try {
-      const response = await fetch(
-        `http://localhost:8080/api/question/${questionId}`,
-        {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: body,
-        }
-      );
+//     try {
+//       const response = await fetch(
+//         `http://localhost:8080/api/question/${questionId}`,
+//         {
+//           method: "PUT",
+//           headers: {
+//             "Content-Type": "application/json",
+//           },
+//           body: body,
+//         }
+//       );
 
-      if (response.status === 204) {
-        console.log("Success");
-        setErrors([]);
-      } else if (response.status === 400) {
-        const data = await response.json();
-        setErrors(data);
-      } else {
-        throw new Error("Server Error: Something unexpected went wrong.");
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
+//       if (response.status === 204) {
+//         console.log("Success");
+//         setErrors([]);
+//       } else if (response.status === 400) {
+//         const data = await response.json();
+//         setErrors(data);
+//       } else {
+//         throw new Error("Server Error: Something unexpected went wrong.");
+//       }
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   };
 
   // useEffect(() => {
   //   console.log(answer);
@@ -207,7 +206,7 @@ export const Question = (props) => {
                 <button
                   type="button"
                   className="btn btn-success mt-3 mb-3 ml-2"
-                  onClick={handleSubmit}
+                  onClick={props.handleQuestionSubmit}
                 >
                   Submit Answer
                 </button>
