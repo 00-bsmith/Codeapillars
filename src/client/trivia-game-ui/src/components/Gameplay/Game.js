@@ -8,12 +8,109 @@ import "./Game.css";
 const Game = (props) => {
   const [currentScore, setCurrentScore] = useState(0);
   const [currentRound, SetCurrentRound] = useState(1);
-  
 
   const [gameId, setGameId] = useState(0);
   const [errors, setErrors] = useState([]);
 
   const [questionSwitch, setQuestionSwitch] = useState(0);
+
+  // Hooks from Timer.js (being passed down as props)
+  const [currentTime, setCurrentTime] = React.useState(0);
+  const [key, setKey] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(true);
+  const [seconds, setSeconds] = useState(0);
+  const [round, setRound] = React.useState(1);
+  const [score, setScore] = React.useState(0);
+
+  const [difficulty, setDifficulty] = useState("Hard");
+
+  const [duration, setDuration] = useState(5);
+  const [remainingTime, setRemainingTime] = useState(duration);
+  ///////////////
+
+  // Functions from Timer.js (being passed down as props)
+  const stopTimer = () => {
+    setSeconds(currentTime);
+    if (isPlaying === true) {
+      calculateScore();
+    }
+    setIsPlaying(false);
+    // console.log("secs: " + currentTime);
+    // console.log("dur: " + duration);
+    // console.log("Time Stopped @: " + currentTime);
+  };
+
+  const calculateScore = () => {
+    if (duration === 15) {
+      const time = duration - currentTime;
+      const a = time / duration;
+      console.log("a: " + a);
+      const b = a / 1.2;
+      console.log("b: " + b);
+      const c = 1 - b;
+      console.log("c: " + c);
+      const d = c * 100;
+      console.log("d: " + d);
+      const score = d;
+      setScore(Math.round(score));
+      getScore(Math.round(score));
+    }
+  };
+
+  // probably wont need this restart functionality here. Perhaps on the results page to get next question?
+  const restartTimer = () => {
+    setCurrentTime(seconds);
+    setIsPlaying(true);
+  };
+
+  // not sure about this reset. Currently it isn't working here.
+  const resetTimer = () => {
+    setIsPlaying(true);
+    setDuration(15);
+  };
+
+  const renderTime = ({ remainingTime }) => {
+    setCurrentTime(remainingTime);
+    if (remainingTime === 0) {
+      return <div className="timer">Time is Up!</div>;
+    }
+    if (duration === 5) {
+      return (
+        <div className="timer">
+          <div className="text">Read Question</div>
+          <div className="value">{remainingTime}</div>
+          <div className="text">seconds</div>
+        </div>
+      );
+    } else {
+      return (
+        <div className="timer">
+          <div className="text">Choose Answer</div>
+          <div className="value">{remainingTime}</div>
+          <div className="text">seconds</div>
+        </div>
+      );
+    }
+  };
+
+  const playRound = () => {
+    // there is no current difficulty, this can be modified in future iterations to include easy, medium and hard, changing the larger duration number accordingly.
+    if (difficulty === "Hard") {
+      if (round === 3 && duration === 15) {
+        setRemainingTime(0);
+        setIsPlaying(false);
+      } else {
+        if (duration === 5) {
+          setDuration(15);
+        } else {
+          setRound(round + 1);
+          setDuration(5);
+          getRound(round);
+        }
+        setKey((prevKey) => prevKey + 1);
+      }
+    }
+  };
 
   const getScore = (newScore) => {
     setCurrentScore(currentScore + newScore);
@@ -22,6 +119,7 @@ const Game = (props) => {
   const getRound = (round) => {
     SetCurrentRound(round + 1);
   };
+  //////////////////////
 
   const buildGame = async () => {
     //Fetch Http response here
@@ -39,7 +137,6 @@ const Game = (props) => {
       if (response.status === 201 || response.status === 400) {
         const data = await response.json();
         console.log(data);
-        // This may be the part that isn't
         if (data != 0) {
           setGameId(data);
           if (data) {
@@ -78,15 +175,12 @@ const Game = (props) => {
     if (gameId !== 0) {
       setQuestionSwitch(1);
     }
-  }, [gameId])
+  }, [gameId]);
 
   return (
     <>
-      
-
       <div className="container mt-2">
         <div className="row">
-
           <div className="col">
             <div className="text-center">
               <p className="columnHeader">Round #</p>
@@ -94,23 +188,49 @@ const Game = (props) => {
             </div>
           </div>
 
-        
           <div className="col">
             <div className="text-center">
               <p className="columnHeader">Total Score:</p>
               <Score currentScore={currentScore} />
             </div>
           </div>
-
         </div>
       </div>
 
       <div className="container mt-2">
         <div className="row">
-
           <div className="col">
             <div className="text-center">
-              <Timer getScore={getScore} getRound={getRound} />
+              <Timer 
+              // Pass through useState variables as props
+              currentTime={currentTime}
+              setCurrentTime={setCurrentTime}
+              key={key}
+              setKey={setKey}
+              isPlaying={isPlaying}
+              setIsPlaying={setIsPlaying}
+              seconds={seconds}
+              setSeconds={setSeconds}
+              round={round}
+              setRound={setRound}
+              score={score}
+              setScore={setScore}
+              difficulty={difficulty}
+              setDifficulty={setDifficulty}
+              duration={duration}
+              setDuration={setDuration}
+              remainingTime={remainingTime}
+              setRemainingTime={setRemainingTime}
+              // Pass through methods as props
+              getScore={getScore} 
+              getRound={getRound} 
+              stopTimer={stopTimer}
+              calculateScore={calculateScore}
+              resetTimer={resetTimer}
+              restartTimer={restartTimer}
+              renderTime={renderTime}
+              playRound={playRound}
+              />
             </div>
           </div>
         </div>
@@ -126,7 +246,10 @@ const Game = (props) => {
       {questionSwitch === 1 ? (
         <div className="container mt-4">
           <div className="row">
-            <Question gameId={gameId} />
+            <Question 
+            gameId={gameId} 
+            duration={duration}
+            />
             {/* <AnswerOptions /> */}
           </div>
         </div>
@@ -134,24 +257,20 @@ const Game = (props) => {
         "Getting question..."
       )}
 
-
-{/* // write roundResult function:  */}
-{/* if correct answer = "That's right!" */}
-{/* if wrong answer = "Nope, wrong answer." */}
-{/* Then display the {question} and the {correct_answer} */}
-{/* /display their score for this round */}
-{/*       Next Question
-          {/* this needs to just START the NEXT round timer and increment the round*/} 
-
-
- 
-
+      {/* // write roundResult function:  */}
+      {/* if correct answer = "That's right!" */}
+      {/* if wrong answer = "Nope, wrong answer." */}
+      {/* Then display the {question} and the {correct_answer} */}
+      {/* /display their score for this round */}
+      {/*       Next Question
+          {/* this needs to just START the NEXT round timer and increment the round*/}
     </>
   );
 };
 export default Game;
 
-{/* <div className="container mt-2">
+{
+  /* <div className="container mt-2">
         <div className="row">
           <div className="col xs={2} md={3}">
             <div className="text-center">
@@ -173,4 +292,5 @@ export default Game;
             </div>
           </div>
         </div>
-      </div> */}
+      </div> */
+}

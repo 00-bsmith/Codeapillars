@@ -12,7 +12,7 @@ export const Question = (props) => {
   const [answered, setAnswered] = useState(false);
   const [correct, setCorrect] = useState(false);
   const [earnedPoints, setEarnedPoints] = useState(0);
-  const [errors, setErrors] = useState([])
+  const [errors, setErrors] = useState([]);
 
   const [answer, setAnswer] = useState("");
 
@@ -23,7 +23,8 @@ export const Question = (props) => {
       .then((response) => response.json())
       .then((data) => {
         setQuestion(data);
-        setQuestionId(data.questionId);
+        console.log(data);
+        setQuestionId(data.id);
         setQuestionTitle(data.question);
         setAnswers(data.allAnswers);
         setCorrectAnswer(data.allAnswers[0]);
@@ -71,7 +72,6 @@ export const Question = (props) => {
     }
 
     return array;
-
   }
 
   const handleChange = (event) => {
@@ -79,60 +79,68 @@ export const Question = (props) => {
     setAnswer({ ...answer, [name]: value });
   };
 
-  const handleSubmit = async (
+  useEffect(() => {
+    console.log(questionId);
+  }, [questionId]);
 
-  ) => {
+  useEffect(() => {
+    console.log(props.gameId);
+  }, [props.gameId]);
+
+  useEffect(() => {
+    console.log(answered);
+  }, [answered]);
+
+  useEffect(() => {
+    console.log(correct);
+  }, [correct]);
+
+  const handleSubmit = async () => {
+    if (answer === correctAnswer) {
+        setCorrect(true);
+        console.log("Correct!");
+    }
+    setAnswered(true);
+    console.log("Answered!");
+
     const updatedQuestion = {
-        questionId: questionId,
-        gameId: props.gameId,
-        
-      };
-  
-      const body = JSON.stringify(updatedQuestion);
-  
-      try {
-        const response = await fetch(
-        //   `http://localhost:8080/api/question/${questionId}`,
-          {
-            method: "PUT",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body,
-          }
-        );
-  
-        if (response.status === 204) {
-  
-        
-          setErrors([]);
-        } else if (response.status === 400) {
-          const data = await response.json();
-          setErrors(data);
-        } else {
-          throw new Error("Server Error: Something unexpected went wrong.");
+      id: questionId,
+      gameId: props.gameId,
+      answered: answered,
+      correct: correct,
+    };
+    console.log(updatedQuestion);
+    const body = JSON.stringify(updatedQuestion);
+
+    try {
+      const response = await fetch(
+        `http://localhost:8080/api/question/${questionId}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: body
         }
-      } catch (error) {
-        console.log(error);
+      );
+
+      if (response.status === 204) {
+        console.log("Success");
+        setErrors([]);
+      } else if (response.status === 400) {
+        const data = await response.json();
+        setErrors(data);
+      } else {
+        throw new Error("Server Error: Something unexpected went wrong.");
       }
-  }
-  
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-      // decode(
-    //   '&amp;,
-    //     &lt;,
-    //     &gt;,
-    //     &quot;,
-    //     &#039;,
-    //     &deg;,
-    //     &uuml;,
-    //     &eacute;,
-    //     &ntilde;'
-    //     );
-
-  //   useEffect(() => {
-  //     console.log(answer);
-  //   }, [answer]);
+  // useEffect(() => {
+  //   console.log(answer);
+  // }, [answer]);
 
   return (
     <>
@@ -191,15 +199,132 @@ export const Question = (props) => {
             {shuffledAnswers[3]}
           </label>
           <div>
-            <button type="submit" className="btn btn-success mb-3 ml-2">
-              Submit Answer
-            </button>
+            <form className="answers">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="answer"
+                  id="answer"
+                  onChange={handleChange}
+                />
+                <label class="form-check-label" for="answer">
+                  {shuffledAnswers[0]}
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="answer"
+                  id="answer"
+                  onChange={handleChange}
+                />
+                <label class="form-check-label" for="answer">
+                  {shuffledAnswers[1]}
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="answer"
+                  id="answer"
+                  onChange={handleChange}
+                />
+                <label class="form-check-label" for="answer">
+                  {shuffledAnswers[2]}
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="answer"
+                  id="answer"
+                  onChange={handleChange}
+                />
+                <label class="form-check-label" for="answer">
+                  {shuffledAnswers[3]}
+                </label>
+              </div>
+
+              <div>
+                <button
+                  type="button"
+                  className="btn btn-success mb-3 ml-2"
+                  onClick={handleSubmit}
+                >
+                  Submit Answer
+                </button>
+              </div>
+            </form>
           </div>
-        </form>
+        ) : (
+          <div>
+            <form className="answers">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="answerDisabled"
+                  id="answerDisabled"
+                  onChange={handleChange}
+                  disabled
+                />
+                <label class="form-check-label" for="answerDisabled">
+                  {shuffledAnswers[0]}
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="answerDisabled"
+                  id="answerDisabled"
+                  onChange={handleChange}
+                  disabled
+                />
+                <label class="form-check-label" for="answerDisabled">
+                  {shuffledAnswers[1]}
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="answerDisabled"
+                  id="answerDisabled"
+                  onChange={handleChange}
+                  disabled
+                />
+                <label class="form-check-label" for="answerDisabled">
+                  {shuffledAnswers[2]}
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="answerDisabled"
+                  id="answerDisabled"
+                  onChange={handleChange}
+                  disabled
+                />
+                <label class="form-check-label" for="answerDisabled">
+                  {shuffledAnswers[3]}
+                </label>
+              </div>
+            </form>
+          </div>
+        )}
       </div>
-    </div>
-    
-{/* Here is the Bootstrap version of radio buttons */}
 
 <div class="form-check">
   <input class="form-check-input" type="radio" name="answer" id="answer" onChange={handleChange}/>
@@ -230,14 +355,6 @@ export const Question = (props) => {
 </div>
 
 
-{/* Disabled version. Can this be called during the 5 second timer, and then switch to not-diabled for the 15 second timer? */}
-{/* <div class="form-check">
-  <input class="form-check-input" type="radio" name="answerDisabled" id="answerDisabled" disabled/>
-  <label class="form-check-label" for="answerDisabled">
-  {shuffledAnswers[0]}
-  </label>
-</div> */}
-{/* duplicate this for the three other answers */}
     
     </>
   );
