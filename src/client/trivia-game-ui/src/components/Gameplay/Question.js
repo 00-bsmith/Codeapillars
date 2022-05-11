@@ -72,10 +72,10 @@ export const Question = (props) => {
 
       <div>
           <form className="answers">
-              <label><input type="radio" value={shuffledAnswers[0]} name="1"/>{shuffledAnswers[0]}</label>
-              <label><input type="radio" value={shuffledAnswers[1]} name="2"/>{shuffledAnswers[1]}</label>
-              <label><input type="radio" value={shuffledAnswers[2]} name="3"/>{shuffledAnswers[2]}</label>
-              <label><input type="radio" value={shuffledAnswers[3]} name="4"/>{shuffledAnswers[3]}</label>
+              <label><input type="radio" value={shuffledAnswers[0]} name="answer"/>{shuffledAnswers[0]}</label>
+              <label><input type="radio" value={shuffledAnswers[1]} name="answer"/>{shuffledAnswers[1]}</label>
+              <label><input type="radio" value={shuffledAnswers[2]} name="answer"/>{shuffledAnswers[2]}</label>
+              <label><input type="radio" value={shuffledAnswers[3]} name="answer"/>{shuffledAnswers[3]}</label>
           </form>
       </div>
     </>
