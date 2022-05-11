@@ -32,10 +32,11 @@ export const Question = (props) => {
       .catch((error) => console.log(error));
   };
 
-  const entities = () => {
-    '&#039;': "'",
-    '&quot;': '"',
-  }
+  // attempt at fixing the HTML entities...see AnswerOptions.js
+  // const entities = () => {
+  //   '&#039;': "'",
+  //   '&quot;': '"',
+  // }
 
   useEffect(() => {
     getData();
