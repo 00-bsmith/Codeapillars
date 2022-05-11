@@ -148,7 +148,7 @@ export const Question = (props) => {
         <br />
 
         <div>
-          {props.duration === 10 ? (
+          {props.duration === 10 && props.buttonSwitch === false ? (
             <form className="answers">
               <div class="form-check">
                 <input

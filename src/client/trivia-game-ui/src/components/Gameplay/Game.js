@@ -13,7 +13,7 @@ const Game = (props) => {
   const [errors, setErrors] = useState([]);
 
   const [questionSwitch, setQuestionSwitch] = useState(0);
-
+  const [buttonSwitch, setButtonSwitch] = useState(false);
   // Hooks from Timer.js (being passed down as props)
   const [currentTime, setCurrentTime] = React.useState(0);
   const [key, setKey] = useState(0);
@@ -55,9 +55,11 @@ const Game = (props) => {
         setEarnedPoints(data.earnedPoints);
       })
       .catch((error) => console.log(error));
+    setButtonSwitch(false);
   };
 
   const handleQuestionSubmit = async () => {
+    setButtonSwitch(true);
     let tempCorrect = false;
     console.log("Answer: " + answer);
     console.log("Correct Answer: " + correctAnswer);
@@ -350,6 +352,7 @@ const Game = (props) => {
               answered={answered}
               correct={correct}
               questionTitle={questionTitle}
+              buttonSwitch={buttonSwitch}
               getData={getData}
               handleQuestionSubmit={handleQuestionSubmit}
             />
