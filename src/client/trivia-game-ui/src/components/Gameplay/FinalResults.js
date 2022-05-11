@@ -43,7 +43,7 @@ const FinalResults = () => {
               />
 
               <div className="col">
-            <button type="submit" className="btn btn-danger mb-2">Submit</button>
+            <button type="submit" className="btn btn-success mb-2">Submit</button>
             </div>
             
             </form>

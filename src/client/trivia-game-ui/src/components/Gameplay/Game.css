@@ -29,6 +29,11 @@
   background-color: #ae2012 !important
 }
 
+.btn-success {
+  text-align: center;
+    background-color: #0a9396 !important
+}
+
 
 
 /* this styling is from the quizbee app. needs to be updated or deleted for our puposes */
