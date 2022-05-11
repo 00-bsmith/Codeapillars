@@ -15,7 +15,10 @@ const FinalResults = () => {
     <div style={{fontSize: 30}}className="row">
             <div className="text-center">
               <img src={"images/TP-sm-med.png"} alt="TriviaPillar" style={{width: '90px'}}/>
-                 Good Effort! Here is your round summary!
+                 Good Effort!
+            </div>
+            <div className="text-center">
+            Here is your round summary!
             </div>
           </div>
     </div>
@@ -33,7 +36,7 @@ const FinalResults = () => {
               <input type="text" className="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="3 Initials"/>
 
               <div className="col">
-            <button type="submit" className="btn btn-primary mb-2">Submit</button>
+            <button type="submit" className="btn btn-danger mb-2">Submit</button>
             </div>
             
             </form>

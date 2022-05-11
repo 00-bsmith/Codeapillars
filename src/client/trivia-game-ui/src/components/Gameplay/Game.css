@@ -16,6 +16,20 @@
   padding: 8px;
 }
 
+.questionTitle {
+  font-size: 19px;
+}
+
+.answers {
+  font-size: 18px;
+}
+
+.btn-danger {
+  text-align: center;
+  background-color: #ae2012 !important
+}
+
+
 
 /* this styling is from the quizbee app. needs to be updated or deleted for our puposes */
 /* .container {
