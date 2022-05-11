@@ -27,7 +27,57 @@ const Game = (props) => {
   const [duration, setDuration] = useState(5);
   const [remainingTime, setRemainingTime] = useState(duration);
   ///////////////
+  const [earnedPoints, setEarnedPoints] = useState(0);
+  const [answer, setAnswer] = useState("");
+  const [correctAnswer, setCorrectAnswer] = useState("");
+  const [questionId, setQuestionId] = useState(0);
 
+  const handleQuestionSubmit = async () => {
+    let tempCorrect = false;
+    console.log("Answer: " + answer);
+    console.log("Correct Answer: " + correctAnswer);
+    if (answer === correctAnswer) {
+      tempCorrect = true;
+      console.log("Correct!");
+    }
+    let tempAnswered = true;
+    console.log("Answered!");
+
+    const updatedQuestion = {
+      id: questionId,
+      gameId: gameId,
+      answered: tempAnswered,
+      correct: tempCorrect,
+      earnedPoints: earnedPoints,
+    };
+    console.log(updatedQuestion);
+    const body = JSON.stringify(updatedQuestion);
+
+    try {
+      const response = await fetch(
+        `http://localhost:8080/api/question/${questionId}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: body,
+        }
+      );
+
+      if (response.status === 204) {
+        console.log("Success");
+        setErrors([]);
+      } else if (response.status === 400) {
+        const data = await response.json();
+        setErrors(data);
+      } else {
+        throw new Error("Server Error: Something unexpected went wrong.");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
   // Functions from Timer.js (being passed down as props)
   const stopTimer = () => {
     setSeconds(currentTime);
@@ -95,8 +145,8 @@ const Game = (props) => {
 
   const playRound = () => {
     // there is no current difficulty, this can be modified in future iterations to include easy, medium and hard, changing the larger duration number accordingly.
-    if (difficulty === "Hard") {
-      if (round === 3 && duration === 15) {
+    if (props.type === 1) {
+      if (round === 7 && duration === 15) {
         setRemainingTime(0);
         setIsPlaying(false);
       } else {
@@ -221,6 +271,7 @@ const Game = (props) => {
               setDuration={setDuration}
               remainingTime={remainingTime}
               setRemainingTime={setRemainingTime}
+              type={props.type}
               // Pass through methods as props
               getScore={getScore} 
               getRound={getRound} 
@@ -249,6 +300,15 @@ const Game = (props) => {
             <Question 
             gameId={gameId} 
             duration={duration}
+            earnedPoints={earnedPoints}
+            setEarnedPoints={setEarnedPoints}
+            questionId={questionId}
+            setQuestionId={setQuestionId}
+            correctAnswer={correctAnswer}
+            setCorrectAnswer={setCorrectAnswer}
+            answer={answer}
+            setAnswer={setAnswer}
+            handleQuestionSubmit={handleQuestionSubmit}
             />
             {/* <AnswerOptions /> */}
           </div>
