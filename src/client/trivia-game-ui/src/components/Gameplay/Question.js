@@ -148,7 +148,7 @@ export const Question = (props) => {
         <br />
 
         <div>
-          {props.duration === 15 ? (
+          {props.duration === 10 ? (
             <form className="answers">
               <div class="form-check">
                 <input

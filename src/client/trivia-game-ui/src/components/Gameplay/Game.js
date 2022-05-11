@@ -117,7 +117,7 @@ const Game = (props) => {
   };
 
   const calculateScore = () => {
-    if (duration === 15) {
+    if (duration === 10) {
       const time = duration - currentTime;
       const a = time / duration;
       console.log("a: " + a);
@@ -372,7 +372,7 @@ const Game = (props) => {
 };
 export default Game;
 
-{
+
   /* <div className="container mt-2">
         <div className="row">
           <div className="col xs={2} md={3}">
@@ -396,4 +396,4 @@ export default Game;
           </div>
         </div>
       </div> */
-}
+

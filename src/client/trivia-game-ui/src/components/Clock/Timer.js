@@ -121,6 +121,7 @@ function Timer(props) {
           {props.renderTime}
         </CountdownCircleTimer>
       </div>
+      
       <div style={{ margin: "18px" }} className="round-container">
         {/* This stop-timer-button needs to ALSO submit answer !!!*/}
         <button

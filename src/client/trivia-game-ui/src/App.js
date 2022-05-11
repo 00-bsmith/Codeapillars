@@ -129,7 +129,11 @@ function App() {
 
           <Route path="/finalResults">
             <NavBar />
-            <FinalResults />
+            <FinalResults 
+            // will this work?
+            // currentScore = {currentScore}
+            // setCurrentScore = {setCurrentScore}
+            />
           </Route>
 
 
