@@ -174,35 +174,38 @@ export const Question = (props) => {
         </form>
       </div>
     </div>
+    
 {/* Here is the Bootstrap version of radio buttons */}
 
 <div class="form-check">
-  <input class="form-check-input" type="radio" name="answer" id="answer"/>
-  <label class="form-check-label" for="answer">
+  <input class="form-check-input" type="radio" name="answer" id="answer" onChange={handleChange}/>
+  <label class="form-check-label" for="answer" >
   {shuffledAnswers[0]}
   </label>
 </div>
 
 <div class="form-check">
-  <input class="form-check-input" type="radio" name="answer" id="answer"/>
-  <label class="form-check-label" for="answer">
+  <input class="form-check-input" type="radio" name="answer" id="answer" onChange={handleChange}/>
+  <label class="form-check-label" for="answer" >
   {shuffledAnswers[1]}
   </label>
 </div>
 
 <div class="form-check">
-  <input class="form-check-input" type="radio" name="answer" id="answer"/>
+  <input class="form-check-input" type="radio" name="answer" id="answer" onChange={handleChange}/>
   <label class="form-check-label" for="answer">
   {shuffledAnswers[2]}
   </label>
 </div>
 
 <div class="form-check">
-  <input class="form-check-input" type="radio" name="answer" id="answer"/>
+  <input class="form-check-input" type="radio" name="answer" id="answer" onChange={handleChange}/>
   <label class="form-check-label" for="answer">
   {shuffledAnswers[3]}
   </label>
 </div>
+
+
 {/* Disabled version. Can this be called during the 5 second timer, and then switch to not-diabled for the 15 second timer? */}
 <div class="form-check">
   <input class="form-check-input" type="radio" name="answerDisabled" id="answerDisabled" disabled/>
