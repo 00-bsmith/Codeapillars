@@ -20,7 +20,8 @@ export const Question = (props) => {
       .then((response) => response.json())
       .then((data) => {
         setQuestion(data);
-        setQuestionId(data.questionId);
+        console.log(data);
+        setQuestionId(data.id);
         setQuestionTitle(data.question);
         setAnswers(data.allAnswers);
         setCorrectAnswer(data.allAnswers[0]);
