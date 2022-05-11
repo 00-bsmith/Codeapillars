@@ -225,7 +225,7 @@ const Game = (props) => {
       if (response.status === 201 || response.status === 400) {
         const data = await response.json();
         console.log(data);
-        if (data != 0) {
+        if (data !== 0) {
           setGameId(data);
           if (data) {
             // console.log("Game ID: " + data);
