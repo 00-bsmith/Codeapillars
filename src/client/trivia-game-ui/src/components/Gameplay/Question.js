@@ -32,6 +32,11 @@ export const Question = (props) => {
       .catch((error) => console.log(error));
   };
 
+  const entities = () => {
+    '&#039;': "'",
+    '&quot;': '"',
+  }
+
   useEffect(() => {
     getData();
     console.log(question);
@@ -120,7 +125,9 @@ export const Question = (props) => {
     <div className="container2 mt-2 mb-4">
         <div className="text-center"></div>
       <div className="question">
-        <div className="questionTitle">{questionTitle}</div>
+        <div className="questionTitle">
+          {questionTitle}
+          </div>
       </div>
 <br/>
 

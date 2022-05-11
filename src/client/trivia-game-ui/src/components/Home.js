@@ -31,9 +31,10 @@ export const Home = () => {
       <br />
 
         <div className="row">
-        <div className="col">
+        <div className="col" >
             {/* <img src={"images/TP-sm-med.png"}  alt="TriviaPillar" /> */}
-            <Link to="/gamelength" className="btn btn-success mb-3 ml-2">New Game</Link>
+            <Link to="/gamelength" className="btn btn-success mb-3 ml-2 ">New Game</Link>
+            
           </div>
         </div>
 
