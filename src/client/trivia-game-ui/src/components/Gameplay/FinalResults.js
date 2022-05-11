@@ -8,34 +8,47 @@ const FinalResults = () => {
   
   return (
       <>
-    <div>Final Results - this isn't grabbing the the correct score yet.</div>
+    <div></div>
 
-    <div className="container mt-2">
+    <div className="container mt-2 mb-4">
 
-    <div className="row">
+    <div style={{fontSize: 30}}className="row">
             <div className="text-center">
               <img src={"images/TP-sm-med.png"} alt="TriviaPillar" style={{width: '90px'}}/>
-                 Good Effort! Here is your game summary!
+                 Good Effort! Here is your round summary!
             </div>
           </div>
-
+    </div>
+    <div className="container mt-2">
         <div className="row">
           <div className="col">
             <div className="text-center">
-              <p>Your Total Score is: <Score currentScore={currentScore}/></p>
+              Your Total Score is: <Score currentScore={currentScore}/>
             </div>
+          </div>
+
+          <div className="col">
+            <form className="form-inline">
+              <label className="sr-only" for="inlineFormInputName2">Enter 3 Initials for the Leaderboards</label>
+              <input type="text" className="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="3 Initials"/>
+
+              <div className="col">
+            <button type="submit" className="btn btn-primary mb-2">Submit</button>
+            </div>
+            
+            </form>
           </div>
 
 
 
         </div>
-      </div>
+        </div>
 
-     
-  
+        <br/>
 
+      <p>Final Results - this isn't grabbing the the correct score yet.</p>
 
-
+ 
     </>
   )
 }
