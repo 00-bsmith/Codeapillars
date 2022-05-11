@@ -53,7 +53,7 @@ const Game = (props) => {
       console.log("d: " + d);
       const score = d;
       setScore(Math.round(score));
-      props.getScore(Math.round(score));
+      getScore(Math.round(score));
     }
   };
 
@@ -105,7 +105,7 @@ const Game = (props) => {
         } else {
           setRound(round + 1);
           setDuration(5);
-          props.getRound(round);
+          getRound(round);
         }
         setKey((prevKey) => prevKey + 1);
       }
@@ -246,7 +246,10 @@ const Game = (props) => {
       {questionSwitch === 1 ? (
         <div className="container mt-4">
           <div className="row">
-            <Question gameId={gameId} />
+            <Question 
+            gameId={gameId} 
+            duration={duration}
+            />
             {/* <AnswerOptions /> */}
           </div>
         </div>

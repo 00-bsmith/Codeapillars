@@ -141,76 +141,138 @@ export const Question = (props) => {
           <div className="questionTitle">{questionTitle}</div>
         </div>
         <br />
+        {props.duration === 15 ? (
+          <div>
+            <form className="answers">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="answer"
+                  id="answer"
+                  onChange={handleChange}
+                />
+                <label class="form-check-label" for="answer">
+                  {shuffledAnswers[0]}
+                </label>
+              </div>
 
-        <div>
-          <form className="answers">
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="radio"
-                name="answer"
-                id="answer"
-                onChange={handleChange}
-              />
-              <label class="form-check-label" for="answer">
-                {shuffledAnswers[0]}
-              </label>
-            </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="answer"
+                  id="answer"
+                  onChange={handleChange}
+                />
+                <label class="form-check-label" for="answer">
+                  {shuffledAnswers[1]}
+                </label>
+              </div>
 
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="radio"
-                name="answer"
-                id="answer"
-                onChange={handleChange}
-              />
-              <label class="form-check-label" for="answer">
-                {shuffledAnswers[1]}
-              </label>
-            </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="answer"
+                  id="answer"
+                  onChange={handleChange}
+                />
+                <label class="form-check-label" for="answer">
+                  {shuffledAnswers[2]}
+                </label>
+              </div>
 
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="radio"
-                name="answer"
-                id="answer"
-                onChange={handleChange}
-              />
-              <label class="form-check-label" for="answer">
-                {shuffledAnswers[2]}
-              </label>
-            </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="answer"
+                  id="answer"
+                  onChange={handleChange}
+                />
+                <label class="form-check-label" for="answer">
+                  {shuffledAnswers[3]}
+                </label>
+              </div>
 
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="radio"
-                name="answer"
-                id="answer"
-                onChange={handleChange}
-              />
-              <label class="form-check-label" for="answer">
-                {shuffledAnswers[3]}
-              </label>
-            </div>
-            <div>
-              <button
-                type="button"
-                className="btn btn-success mb-3 ml-2"
-                onClick={handleSubmit}
-              >
-                Submit Answer
-              </button>
-            </div>
-          </form>
-        </div>
+              <div>
+                <button
+                  type="button"
+                  className="btn btn-success mb-3 ml-2"
+                  onClick={handleSubmit}
+                >
+                  Submit Answer
+                </button>
+              </div>
+            </form>
+          </div>
+        ) : (
+          <div>
+            <form className="answers">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="answerDisabled"
+                  id="answerDisabled"
+                  onChange={handleChange}
+                  disabled
+                />
+                <label class="form-check-label" for="answerDisabled">
+                  {shuffledAnswers[0]}
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="answerDisabled"
+                  id="answerDisabled"
+                  onChange={handleChange}
+                  disabled
+                />
+                <label class="form-check-label" for="answerDisabled">
+                  {shuffledAnswers[1]}
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="answerDisabled"
+                  id="answerDisabled"
+                  onChange={handleChange}
+                  disabled
+                />
+                <label class="form-check-label" for="answerDisabled">
+                  {shuffledAnswers[2]}
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="answerDisabled"
+                  id="answerDisabled"
+                  onChange={handleChange}
+                  disabled
+                />
+                <label class="form-check-label" for="answerDisabled">
+                  {shuffledAnswers[3]}
+                </label>
+              </div>
+            </form>
+          </div>
+        )}
       </div>
 
       {/* Here is the Bootstrap version of radio buttons */}
       {/* Disabled version. Can this be called during the 5 second timer, and then switch to not-diabled for the 15 second timer? */}
-      <div class="form-check">
+      {/* <div class="form-check">
         <input
           class="form-check-input"
           type="radio"
@@ -221,7 +283,7 @@ export const Question = (props) => {
         <label class="form-check-label" for="answerDisabled">
           {shuffledAnswers[0]}
         </label>
-      </div>
+      </div> */}
       {/* duplicate this for the three other answers */}
     </>
   );
