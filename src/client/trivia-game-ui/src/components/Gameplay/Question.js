@@ -133,6 +133,7 @@ export const Question = (props) => {
               name="answer"
               onChange={handleChange}
             />
+            &nbsp;
             {shuffledAnswers[0]}
           </label>
           <label>
@@ -142,6 +143,7 @@ export const Question = (props) => {
               name="answer"
               onChange={handleChange}
             />
+            &nbsp;
             {shuffledAnswers[1]}
           </label>
           <label>
@@ -151,6 +153,7 @@ export const Question = (props) => {
               name="answer"
               onChange={handleChange}
             />
+            &nbsp;
             {shuffledAnswers[2]}
           </label>
           <label>
@@ -160,6 +163,7 @@ export const Question = (props) => {
               name="answer"
               onChange={handleChange}
             />
+            &nbsp;
             {shuffledAnswers[3]}
           </label>
           <div>
