@@ -26,12 +26,36 @@ const Game = (props) => {
 
   const [duration, setDuration] = useState(5);
   const [remainingTime, setRemainingTime] = useState(duration);
-  
+
   // Hooks and functions from Question.js (being passed down as props)
   const [earnedPoints, setEarnedPoints] = useState(0);
   const [answer, setAnswer] = useState("");
   const [correctAnswer, setCorrectAnswer] = useState("");
   const [questionId, setQuestionId] = useState(0);
+  const [question, setQuestion] = useState([]);
+  const [questionTitle, setQuestionTitle] = useState("");
+  const [answers, setAnswers] = useState([]);
+  const [pointValue, setPointValue] = useState(0);
+  const [answered, setAnswered] = useState(false);
+  const [correct, setCorrect] = useState(false);
+
+  const getData = async () => {
+    fetch(`http://localhost:8080/api/question/${gameId}/next`)
+      .then((response) => response.json())
+      .then((data) => {
+        setQuestion(data);
+        console.log(data);
+        setQuestionId(data.id);
+        setQuestionTitle(data.question);
+        setAnswers(data.allAnswers);
+        setCorrectAnswer(data.allAnswers[0]);
+        setPointValue(data.pointValue);
+        setAnswered(data.answered);
+        setCorrect(data.correct);
+        setEarnedPoints(data.earnedPoints);
+      })
+      .catch((error) => console.log(error));
+  };
 
   const handleQuestionSubmit = async () => {
     let tempCorrect = false;
@@ -79,7 +103,7 @@ const Game = (props) => {
       console.log(error);
     }
   };
-  
+
   // Functions from Timer.js (being passed down as props)
   const stopTimer = () => {
     setSeconds(currentTime);
@@ -118,7 +142,7 @@ const Game = (props) => {
   // not sure about this reset. Currently it isn't working here.
   const resetTimer = () => {
     setIsPlaying(true);
-    setDuration(15);
+    setDuration(10);
   };
 
   const renderTime = ({ remainingTime }) => {
@@ -149,22 +173,25 @@ const Game = (props) => {
     // there is no current difficulty, this can be modified in future iterations to include easy, medium and hard, changing the larger duration number accordingly.
     let roundCount;
     if (props.type === 1) {
-      roundCount=7;
+      roundCount = 7;
     } else if (props.type === 2) {
-      roundCount=15;
+      roundCount = 15;
     } else if (props.type === 3) {
-      roundCount=30;
+      roundCount = 30;
     }
-    if (round === roundCount && duration === 15) {
+    if (round === roundCount && duration === 10) {
+      handleQuestionSubmit();
+      getData();
       setRemainingTime(0);
       setIsPlaying(false);
     } else {
       if (duration === 5) {
-        setDuration(15);
+        setDuration(10);
       } else {
+        handleQuestionSubmit();
+        getData();
         setRound(round + 1);
         setDuration(5);
-        handleQuestionSubmit();
         getRound(round);
       }
       setKey((prevKey) => prevKey + 1);
@@ -260,36 +287,36 @@ const Game = (props) => {
         <div className="row">
           <div className="col">
             <div className="text-center">
-              <Timer 
-              // Pass through useState variables as props
-              currentTime={currentTime}
-              setCurrentTime={setCurrentTime}
-              key={key}
-              setKey={setKey}
-              isPlaying={isPlaying}
-              setIsPlaying={setIsPlaying}
-              seconds={seconds}
-              setSeconds={setSeconds}
-              round={round}
-              setRound={setRound}
-              score={score}
-              setScore={setScore}
-              difficulty={difficulty}
-              setDifficulty={setDifficulty}
-              duration={duration}
-              setDuration={setDuration}
-              remainingTime={remainingTime}
-              setRemainingTime={setRemainingTime}
-              type={props.type}
-              // Pass through methods as props
-              getScore={getScore} 
-              getRound={getRound} 
-              stopTimer={stopTimer}
-              calculateScore={calculateScore}
-              resetTimer={resetTimer}
-              restartTimer={restartTimer}
-              renderTime={renderTime}
-              playRound={playRound}
+              <Timer
+                // Pass through useState variables as props
+                currentTime={currentTime}
+                setCurrentTime={setCurrentTime}
+                key={key}
+                setKey={setKey}
+                isPlaying={isPlaying}
+                setIsPlaying={setIsPlaying}
+                seconds={seconds}
+                setSeconds={setSeconds}
+                round={round}
+                setRound={setRound}
+                score={score}
+                setScore={setScore}
+                difficulty={difficulty}
+                setDifficulty={setDifficulty}
+                duration={duration}
+                setDuration={setDuration}
+                remainingTime={remainingTime}
+                setRemainingTime={setRemainingTime}
+                type={props.type}
+                // Pass through methods as props
+                getScore={getScore}
+                getRound={getRound}
+                stopTimer={stopTimer}
+                calculateScore={calculateScore}
+                resetTimer={resetTimer}
+                restartTimer={restartTimer}
+                renderTime={renderTime}
+                playRound={playRound}
               />
             </div>
           </div>
@@ -306,18 +333,25 @@ const Game = (props) => {
       {questionSwitch === 1 ? (
         <div className="container mt-4">
           <div className="row">
-            <Question 
-            gameId={gameId} 
-            duration={duration}
-            earnedPoints={earnedPoints}
-            setEarnedPoints={setEarnedPoints}
-            questionId={questionId}
-            setQuestionId={setQuestionId}
-            correctAnswer={correctAnswer}
-            setCorrectAnswer={setCorrectAnswer}
-            answer={answer}
-            setAnswer={setAnswer}
-            handleQuestionSubmit={handleQuestionSubmit}
+            <Question
+              gameId={gameId}
+              duration={duration}
+              earnedPoints={earnedPoints}
+              setEarnedPoints={setEarnedPoints}
+              questionId={questionId}
+              setQuestionId={setQuestionId}
+              correctAnswer={correctAnswer}
+              setCorrectAnswer={setCorrectAnswer}
+              answer={answer}
+              setAnswer={setAnswer}
+              question={question}
+              setQuestion={setQuestion}
+              answers={answers}
+              answered={answered}
+              correct={correct}
+              questionTitle={questionTitle}
+              getData={getData}
+              handleQuestionSubmit={handleQuestionSubmit}
             />
             {/* <AnswerOptions /> */}
           </div>

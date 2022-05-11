@@ -2,48 +2,48 @@ import React, { useEffect, useState } from "react";
 import { decode } from "html-entities";
 
 export const Question = (props) => {
-  const [question, setQuestion] = useState([]);
-  const [questionTitle, setQuestionTitle] = useState("");
-  const [answers, setAnswers] = useState([]);
+//   const [question, setQuestion] = useState([]);
+//   const [questionTitle, setQuestionTitle] = useState("");
+//   const [answers, setAnswers] = useState([]);
   const [shuffledAnswers, setShuffledAnswers] = useState([]);
 //   const [correctAnswer, setCorrectAnswer] = useState("");
 //   const [questionId, setQuestionId] = useState(0);
-  const [pointValue, setPointValue] = useState(0);
-  const [answered, setAnswered] = useState(false);
-  const [correct, setCorrect] = useState(false);
+//   const [pointValue, setPointValue] = useState(0);
+//   const [answered, setAnswered] = useState(false);
+//   const [correct, setCorrect] = useState(false);
   const [errors, setErrors] = useState([]);
 
 //   const [answer, setAnswer] = useState("");
 
-  const getData = async () => {
-    fetch(`http://localhost:8080/api/question/${props.gameId}/next`)
-      .then((response) => response.json())
-      .then((data) => {
-        setQuestion(data);
-        console.log(data);
-        props.setQuestionId(data.id);
-        setQuestionTitle(data.question);
-        setAnswers(data.allAnswers);
-        props.setCorrectAnswer(data.allAnswers[0]);
-        setPointValue(data.pointValue);
-        setAnswered(data.answered);
-        setCorrect(data.correct);
-        props.setEarnedPoints(data.earnedPoints);
-      })
-      .catch((error) => console.log(error));
-  };
+//   const getData = async () => {
+//     fetch(`http://localhost:8080/api/question/${props.gameId}/next`)
+//       .then((response) => response.json())
+//       .then((data) => {
+//         setQuestion(data);
+//         console.log(data);
+//         props.setQuestionId(data.id);
+//         setQuestionTitle(data.question);
+//         setAnswers(data.allAnswers);
+//         props.setCorrectAnswer(data.allAnswers[0]);
+//         setPointValue(data.pointValue);
+//         setAnswered(data.answered);
+//         setCorrect(data.correct);
+//         props.setEarnedPoints(data.earnedPoints);
+//       })
+//       .catch((error) => console.log(error));
+//   };
 
   useEffect(() => {
-    getData();
-    console.log(question);
+    props.getData();
+    console.log(props.question);
   }, []);
 
   useEffect(() => {
     console.log(props.correctAnswer);
-    console.log(answers);
-    shuffle(answers);
-    setShuffledAnswers(answers);
-    console.log(answers);
+    console.log(props.answers);
+    shuffle(props.answers);
+    setShuffledAnswers(props.answers);
+    console.log(props.answers);
     console.log(props.correctAnswer);
   }, [props.correctAnswer]);
 
@@ -80,12 +80,12 @@ export const Question = (props) => {
   }, [props.gameId]);
 
   useEffect(() => {
-    console.log(answered);
-  }, [answered]);
+    console.log(props.answered);
+  }, [props.answered]);
 
   useEffect(() => {
-    console.log(correct);
-  }, [correct]);
+    console.log(props.correct);
+  }, [props.correct]);
 
 //   const handleSubmit = async () => {
 //     let tempCorrect = false;
@@ -143,7 +143,7 @@ export const Question = (props) => {
       <div className="container2 mt-2 mb-4">
         <div className="text-center"></div>
         <div className="question">
-          <div className="questionTitle">{decode(questionTitle)}</div>
+          <div className="questionTitle">{decode(props.questionTitle)}</div>
         </div>
         <br />
 
