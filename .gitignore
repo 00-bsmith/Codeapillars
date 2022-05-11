@@ -36,3 +36,5 @@ node_modules/
 .DS_Store
 
 application.properties
+src/server/SQLVERSIONOFTRIVIASTORAGE/triviagame/docker-compose.yml
+src/server/SQLVERSIONOFTRIVIASTORAGE/triviagame/Dockerfile
