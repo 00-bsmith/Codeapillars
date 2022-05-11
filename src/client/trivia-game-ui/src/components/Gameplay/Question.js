@@ -74,8 +74,7 @@ export const Question = (props) => {
   }
 
   const handleChange = (event) => {
-    const { name, value } = event.target;
-    setAnswer({ ...answer, [name]: value });
+    setAnswer(event.target.id);
   };
 
   useEffect(() => {
@@ -95,18 +94,22 @@ export const Question = (props) => {
   }, [correct]);
 
   const handleSubmit = async () => {
+      let tempCorrect = false
+      console.log("Answer: " + answer);
+      console.log("Correct Answer: " + correctAnswer);
     if (answer === correctAnswer) {
-        setCorrect(true);
+        tempCorrect = true;
         console.log("Correct!");
     }
-    setAnswered(true);
+    let tempAnswered = true;
     console.log("Answered!");
 
     const updatedQuestion = {
       id: questionId,
       gameId: props.gameId,
-      answered: answered,
-      correct: correct,
+      answered: tempAnswered,
+      correct: tempCorrect,
+      earnedPoints: earnedPoints
     };
     console.log(updatedQuestion);
     const body = JSON.stringify(updatedQuestion);
@@ -157,7 +160,7 @@ export const Question = (props) => {
                   class="form-check-input"
                   type="radio"
                   name="answer"
-                  id="answer"
+                  id={shuffledAnswers[0]}
                   onChange={handleChange}
                 />
                 <label class="form-check-label" for="answer">
@@ -170,7 +173,7 @@ export const Question = (props) => {
                   class="form-check-input"
                   type="radio"
                   name="answer"
-                  id="answer"
+                  id={shuffledAnswers[1]}
                   onChange={handleChange}
                 />
                 <label class="form-check-label" for="answer">
@@ -183,7 +186,7 @@ export const Question = (props) => {
                   class="form-check-input"
                   type="radio"
                   name="answer"
-                  id="answer"
+                  id={shuffledAnswers[2]}
                   onChange={handleChange}
                 />
                 <label class="form-check-label" for="answer">
@@ -196,7 +199,7 @@ export const Question = (props) => {
                   class="form-check-input"
                   type="radio"
                   name="answer"
-                  id="answer"
+                  id={shuffledAnswers[3]}
                   onChange={handleChange}
                 />
                 <label class="form-check-label" for="answer">

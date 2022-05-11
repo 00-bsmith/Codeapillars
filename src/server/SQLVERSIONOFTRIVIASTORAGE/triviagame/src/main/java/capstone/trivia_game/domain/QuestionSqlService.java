@@ -80,32 +80,32 @@ public class QuestionSqlService {
     private Result<Question> validate(Question question) {
         Result<Question> result = new Result<>();
 
-        if (question == null) {
-            result.addMessage("Question cannot be null", ResultType.INVALID);
-            return result;
-        }
+//        if (question == null) {
+//            result.addMessage("Question cannot be null", ResultType.INVALID);
+//            return result;
+//        }
+//
+//        if (Validations.isNullOrBlank(question.getQuestion())) {
+//            result.addMessage("Question is required", ResultType.INVALID);
+//        }
+//
+//        if (question.getAllAnswers() == null) {
+//            result.addMessage("Question must have answers", ResultType.INVALID);
+//        }
+//
+//        if (question.getAllAnswers().size() != 4) {
+//            result.addMessage("Question must have four answers", ResultType.INVALID);
+//        }
+//
+//        for (String answer : question.getAllAnswers()) {
+//            if (Validations.isNullOrBlank(answer)) {
+//                result.addMessage("Four answers are required", ResultType.INVALID);
+//            }
+//        }
 
-        if (Validations.isNullOrBlank(question.getQuestion())) {
-            result.addMessage("Question is required", ResultType.INVALID);
-        }
-
-        if (question.getAllAnswers() == null) {
-            result.addMessage("Question must have answers", ResultType.INVALID);
-        }
-
-        if (question.getAllAnswers().size() != 4) {
-            result.addMessage("Question must have four answers", ResultType.INVALID);
-        }
-
-        for (String answer : question.getAllAnswers()) {
-            if (Validations.isNullOrBlank(answer)) {
-                result.addMessage("Four answers are required", ResultType.INVALID);
-            }
-        }
-
-        if (question.getGameID() <= 0) {
-            result.addMessage("Question must have valid Game ID", ResultType.INVALID);
-        }
+//        if (question.getGameID() <= 0) {
+//            result.addMessage("Question must have valid Game ID", ResultType.INVALID);
+//        }
 
         if (question.getCorrect() == null) {
             result.addMessage("Question must be correct or incorrect", ResultType.INVALID);
@@ -119,9 +119,9 @@ public class QuestionSqlService {
             result.addMessage("Question must have earned valid points", ResultType.INVALID);
         }
 
-        if (question.getPointValue() != MAX_SCORE) {
-            result.addMessage("Question must have consistent max score", ResultType.INVALID);
-        }
+//        if (question.getPointValue() != MAX_SCORE) {
+//            result.addMessage("Question must have consistent max score", ResultType.INVALID);
+//        }
 
         return result;
     }
