@@ -206,7 +206,7 @@ export const Question = (props) => {
               <div>
                 <button
                   type="button"
-                  className="btn btn-success mb-3 ml-2"
+                  className="btn btn-success mt-3 mb-3 ml-2"
                   onClick={handleSubmit}
                 >
                   Submit Answer

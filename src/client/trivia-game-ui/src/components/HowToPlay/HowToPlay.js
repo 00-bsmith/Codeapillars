@@ -32,7 +32,7 @@ const HowToPlay = () => {
 </div>
 
 <div className="containerH2Pc">
-  <p>      *EDIT* After the final round concludes, you will be shown a list of the questions you were asked, along with the correct answers and your final score. </p>
+  <p> After the final round concludes, you will be shown a list of the questions you were asked, along with the correct answers and your final score. </p>
   <p>  If you receive a high enough final score, you will be prompted to enter your initials and will be shown on our leaderboard!</p>
 </div>
     
