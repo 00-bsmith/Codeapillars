@@ -11,7 +11,7 @@ const NavBar = () => {
     <>
       {!auth.user && (
         <>
-          {/* <Navbar sticky="top" bg="dark" variant="dark" > */}
+          
           <Navbar collapseOnSelect expand="lg" sticky="top" bg="dark" variant="dark" >
             <Container>
             <Navbar.Brand href="/"> 

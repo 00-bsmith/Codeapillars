@@ -82,8 +82,11 @@ const Game = (props) => {
 
   return (
     <>
+      
+
       <div className="container mt-2">
         <div className="row">
+
           <div className="col">
             <div className="text-center">
               <p className="columnHeader">Round #</p>
@@ -91,16 +94,23 @@ const Game = (props) => {
             </div>
           </div>
 
-          <div className="col">
-            <div className="text-center">
-              <Timer getScore={getScore} getRound={getRound} />
-            </div>
-          </div>
-
+        
           <div className="col">
             <div className="text-center">
               <p className="columnHeader">Total Score:</p>
               <Score currentScore={currentScore} />
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div className="container mt-2">
+        <div className="row">
+
+          <div className="col">
+            <div className="text-center">
+              <Timer getScore={getScore} getRound={getRound} />
             </div>
           </div>
         </div>
@@ -140,3 +150,27 @@ const Game = (props) => {
   );
 };
 export default Game;
+
+{/* <div className="container mt-2">
+        <div className="row">
+          <div className="col xs={2} md={3}">
+            <div className="text-center">
+              <p className="columnHeader">Round #</p>
+              <Round currentRound={currentRound} />
+            </div>
+          </div>
+
+          <div className="col xs={1} md={3}">
+            <div className="text-center">
+              <Timer getScore={getScore} getRound={getRound} />
+            </div>
+          </div>
+
+          <div className="col xs={2} md={3}">
+            <div className="text-center">
+              <p className="columnHeader">Total Score:</p>
+              <Score currentScore={currentScore} />
+            </div>
+          </div>
+        </div>
+      </div> */}
