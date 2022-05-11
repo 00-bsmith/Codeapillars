@@ -6,13 +6,12 @@ export const Question = (props) => {
   const [answers, setAnswers] = useState([]);
   const [shuffledAnswers, setShuffledAnswers] = useState([]);
   const [correctAnswer, setCorrectAnswer] = useState("");
-  //   const [otherAnswers, setOtherAnswers] = useState([]);
+  const [questionId, setQuestionId] = useState(0);
   const [pointValue, setPointValue] = useState(0);
   const [answered, setAnswered] = useState(false);
   const [correct, setCorrect] = useState(false);
   const [earnedPoints, setEarnedPoints] = useState(0);
-
-
+  const [errors, setErrors] = useState([])
 
   const [answer, setAnswer] = useState("");
 
@@ -21,6 +20,7 @@ export const Question = (props) => {
       .then((response) => response.json())
       .then((data) => {
         setQuestion(data);
+        setQuestionId(data.questionId);
         setQuestionTitle(data.question);
         setAnswers(data.allAnswers);
         setCorrectAnswer(data.allAnswers[0]);
@@ -47,24 +47,73 @@ export const Question = (props) => {
   }, [correctAnswer]);
 
   function shuffle(array) {
-    let currentIndex = array.length,  randomIndex;
-  
+    let currentIndex = array.length,
+      randomIndex;
+
     // While there remain elements to shuffle.
     while (currentIndex != 0) {
-  
       // Pick a remaining element.
       randomIndex = Math.floor(Math.random() * currentIndex);
       currentIndex--;
-  
+
       // And swap it with the current element.
       [array[currentIndex], array[randomIndex]] = [
-        array[randomIndex], array[currentIndex]];
+        array[randomIndex],
+        array[currentIndex],
+      ];
     }
-  
+
     return array;
 
     
   }
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setAnswer({ ...answer, [name]: value });
+  };
+
+  const handleSubmit = async (
+
+  ) => {
+    const updatedQuestion = {
+        questionId: questionId,
+        gameId: props.gameId,
+        
+      };
+  
+      const body = JSON.stringify(updatedQuestion);
+  
+      try {
+        const response = await fetch(
+        //   `http://localhost:8080/api/question/${questionId}`,
+          {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body,
+          }
+        );
+  
+        if (response.status === 204) {
+  
+        
+          setErrors([]);
+        } else if (response.status === 400) {
+          const data = await response.json();
+          setErrors(data);
+        } else {
+          throw new Error("Server Error: Something unexpected went wrong.");
+        }
+      } catch (error) {
+        console.log(error);
+      }
+  }
+
+  //   useEffect(() => {
+  //     console.log(answer);
+  //   }, [answer]);
 
   return (
     <>
@@ -75,26 +124,54 @@ export const Question = (props) => {
       </div>
 <br/>
 
-      <div className="row">
-          <form className="answers">
-              <div>
-              <label><input type="radio" value={shuffledAnswers[0]} name="answer"/>
-              &nbsp;{shuffledAnswers[0]}</label>
-              </div>
-              <div>
-              <label><input type="radio" value={shuffledAnswers[1]} name="answer"/>
-              &nbsp;{shuffledAnswers[1]}</label>
-              </div>
-              <div>
-              <label><input type="radio" value={shuffledAnswers[2]} name="answer"/>
-              &nbsp;{shuffledAnswers[2]}</label>
-              </div>
-              <div>
-              <label><input type="radio" value={shuffledAnswers[3]} name="answer"/>
-              &nbsp;{shuffledAnswers[3]}</label>
-              </div>
-          </form>
-
+      <div>
+        <form className="answers">
+          <label>
+            <input
+              type="radio"
+              value={shuffledAnswers[0]}
+              name="answer"
+              onChange={handleChange}
+            />
+            &nbsp;
+            {shuffledAnswers[0]}
+          </label>
+          <label>
+            <input
+              type="radio"
+              value={shuffledAnswers[1]}
+              name="answer"
+              onChange={handleChange}
+            />
+            &nbsp;
+            {shuffledAnswers[1]}
+          </label>
+          <label>
+            <input
+              type="radio"
+              value={shuffledAnswers[2]}
+              name="answer"
+              onChange={handleChange}
+            />
+            &nbsp;
+            {shuffledAnswers[2]}
+          </label>
+          <label>
+            <input
+              type="radio"
+              value={shuffledAnswers[3]}
+              name="answer"
+              onChange={handleChange}
+            />
+            &nbsp;
+            {shuffledAnswers[3]}
+          </label>
+          <div>
+            <button type="submit" className="btn btn-success mb-3 ml-2">
+              Submit Answer
+            </button>
+          </div>
+        </form>
       </div>
     </div>
 {/* Here is the Bootstrap version of radio buttons */}

@@ -51,7 +51,7 @@ function Timer(props) {
     }
   };
 
-  // probably wont need this restart functionality here. Perhaps on the results page to get next question? 
+  // probably wont need this restart functionality here. Perhaps on the results page to get next question?
   const restartTimer = () => {
     setCurrentTime(seconds);
     setIsPlaying(true);
@@ -90,57 +90,48 @@ function Timer(props) {
   // Open the console to check the value for currentTime
   // console.log(currentTime);
 
-
-const playRound = () => {
-  // there is no current difficulty, this can be modified in future iterations to include easy, medium and hard, changing the larger duration number accordingly.
-  if (difficulty === "Hard") {
-    if(round === 3 && duration === 15) {
-      setRemainingTime(0);
-      setIsPlaying(false);
-    } else {
+  const playRound = () => {
+    // there is no current difficulty, this can be modified in future iterations to include easy, medium and hard, changing the larger duration number accordingly.
+    if (difficulty === "Hard") {
+      if (round === 3 && duration === 15) {
+        setRemainingTime(0);
+        setIsPlaying(false);
+      } else {
         if (duration === 5) {
           setDuration(15);
         } else {
-          setRound(round+1);
-          setDuration(5)
+          setRound(round + 1);
+          setDuration(5);
           props.getRound(round);
         }
-      setKey((prevKey) => prevKey + 1);
+        setKey((prevKey) => prevKey + 1);
+      }
     }
-  } 
-}
+  };
 
-  
- return (
- <>
+  return (
+    <>
+      <div className="timer-wrapper">
+        <CountdownCircleTimer
+          key={key}
+          isPlaying={isPlaying}
+          duration={duration} // durationn is a number i.e. duration={5}
+          colors={["#0a9396", "#ffb703", "#f77f00", "#ae2012"]}
+          colorsTime={[5, 3, 1, 0]}
+          //  original parameter:   onComplete={() => ({ shouldRepeat: true, delay: 0 })}
 
-  <div className="timer-wrapper">
- 
-    <CountdownCircleTimer
-    key={key}
-    isPlaying={isPlaying}
-    duration={duration}  // durationn is a number i.e. duration={5}
-    colors={["#0a9396", "#ffb703", "#f77f00", "#ae2012"]}
-    colorsTime={[5, 3, 1, 0]}
-    
-    //  original parameter:   onComplete={() => ({ shouldRepeat: true, delay: 0 })}
+          onComplete={() => {
+            playRound();
+            if (round === 3 && duration === 15) {
+            }
 
-    onComplete={() => {
-
-      playRound();
-      if(round === 3 && duration === 15) {
-
-      } 
-    
-      return { shouldRepeat: true, delay: 1.5 };
-    }}
+            return { shouldRepeat: true, delay: 1.5 };
+          }}
         >
-
-      {renderTime}
-     </CountdownCircleTimer>
-
+          {renderTime}
+        </CountdownCircleTimer>
       </div>
-      <div style={{margin: "18px"}} className="round-container">
+      <div style={{ margin: "18px" }} className="round-container">
         {/* This stop-timer-button needs to ALSO submit answer !!!*/}
         <button
           type="submit"
