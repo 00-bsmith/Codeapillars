@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { decode } from 'html-entities';
 
 export const Question = (props) => {
   const [question, setQuestion] = useState([]);
@@ -15,6 +16,8 @@ export const Question = (props) => {
 
   const [answer, setAnswer] = useState("");
 
+ 
+
   const getData = async () => {
     fetch(`http://localhost:8080/api/question/${props.gameId}/next`)
       .then((response) => response.json())
@@ -28,15 +31,13 @@ export const Question = (props) => {
         setAnswered(data.answered);
         setCorrect(data.correct);
         setEarnedPoints(data.earnedPoints);
+
+
+
       })
       .catch((error) => console.log(error));
   };
 
-  // attempt at fixing the HTML entities...see AnswerOptions.js
-  // const entities = () => {
-  //   '&#039;': "'",
-  //   '&quot;': '"',
-  // }
 
   useEffect(() => {
     getData();
@@ -71,7 +72,6 @@ export const Question = (props) => {
 
     return array;
 
-    
   }
 
   const handleChange = (event) => {
@@ -116,6 +116,19 @@ export const Question = (props) => {
         console.log(error);
       }
   }
+  
+
+      // decode(
+    //   '&amp;,
+    //     &lt;,
+    //     &gt;,
+    //     &quot;,
+    //     &#039;,
+    //     &deg;,
+    //     &uuml;,
+    //     &eacute;,
+    //     &ntilde;'
+    //     );
 
   //   useEffect(() => {
   //     console.log(answer);
@@ -123,11 +136,14 @@ export const Question = (props) => {
 
   return (
     <>
+  
     <div className="container2 mt-2 mb-4">
         <div className="text-center"></div>
       <div className="question">
         <div className="questionTitle">
-          {questionTitle}
+
+        {decode(questionTitle)}
+        
           </div>
       </div>
 <br/>
@@ -188,39 +204,39 @@ export const Question = (props) => {
 <div class="form-check">
   <input class="form-check-input" type="radio" name="answer" id="answer" onChange={handleChange}/>
   <label class="form-check-label" for="answer" >
-  {shuffledAnswers[0]}
+  {decode(shuffledAnswers[0])}
   </label>
 </div>
 
 <div class="form-check">
   <input class="form-check-input" type="radio" name="answer" id="answer" onChange={handleChange}/>
   <label class="form-check-label" for="answer" >
-  {shuffledAnswers[1]}
+  {decode(shuffledAnswers[1])}
   </label>
 </div>
 
 <div class="form-check">
   <input class="form-check-input" type="radio" name="answer" id="answer" onChange={handleChange}/>
   <label class="form-check-label" for="answer">
-  {shuffledAnswers[2]}
+  {decode(shuffledAnswers[2])}
   </label>
 </div>
 
 <div class="form-check">
   <input class="form-check-input" type="radio" name="answer" id="answer" onChange={handleChange}/>
   <label class="form-check-label" for="answer">
-  {shuffledAnswers[3]}
+  {decode(shuffledAnswers[3])}
   </label>
 </div>
 
 
 {/* Disabled version. Can this be called during the 5 second timer, and then switch to not-diabled for the 15 second timer? */}
-<div class="form-check">
+{/* <div class="form-check">
   <input class="form-check-input" type="radio" name="answerDisabled" id="answerDisabled" disabled/>
   <label class="form-check-label" for="answerDisabled">
   {shuffledAnswers[0]}
   </label>
-</div>
+</div> */}
 {/* duplicate this for the three other answers */}
     
     </>
