@@ -10,7 +10,7 @@ function Timer(props) {
   // const [seconds, setSeconds] = useState(0);
   // const [round, setRound] = React.useState(1);
   // const [score, setScore] = React.useState(0);
-
+//TESET COMMENT
   // const [difficulty, setDifficulty] = useState("Hard");
 
   // const [duration, setDuration] = useState(5);
