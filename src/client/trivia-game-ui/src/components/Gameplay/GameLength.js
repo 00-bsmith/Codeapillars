@@ -89,7 +89,6 @@ const handleChangeType = (e) => {
 
         <div className="row">
           <div className="col">
-            {/* {(type === 1 || type === 2 || type === 3) ? ( */}
             <Link
               to={`/game`}
               className="btn btn-success mb-3 ml-2"
@@ -97,7 +96,6 @@ const handleChangeType = (e) => {
             >
               Start Game
             </Link>
-            {/*) : "" */}
           </div>
         </div>
 
