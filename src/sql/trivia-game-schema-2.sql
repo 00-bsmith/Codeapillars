@@ -146,43 +146,43 @@ values (1, "Wanna Snuggle again??", true, true, 67, "Great", "bad", "no", "Go aw
 
 select MAX(game_id) from game_storage;
 
-delimiter //
-create procedure get_known_good_state()
-begin
+-- delimiter //
+-- create procedure get_known_good_state()
+-- begin
 
-	delete from short_high_score;
-    alter table short_high_score auto_increment = 1;
-    delete from medium_high_score;
-    alter table medium_high_score auto_increment = 1;
-    delete from long_high_score;
-    alter table long_high_score auto_increment = 1;
+-- 	delete from short_high_score;
+--     alter table short_high_score auto_increment = 1;
+--     delete from medium_high_score;
+--     alter table medium_high_score auto_increment = 1;
+--     delete from long_high_score;
+--     alter table long_high_score auto_increment = 1;
 
-    insert into short_high_score(initials, score, `date`) values
-        ("BJS", "499", now()),
-        ("2FH", "250", now()),
-        ("2FH", "500", now());
+--     insert into short_high_score(initials, score, `date`) values
+--         ("BJS", "499", now()),
+--         ("2FH", "250", now()),
+--         ("2FH", "500", now());
 
-	insert into medium_high_score(initials, score, `date`) values
-        ("BJS", "899", now()),
-        ("2FH", "750", now()),
-        ("2FH", "1200", now());
-        
-	insert into long_high_score(initials, score, `date`) values
-        ("BJS", "2499", now()),
-        ("2FH", "2250", now()),
-        ("2FH", "2500", now());
+-- 	insert into medium_high_score(initials, score, `date`) values
+--         ("BJS", "899", now()),
+--         ("2FH", "750", now()),
+--         ("2FH", "1200", now());
+--         
+-- 	insert into long_high_score(initials, score, `date`) values
+--         ("BJS", "2499", now()),
+--         ("2FH", "2250", now()),
+--         ("2FH", "2500", now());
 
-end //
+-- end //
 -- 4. Change the statement terminator back to the original.
-delimiter ;
+-- delimiter ;
 
 SET SQL_SAFE_UPDATES = 0;
 call get_known_good_state;
 SET SQL_SAFE_UPDATES = 1;
         
-        insert into app_role (`name`) values
-    ('USER'),
-    ('ADMIN');
+insert into app_role (`name`) values
+('USER'),
+('ADMIN');
 
 -- passwords are set to "P@ssw0rd!"
 insert into app_user (username, password_hash, disabled)
