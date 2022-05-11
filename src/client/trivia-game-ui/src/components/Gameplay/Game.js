@@ -26,7 +26,8 @@ const Game = (props) => {
 
   const [duration, setDuration] = useState(5);
   const [remainingTime, setRemainingTime] = useState(duration);
-  ///////////////
+  
+  // Hooks and functions from Question.js (being passed down as props)
   const [earnedPoints, setEarnedPoints] = useState(0);
   const [answer, setAnswer] = useState("");
   const [correctAnswer, setCorrectAnswer] = useState("");
@@ -78,6 +79,7 @@ const Game = (props) => {
       console.log(error);
     }
   };
+  
   // Functions from Timer.js (being passed down as props)
   const stopTimer = () => {
     setSeconds(currentTime);
@@ -145,20 +147,27 @@ const Game = (props) => {
 
   const playRound = () => {
     // there is no current difficulty, this can be modified in future iterations to include easy, medium and hard, changing the larger duration number accordingly.
+    let roundCount;
     if (props.type === 1) {
-      if (round === 7 && duration === 15) {
-        setRemainingTime(0);
-        setIsPlaying(false);
+      roundCount=7;
+    } else if (props.type === 2) {
+      roundCount=15;
+    } else if (props.type === 3) {
+      roundCount=30;
+    }
+    if (round === roundCount && duration === 15) {
+      setRemainingTime(0);
+      setIsPlaying(false);
+    } else {
+      if (duration === 5) {
+        setDuration(15);
       } else {
-        if (duration === 5) {
-          setDuration(15);
-        } else {
-          setRound(round + 1);
-          setDuration(5);
-          getRound(round);
-        }
-        setKey((prevKey) => prevKey + 1);
+        setRound(round + 1);
+        setDuration(5);
+        handleQuestionSubmit();
+        getRound(round);
       }
+      setKey((prevKey) => prevKey + 1);
     }
   };
 
