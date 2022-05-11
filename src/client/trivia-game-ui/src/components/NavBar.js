@@ -11,11 +11,27 @@ const NavBar = () => {
     <>
       {!auth.user && (
         <>
-          <Navbar sticky="top" bg="dark" variant="dark" >
+          {/* <Navbar sticky="top" bg="dark" variant="dark" > */}
+          <Navbar collapseOnSelect expand="lg" sticky="top" bg="dark" variant="dark" >
             <Container>
-              <Navbar.Brand href="/"></Navbar.Brand>
+            <Navbar.Brand href="/"> 
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-door-fill" viewBox="0 0 16 16">
+  <path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5z"/>
+</svg>
+            {/* <img src={"images/TP-med.png"}
+                alt=""
+                width="30"
+                height="30"
+                className="d-inline-block align-top"
+            /> */}
+            TriviaPillar
+              </Navbar.Brand>
+              {/* <Navbar.Brand href="/"></Navbar.Brand> */}
 
+              <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+              <Navbar.Collapse id="responsive-navbar-nav">
               <Nav className="me-auto">
+
                 <Link to="/" className="nav-link">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-door-fill" viewBox="0 0 16 16">
   <path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5z"/>
@@ -49,6 +65,7 @@ Leaderboards
 Admin Login
                 </Link>
               </Nav>
+              </Navbar.Collapse>
             </Container>
           </Navbar>
         </>
@@ -57,9 +74,18 @@ Admin Login
       {auth.user && (
         <>
         <Container>
-          <Navbar bg="dark" variant="dark" sticky="top">
-            {/* <Container> */}
-              <Navbar.Brand href="/"></Navbar.Brand>
+          <Navbar collapseOnSelect expand="lg" sticky="top" bg="dark" variant="dark">
+            <Container>
+            <Navbar.Brand href="/"> 
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-door-fill" viewBox="0 0 16 16">
+  <path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5z"/>
+</svg>
+TriviaPillar
+              </Navbar.Brand>
+              {/* <Navbar.Brand href="/"></Navbar.Brand> */}
+
+              <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+              <Navbar.Collapse id="responsive-navbar-nav">
 
               <Nav className="me-auto">
                 <Link to="/" className="nav-link">
@@ -109,7 +135,9 @@ Admin Logout
                   </Navbar.Text>
                 </Navbar.Collapse>
               </Nav>
-            {/* </Container> */}
+
+              </Navbar.Collapse>
+            </Container>
           </Navbar>
           </Container>
         </>
