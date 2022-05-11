@@ -144,8 +144,10 @@ const LeaderBoard = () => {
       <h1 style={{ margin: "18px" }}>Leaderboards</h1>
       <h2 style={{ margin: "18px" }} className="my-4">
         Short Round Leaderboard
+        <hr />
       </h2>
-      <table className="table table-striped table-hover">
+      {/* <table className="table table-striped table-hover " > */}
+      <table className="table table-borderless table-hover " >
         <thead>
           <tr>
             <th scope="col">Initials</th>
@@ -176,10 +178,13 @@ const LeaderBoard = () => {
           ))}
         </tbody>
       </table>
+      <br />
       <h2 style={{ margin: "18px" }} className="my-4">
         Medium Round Leaderboard
+        <hr />
       </h2>
-      <table className="table table-striped table-hover">
+      {/* <table className="table table-striped table-hover"> */}
+      <table className="table table-borderless table-hover " >
         <thead>
           <tr>
             <th scope="col">Initials</th>
@@ -210,10 +215,13 @@ const LeaderBoard = () => {
           ))}
         </tbody>
       </table>
+      <br />
       <h2 style={{ margin: "18px" }} className="my-4">
         Long Round Leaderboard
+        <hr />
       </h2>
-      <table className="table table-striped table-hover">
+      {/* <table className="table table-striped table-hover"> */}
+      <table className="table table-borderless table-hover " >
         <thead>
           <tr>
             <th scope="col">Initials</th>
