@@ -119,7 +119,7 @@ const Game = (props) => {
   };
 
   const calculateScore = () => {
-    if (duration === 15) {
+    if (duration === 10) {
       const time = duration - currentTime;
       const a = time / duration;
       console.log("a: " + a);
