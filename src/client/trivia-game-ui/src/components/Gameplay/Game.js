@@ -123,6 +123,8 @@ const Game = (props) => {
       ) : (
         "Getting question..."
       )}
+
+
 {/* // write roundResult function:  */}
 {/* if correct answer = "That's right!" */}
 {/* if wrong answer = "Nope, wrong answer." */}
@@ -132,20 +134,7 @@ const Game = (props) => {
           {/* this needs to just START the NEXT round timer and increment the round*/} 
 
 
- {/* These buttons being here stopped the timer from working correctly */}
- {/* <div className="row">
-
-<div className="col">
-  <p>These buttons are here just to access the pages for styling and functionality</p>
-</div>
-  <div className="col">
-      <Link to="/results" className="btn btn-warning mb-3 ml-2">Results</Link>
-    </div>
-  
-  <div className="col">
-      <Link to="/finalResults" className="btn btn-danger mb-3 ml-2">Final Results</Link>
-    </div>
-</div>   */}
+ 
 
     </>
   );
