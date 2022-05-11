@@ -95,13 +95,20 @@ export const Question = (props) => {
   }, [correct]);
 
   const handleSubmit = async () => {
+    if (answer === correctAnswer) {
+        setCorrect(true);
+        console.log("Correct!");
+    }
+    setAnswered(true);
+    console.log("Answered!");
+
     const updatedQuestion = {
-      questionId: questionId,
+      id: questionId,
       gameId: props.gameId,
       answered: answered,
       correct: correct,
     };
-
+    console.log(updatedQuestion);
     const body = JSON.stringify(updatedQuestion);
 
     try {
@@ -112,7 +119,7 @@ export const Question = (props) => {
           headers: {
             "Content-Type": "application/json",
           },
-          body,
+          body: body
         }
       );
 
