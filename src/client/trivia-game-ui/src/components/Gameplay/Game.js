@@ -4,6 +4,7 @@ import Round from "./Round";
 import Timer from "../Clock/Timer";
 import Question from "../Gameplay/Question";
 import "./Game.css";
+import { Link } from "react-router-dom";
 
 const Game = (props) => {
   const [currentScore, setCurrentScore] = useState(0);
@@ -248,7 +249,9 @@ const Game = (props) => {
         console.log("Else statement");
         if(buttonSwitch===false){
           handleQuestionSubmit();
+          
           }
+          // request sent here after 10-sec timer and before 5-second timer 
         getData();
         setRound(round + 1);
         setDuration(5);
@@ -387,6 +390,11 @@ const Game = (props) => {
           Good Luck!
         </h4>
       </div>
+
+      <div className="col">
+            {/* <img src={"images/TP-sm-med.png"}  alt="TriviaPillar" /> */}
+            <Link to="/finalResults" className="btn btn-danger mb-3 ml-2">Final Results</Link>
+          </div>
 
       {questionSwitch === 1 ? (
         <div className="container mt-4">

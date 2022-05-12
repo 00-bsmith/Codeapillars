@@ -35,7 +35,7 @@ export const Question = (props) => {
 
   useEffect(() => {
     props.getData();
-    console.log(props.question);
+    console.log("I'M THE QUESTION UseEFFECT HOOK - line 38" + props.question);
   }, []);
 
   useEffect(() => {
@@ -52,7 +52,7 @@ export const Question = (props) => {
       randomIndex;
 
     // While there remain elements to shuffle.
-    while (currentIndex != 0) {
+    while (currentIndex !== 0) {
       // Pick a remaining element.
       randomIndex = Math.floor(Math.random() * currentIndex);
       currentIndex--;
