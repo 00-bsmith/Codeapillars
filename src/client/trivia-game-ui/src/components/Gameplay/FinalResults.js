@@ -5,6 +5,19 @@ import Score from "./Score";
 const FinalResults = () => {
   const [currentScore, setCurrentScore] = useState(0);
 
+  let length;
+  if (props.type === 1) {
+    length = "short";
+  } else if (props.type === 2) {
+    length = "medium";
+  } else if (props.type === 3) {
+    length = "long";
+  }
+
+  const handleSubmit = () => {
+    
+  }
+  
   return (
     <>
       <div></div>
