@@ -111,11 +111,11 @@ function Timer(props) {
           //  original parameter:   onComplete={() => ({ shouldRepeat: true, delay: 0 })}
 
           onComplete={() => {
-            //props.setCurrentTime(0); //B added this to force current time to 0
+            props.setCurrentTime(0); //B added this to force current time to 0
             props.playRound();
             
 
-            return { shouldRepeat: true, delay: 1.5 };
+            return { shouldRepeat: false, delay: 1 };
           }}
         >
           {props.renderTime}
@@ -124,7 +124,7 @@ function Timer(props) {
       
       <div style={{ margin: "18px" }} className="round-container">
         {/* This stop-timer-button needs to ALSO submit answer !!!*/}
-        <button
+        {/* <button
           type="submit"
           className="btn btn-success stop-timer-button"
           onClick={props.stopTimer}
@@ -132,13 +132,13 @@ function Timer(props) {
           Submit
         </button>
         {/* probably dont need a restart button, just here to play with for now Maybe it is utilized on the Results page?*/}
-        <button
+        {/* <button
           type="submit"
           className="btn btn-warning stop-button"
           onClick={props.restartTimer}
         >
           restart
-        </button>
+        </button> */}
 
         {/* Dont need this bit for functionality, it's just displayed to vew functionality for now.*/}
         {/* <p id="round">

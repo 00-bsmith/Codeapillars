@@ -44,9 +44,6 @@ const Game = (props) => {
 
   
 
-  useEffect(() => {
-    console.log("Use effect:"+score);
-  }, [score]);
 
 
 
@@ -60,6 +57,40 @@ const Game = (props) => {
     // console.log("dur: " + duration);
     // console.log("Time Stopped @: " + currentTime);
   };
+
+
+  const renderTime = ({ remainingTime }) => {
+    if (remainingTime === 0) {
+      if(duration===10){
+        setCurrentTime(0);
+        console.log("Time is up!");
+      }
+      
+      return <div className="timer">Time is Up!</div>;
+    }
+    setCurrentTime(remainingTime);
+
+    if (duration === 5) {
+      return (
+        <div className="timer">
+          <div className="text">Read Question</div>
+          <div className="value">{remainingTime}</div>
+          <div className="text">seconds</div>
+        </div>
+      );
+    } else {
+      return (
+        <div className="timer">
+          <div className="text">Choose Answer</div>
+          <div className="value">{remainingTime}</div>
+          <div className="text">seconds</div>
+        </div>
+      );
+    }
+  };
+
+
+
 
   const calculateScore = () => {
     if (duration === 10) {
@@ -83,7 +114,6 @@ const Game = (props) => {
       console.log("d: " + d);
       //let score = d;
       globalScore=d;
-      console.log("Calc score: " + score);
       globalScore=Math.round(globalScore);
      // setScore(Math.round(score));
       getScore(globalScore);
@@ -99,13 +129,16 @@ const Game = (props) => {
   const handleQuestionSubmit = async () => {
     setButtonSwitch(true);
     //stopTimer();
-    calculateScore();
+    
     let tempCorrect = false;
     console.log("Answer: " + answer);
     console.log("Correct Answer: " + correctAnswer);
     if (answer === correctAnswer) {
       tempCorrect = true;
       console.log("Correct!");
+      calculateScore();
+    }else{
+      globalScore=0;
     }
     let tempAnswered = true;
     console.log("Answered!");
@@ -185,34 +218,7 @@ const Game = (props) => {
   // not sure about this reset. Currently it isn't working here.
 
 
-  const renderTime = ({ remainingTime }) => {
-    setCurrentTime(remainingTime);
-    if (remainingTime === 0) {
-      if(duration===10){
-        setCurrentTime(0);
-        console.log("Time is up!");
-      }
-      
-      return <div className="timer">Time is Up!</div>;
-    }
-    if (duration === 5) {
-      return (
-        <div className="timer">
-          <div className="text">Read Question</div>
-          <div className="value">{remainingTime}</div>
-          <div className="text">seconds</div>
-        </div>
-      );
-    } else {
-      return (
-        <div className="timer">
-          <div className="text">Choose Answer</div>
-          <div className="value">{remainingTime}</div>
-          <div className="text">seconds</div>
-        </div>
-      );
-    }
-  };
+
 
   const playRound = () => {
     // there is no current difficulty, this can be modified in future iterations to include easy, medium and hard, changing the larger duration number accordingly.
@@ -225,16 +231,21 @@ const Game = (props) => {
       roundCount = 30;
     }
     if (round === roundCount && duration === 10) {
+      console.log("IS THIS THE LAST ROUND?");
       if(buttonSwitch===false){
+        console.log("SUBMIT ON LAST ROUND?");
       handleQuestionSubmit();
       }
       getData();
       setRemainingTime(0);
       setIsPlaying(false);
     } else {
+      console.log("Not last round?");
       if (duration === 5) {
+        console.log("If statement");
         setDuration(10);
       } else {
+        console.log("Else statement");
         if(buttonSwitch===false){
           handleQuestionSubmit();
           }
