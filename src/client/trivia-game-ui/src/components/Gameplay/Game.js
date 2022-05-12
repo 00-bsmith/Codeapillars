@@ -11,7 +11,7 @@ const Game = (props) => {
   const [currentScore, setCurrentScore] = useState(0);
   const [currentRound, SetCurrentRound] = useState(1);
 
-  const [gameId, setGameId] = useState(0);
+  // const [gameId, setGameId] = useState(0);
   const [errors, setErrors] = useState([]);
 
   const [questionSwitch, setQuestionSwitch] = useState(0);
@@ -136,7 +136,7 @@ const Game = (props) => {
     
     let updatedQuestion = {
       id: questionId,
-      gameId: gameId,
+      gameId: props.gameId,
       answered: true,
       correct: tempCorrect,
       earnedPoints: globalScore,
@@ -174,7 +174,7 @@ const Game = (props) => {
   const getData = async () => {
     console.log("Getting data...");
     
-    fetch(`http://localhost:8080/api/question/${gameId}/next`)
+    fetch(`http://localhost:8080/api/question/${props.gameId}/next`)
       .then((response) => response.json())
       .then((data) => {
         setQuestion(data);
@@ -269,7 +269,7 @@ const Game = (props) => {
         const data = await response.json();
         console.log(data);
         if (data !== 0) {
-          setGameId(data);
+          props.setGameId(data);
         } else {
           setErrors(data);
         }
@@ -293,10 +293,10 @@ const Game = (props) => {
   }, [currentScore]);
 
   useEffect(() => {
-    if (gameId !== 0) {
+    if (props.gameId !== 0) {
       setQuestionSwitch(1);
     }
-  }, [gameId]);
+  }, [props.gameId]);
 
   return (
     <>
@@ -367,7 +367,7 @@ const Game = (props) => {
         <div className="container mt-4">
           <div className="row">
             <Question
-              gameId={gameId}
+              gameId={props.gameId}
               duration={duration}
               earnedPoints={earnedPoints}
               setEarnedPoints={setEarnedPoints}

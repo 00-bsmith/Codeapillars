@@ -1,14 +1,16 @@
-import React, { useState } from "react";
+import { decode } from "html-entities";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Score from "./Score";
 
 const FinalResults = (props) => {
   const [currentScore, setCurrentScore] = useState(0);
   const [initials, setInitials] = useState("");
+  const [questions, setQuestions] = useState([]);
   const [errors, setErrors] = useState([]);
+  const [buttonSwitch, setButtonSwitch] = useState(false);
 
   let length;
-  let buttonSwitch = false;
 
   if (props.type == 1) {
     length = "short";
@@ -54,7 +56,7 @@ const FinalResults = (props) => {
         const data = await response.json();
         console.log(data);
         if (data != 0) {
-          buttonSwitch = true;
+          setButtonSwitch(true);
         } else {
           setErrors(data);
         }
@@ -65,6 +67,22 @@ const FinalResults = (props) => {
       console.log(error);
     }
   }
+
+  const getData = async () => {
+    // console.log("Getting data...");
+    
+    fetch(`http://localhost:8080/api/question/game/${props.gameId}`)
+      .then((response) => response.json())
+      .then((data) => {
+        setQuestions(data);
+      })
+      .catch((error) => console.log(error));
+  
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
   
   return (
     <>
@@ -108,7 +126,7 @@ const FinalResults = (props) => {
               <div className="col">
               <button type="button" className="btn btn-success mb-2" onClick={handleSubmit}>Submit</button>
               </div>
-            ) : ""}
+            ) : <></>}
             
             </form>
           </div>
@@ -121,10 +139,11 @@ const FinalResults = (props) => {
       <Link to="/gamelength" className="btn btn-danger mb-3 ml-2 ">Play Again</Link>
       </div>
 
+      {/* <p>Final Results - this isn't grabbing the the correct score yet.</p> */}
 
       <div  className="container2 mt-2 mb-4">
         <div className="text-center">
-      
+
            <h2 style={{ margin: "16px" }} className="my-4">
         Final Results
         <hr />
@@ -135,19 +154,19 @@ const FinalResults = (props) => {
           <tr>
             <th scope="col">Question</th>
             <th scope="col">Correct Answer</th>
-            <th scope="col">Round Score</th>
+            <th scope="col">Points Scored</th>
             <th scope="col">&nbsp;</th>
           </tr>
         </thead>
         <tbody>
-          {/* {shortScoreEntries.map((shortScoreEntry) => (
-            <tr key={shortScoreEntry.score}>
-              <td>{shortScoreEntry.initials}</td>
-              <td>{shortScoreEntry.score}</td>
-              <td>{shortScoreEntry.scoreDateTime}</td>
+          {questions.map((question) => (
+            <tr key={question.id}>
+              <td>{decode(question.question)}</td>
+              <td>{decode(question.allAnswers[0])}</td>
+              <td>{question.earnedPoints}</td>
               <td></td>
             </tr>
-          ))} */}
+          ))}
           </tbody>
           </table>
         </div>
