@@ -213,6 +213,7 @@ const Game = (props) => {
      
       if(buttonSwitch===false){//
        console.log("endGame Submit");
+       finalResultsSwitch = true;
       handleQuestionSubmit();
       }
       //getData(); // the very last qustion doesn't need to fetch data again
