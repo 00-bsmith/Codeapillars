@@ -40,7 +40,7 @@ const Game = (props) => {
   const [correct, setCorrect] = useState(false);
 
   let globalScore=0;
-
+  let usedIds=[];
 
   
 
@@ -236,7 +236,7 @@ const Game = (props) => {
         console.log("SUBMIT ON LAST ROUND?");
       handleQuestionSubmit();
       }
-      getData();
+      //getData(); // the very last qustion doesn't need to fetch data again
       setRemainingTime(0);
       setIsPlaying(false);
     } else {
