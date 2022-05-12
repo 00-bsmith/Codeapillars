@@ -399,7 +399,7 @@ const Game = (props) => {
           <div className="col">
             <Link
               to={`/finalResults`}
-              className="btn btn-success mb-3 ml-2"
+              className="btn btn-danger mb-3 ml-2"
               type="submit"
               currentScore={currentScore}
               type1={props.type}
