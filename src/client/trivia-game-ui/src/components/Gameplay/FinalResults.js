@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Score from "./Score";
 
-const FinalResults = () => {
+const FinalResults = (props) => {
   const [currentScore, setCurrentScore] = useState(0);
 
   let length;
@@ -30,7 +30,7 @@ const FinalResults = () => {
                  Good Effort!
             </div>
             <div className="text-center">
-            Here is your round summary!
+            Here is your game summary!
             </div>
           </div>
         </div>
@@ -77,6 +77,31 @@ const FinalResults = () => {
         <div className="text-center">
            Placeholder for the final results:
 
+           <h2 style={{ margin: "16px" }} className="my-4">
+        Final Results
+        <hr />
+      </h2>
+      {/* <table className="table table-striped table-hover " > */}
+      <table className="table table-borderless table-hover " >
+        <thead>
+          <tr>
+            <th scope="col">Question</th>
+            <th scope="col">Correct Answer</th>
+            <th scope="col">Round Score</th>
+            <th scope="col">&nbsp;</th>
+          </tr>
+        </thead>
+        <tbody>
+          {/* {shortScoreEntries.map((shortScoreEntry) => (
+            <tr key={shortScoreEntry.score}>
+              <td>{shortScoreEntry.initials}</td>
+              <td>{shortScoreEntry.score}</td>
+              <td>{shortScoreEntry.scoreDateTime}</td>
+              <td></td>
+            </tr>
+          ))} */}
+          </tbody>
+          </table>
         </div>
       </div>
     </>
