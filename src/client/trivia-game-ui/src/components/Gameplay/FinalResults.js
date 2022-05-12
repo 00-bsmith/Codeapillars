@@ -10,13 +10,13 @@ const FinalResults = (props) => {
   let length;
   let buttonSwitch = false;
 
-  if (props.type1 === 1) {
+  if (props.type == 1) {
     length = "short";
     console.log("Length: Short");
-  } else if (props.type1 === 2) {
+  } else if (props.type == 2) {
     length = "medium";
     console.log("Length: Medium");
-  } else if (props.type1 === 3) {
+  } else if (props.type == 3) {
     length = "long";
     console.log("Length: Long");
   }

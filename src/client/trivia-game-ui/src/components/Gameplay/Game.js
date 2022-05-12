@@ -16,6 +16,7 @@ const Game = (props) => {
 
   const [questionSwitch, setQuestionSwitch] = useState(0);
   const [buttonSwitch, setButtonSwitch] = useState(false);
+  const [finalResultsSwitch, setFinalResultsSwitch] = useState(false);
   // Hooks from Timer.js (being passed down as props)
   const [currentTime, setCurrentTime] = React.useState(0);
   const [key, setKey] = useState(0);
@@ -197,28 +198,29 @@ const Game = (props) => {
   // probably wont need this restart functionality here. Perhaps on the results page to get next question?
 
   // not sure about this reset. Currently it isn't working here.
-  let finalResultsSwitch = true;
   const playRound = () => {
     // there is no current difficulty, this can be modified in future iterations to include easy, medium and hard, changing the larger duration number accordingly.
     console.log("Playing round");
     let roundCount;
-    if (props.type === 1) {
+    console.log("Props.Type: " + props.type);
+    if (props.type == 1) {
       roundCount = 7;
-    } else if (props.type === 2) {
+    } else if (props.type == 2) {
       roundCount = 15;
-    } else if (props.type === 3) {
+    } else if (props.type == 3) {
       roundCount = 30;
     }
+    console.log("Round #: " + round + "/ " + roundCount); 
     if (round === roundCount && duration === 10) {//if the round is the last one and the duration is 10 seconds
      
       if(buttonSwitch===false){//
        console.log("endGame Submit");
-       finalResultsSwitch = true;
       handleQuestionSubmit();
       }
       //getData(); // the very last qustion doesn't need to fetch data again
       setRemainingTime(0);
       setIsPlaying(false);
+      setFinalResultsSwitch(true);
     } else {//if the round is not the last one
      
       if (duration === 5) {//if the duration is 5 seconds
@@ -392,7 +394,7 @@ const Game = (props) => {
         "Getting question..."
       )}
 
-      {finalResultsSwitch === true ? (
+      {finalResultsSwitch ? (
         <div className="row">
           <div className="col">
             <Link
@@ -407,7 +409,8 @@ const Game = (props) => {
           </div>
         </div>
       ) : (
-        ""
+        <>
+        </>
       )}
       {/* // write roundResult function:  */}
       {/* if correct answer = "That's right!" */}
