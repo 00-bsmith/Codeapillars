@@ -91,4 +91,10 @@ public class MediumScoreJdbcTemplateRepository implements ScoreRepository{
     public boolean deleteById(int scoreId) {
         return jdbcTemplate.update("delete from medium_high_score where score_id = ?;", scoreId)>0;
     }
+
+    @Override
+    public List<ScoreEntry> findRanking() {
+        final String sql = "select score_id, initials, score, date from medium_high_score order by score, `date` desc limit 50;";
+        return jdbcTemplate.query(sql,new ScoreMapper());
+    }
 }

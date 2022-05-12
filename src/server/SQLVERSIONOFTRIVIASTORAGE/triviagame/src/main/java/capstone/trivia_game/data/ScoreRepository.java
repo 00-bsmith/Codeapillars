@@ -19,4 +19,6 @@ public interface ScoreRepository {
 
     @Transactional
     boolean deleteById(int scoreId);
+
+    List<ScoreEntry> findRanking();
 }

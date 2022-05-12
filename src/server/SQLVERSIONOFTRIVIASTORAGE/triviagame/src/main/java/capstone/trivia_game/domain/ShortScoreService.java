@@ -294,4 +294,8 @@ public class ShortScoreService {
 
         return result;
     }
+
+    public List<ScoreEntry> findRanking(){
+        return repository.findRanking();
+    }
 }
