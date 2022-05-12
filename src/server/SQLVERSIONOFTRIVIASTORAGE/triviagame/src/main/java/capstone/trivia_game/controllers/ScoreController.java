@@ -40,6 +40,26 @@ public class ScoreController {
         }
 
     }
+    @GetMapping("/{length}/hiscores")
+    public List<ScoreEntry> findRanking(@PathVariable String length){
+        if(length.equalsIgnoreCase("short")){
+            return shortService.findRanking();
+        }
+        else if(length.equalsIgnoreCase("medium")){
+            return mediumService.findRanking();
+        }
+        else if(length.equalsIgnoreCase("long")){
+            return longService.findRanking();
+        }
+        else{
+            return null;
+        }
+
+    }
+
+
+
+
 
     @GetMapping("/{length}/{scoreId}")
     public ScoreEntry findById(@PathVariable String length, @PathVariable int scoreId){

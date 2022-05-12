@@ -31,6 +31,8 @@ function App() {
 
   const [type, setType] = useState(1);
 
+  const [gameId, setGameId] = useState(0);
+
 
   const login = (token) => {
     console.log(token);
@@ -119,6 +121,8 @@ function App() {
             <Game 
             type = {type}
             setType = {setType}
+            gameId = {gameId}
+            setGameId = {setGameId}
             />
           </Route>
 
@@ -131,6 +135,8 @@ function App() {
             <NavBar />
             <FinalResults 
             type = {type}
+            gameId = {gameId}
+            setGameId = {setGameId}
             // will this work?
             // currentScore = {currentScore}
             // setCurrentScore = {setCurrentScore}
