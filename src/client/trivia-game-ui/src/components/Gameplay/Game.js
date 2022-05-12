@@ -111,23 +111,6 @@ const Game = (props) => {
         // setScore(Math.round(score));
         getScore(globalScore);
       }
-      else{
-      const time = duration - Math.round(currentTime);
-
-      const a = time / duration;
-
-      const b = a / 1.2;
-
-      const c = 1 - b;
-
-      const d = c * 100;
-
-      //let score = d;
-      globalScore=d;
-      globalScore=Math.round(globalScore);
-     // setScore(Math.round(score));
-      getScore(globalScore);
-      }
     }
   };
 
