@@ -35,8 +35,8 @@ export const Question = (props) => {
 
   useEffect(() => {
     props.getData();
-  }, []); //THIS WAS PROCCING EVERY UPDATE
-  //now the first question isnt updating
+  }, []); // [] means run only once when component is mounted
+ 
 
   useEffect(() => {
     shuffle(props.answers);
