@@ -225,7 +225,9 @@ const Game = (props) => {
       roundCount = 30;
     }
     if (round === roundCount && duration === 10) {
+      if(buttonSwitch===false){
       handleQuestionSubmit();
+      }
       getData();
       setRemainingTime(0);
       setIsPlaying(false);
@@ -233,7 +235,9 @@ const Game = (props) => {
       if (duration === 5) {
         setDuration(10);
       } else {
-        handleQuestionSubmit();
+        if(buttonSwitch===false){
+          handleQuestionSubmit();
+          }
         getData();
         setRound(round + 1);
         setDuration(5);
