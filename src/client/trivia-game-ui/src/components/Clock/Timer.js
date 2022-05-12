@@ -111,9 +111,9 @@ function Timer(props) {
           //  original parameter:   onComplete={() => ({ shouldRepeat: true, delay: 0 })}
 
           onComplete={() => {
+            //props.setCurrentTime(0); //B added this to force current time to 0
             props.playRound();
-            if (props.round === 3 && props.duration === 15) {
-            }
+            
 
             return { shouldRepeat: true, delay: 1.5 };
           }}

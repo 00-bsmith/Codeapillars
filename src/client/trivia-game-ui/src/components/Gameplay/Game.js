@@ -39,27 +39,67 @@ const Game = (props) => {
   const [answered, setAnswered] = useState(false);
   const [correct, setCorrect] = useState(false);
 
-  const getData = async () => {
-    fetch(`http://localhost:8080/api/question/${gameId}/next`)
-      .then((response) => response.json())
-      .then((data) => {
-        setQuestion(data);
-        console.log(data);
-        setQuestionId(data.id);
-        setQuestionTitle(data.question);
-        setAnswers(data.allAnswers);
-        setCorrectAnswer(data.allAnswers[0]);
-        setPointValue(data.pointValue);
-        setAnswered(data.answered);
-        setCorrect(data.correct);
-        setEarnedPoints(data.earnedPoints);
-      })
-      .catch((error) => console.log(error));
-    setButtonSwitch(false);
+  let globalScore=0;
+
+
+  
+
+  useEffect(() => {
+    console.log("Use effect:"+score);
+  }, [score]);
+
+
+
+  const stopTimer = () => {
+    setSeconds(currentTime);
+    if (isPlaying === true) {
+      calculateScore();
+    }
+    setIsPlaying(false);
+    // console.log("secs: " + currentTime);
+    // console.log("dur: " + duration);
+    // console.log("Time Stopped @: " + currentTime);
   };
+
+  const calculateScore = () => {
+    if (duration === 10) {
+      if(currentTime === 0){
+        globalScore=0;
+        getScore(globalScore);
+      }
+      else{
+      const time = duration - Math.round(currentTime);
+      console.log("Time: " + time);
+      console.log("current time: " +currentTime);
+      console.log("seconds: " + seconds);
+      console.log("reamaining time: " + remainingTime);
+      const a = time / duration;
+      console.log("a: " + a);
+      const b = a / 1.2;
+      console.log("b: " + b);
+      const c = 1 - b;
+      console.log("c: " + c);
+      const d = c * 100;
+      console.log("d: " + d);
+      //let score = d;
+      globalScore=d;
+      console.log("Calc score: " + score);
+      globalScore=Math.round(globalScore);
+     // setScore(Math.round(score));
+      getScore(globalScore);
+      }
+    }
+  };
+
+
+
+
+
 
   const handleQuestionSubmit = async () => {
     setButtonSwitch(true);
+    //stopTimer();
+    calculateScore();
     let tempCorrect = false;
     console.log("Answer: " + answer);
     console.log("Correct Answer: " + correctAnswer);
@@ -70,14 +110,16 @@ const Game = (props) => {
     let tempAnswered = true;
     console.log("Answered!");
 
-    const updatedQuestion = {
+    console.log("Before Object: " + globalScore);
+    let updatedQuestion = {
       id: questionId,
       gameId: gameId,
       answered: tempAnswered,
       correct: tempCorrect,
-      earnedPoints: earnedPoints,
+      earnedPoints: globalScore,
     };
     console.log(updatedQuestion);
+    
     const body = JSON.stringify(updatedQuestion);
 
     try {
@@ -106,50 +148,51 @@ const Game = (props) => {
     }
   };
 
-  // Functions from Timer.js (being passed down as props)
-  const stopTimer = () => {
-    setSeconds(currentTime);
-    if (isPlaying === true) {
-      calculateScore();
-    }
-    setIsPlaying(false);
-    // console.log("secs: " + currentTime);
-    // console.log("dur: " + duration);
-    // console.log("Time Stopped @: " + currentTime);
+
+  const getData = async () => {
+    fetch(`http://localhost:8080/api/question/${gameId}/next`)
+      .then((response) => response.json())
+      .then((data) => {
+        setQuestion(data);
+        console.log(data);
+        setQuestionId(data.id);
+        setQuestionTitle(data.question);
+        setAnswers(data.allAnswers);
+        setCorrectAnswer(data.allAnswers[0]);
+        setPointValue(data.pointValue);
+        setAnswered(data.answered);
+        setCorrect(data.correct);
+        setEarnedPoints(data.earnedPoints);
+      })
+      .catch((error) => console.log(error));
+    setButtonSwitch(false);
   };
 
-  const calculateScore = () => {
-    if (duration === 10) {
-      const time = duration - currentTime;
-      const a = time / duration;
-      console.log("a: " + a);
-      const b = a / 1.2;
-      console.log("b: " + b);
-      const c = 1 - b;
-      console.log("c: " + c);
-      const d = c * 100;
-      console.log("d: " + d);
-      const score = d;
-      setScore(Math.round(score));
-      getScore(Math.round(score));
-    }
-  };
+
+
+
+  // Functions from Timer.js (being passed down as props)
+
+
+
+
+
+
 
   // probably wont need this restart functionality here. Perhaps on the results page to get next question?
-  const restartTimer = () => {
-    setCurrentTime(seconds);
-    setIsPlaying(true);
-  };
+ 
 
   // not sure about this reset. Currently it isn't working here.
-  const resetTimer = () => {
-    setIsPlaying(true);
-    setDuration(10);
-  };
+
 
   const renderTime = ({ remainingTime }) => {
     setCurrentTime(remainingTime);
     if (remainingTime === 0) {
+      if(duration===10){
+        setCurrentTime(0);
+        console.log("Time is up!");
+      }
+      
       return <div className="timer">Time is Up!</div>;
     }
     if (duration === 5) {
@@ -315,8 +358,6 @@ const Game = (props) => {
                 getRound={getRound}
                 stopTimer={stopTimer}
                 calculateScore={calculateScore}
-                resetTimer={resetTimer}
-                restartTimer={restartTimer}
                 renderTime={renderTime}
                 playRound={playRound}
               />
