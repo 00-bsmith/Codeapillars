@@ -127,6 +127,7 @@ public class QuestionSqlService {
     }
 
     public Question getNext(int gameId){
+        System.out.println("SERVICE GET NEXT CALLED");
         return  repository.getNext(gameId);
     }
 }

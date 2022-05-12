@@ -58,7 +58,7 @@ const Game = (props) => {
   const renderTime = ({ remainingTime }) => {
     if (remainingTime === 0) {
       if(duration===10){
-        setCurrentTime(0);
+        //setCurrentTime(0);
         console.log("Time is up!");
       }
       
@@ -177,7 +177,7 @@ const Game = (props) => {
 
 
   const getData = async () => {
-
+    console.log("Getting data...");
     
     fetch(`http://localhost:8080/api/question/${gameId}/next`)
       .then((response) => response.json())
@@ -228,21 +228,21 @@ const Game = (props) => {
     } else if (props.type === 3) {
       roundCount = 30;
     }
-    if (round === roundCount && duration === 10) {
+    if (round === roundCount && duration === 10) {//if the round is the last one and the duration is 10 seconds
      
-      if(buttonSwitch===false){
+      if(buttonSwitch===false){//
        console.log("endGame Submit");
       handleQuestionSubmit();
       }
       //getData(); // the very last qustion doesn't need to fetch data again
       setRemainingTime(0);
       setIsPlaying(false);
-    } else {
+    } else {//if the round is not the last one
      
-      if (duration === 5) {
+      if (duration === 5) {//if the duration is 5 seconds
         
         setDuration(10);
-      } else {
+      } else {//if the duration is 10 seconds
        
         if(buttonSwitch===false){
           console.log("Midgame submit");
@@ -250,7 +250,7 @@ const Game = (props) => {
           //getData();//try this here
           }
           console.log("Calling getData");
-        getData();
+        getData();//this is the one that fetches the next question
         setRound(round + 1);
         setDuration(5);
         getRound(round);

@@ -146,13 +146,13 @@ public class QuestionJdbcTemplateRepository implements QuestionRepository{
 
         final String sql="update game_storage set " +
                 "correct = ?, " +
-                "answered = ?, " +//may be remoced later
+                //"answered = ?, " +
                 "earned_points = ? " +
                 "where question_id = ?;";
         System.out.println("Updated: "+question.getId());
         return jdbcTemplate.update(sql,
                 question.getCorrect(),
-                question.getAnswered(),//can remove later
+               // question.getAnswered(),//can remove later
                 question.getEarnedPoints(),
                 question.getId())>0;
 
@@ -194,6 +194,7 @@ public class QuestionJdbcTemplateRepository implements QuestionRepository{
 
     @Override
     public Question getNext(int gameId){
+        System.out.println("GET NEXT CALLED");
         List<Question> available = getAvailableFromGame(gameId);
         if(available.isEmpty()){
             return null;
@@ -202,8 +203,8 @@ public class QuestionJdbcTemplateRepository implements QuestionRepository{
         int index = rand.nextInt(available.size());//if size=6, then rand should be 0-5
         Question randQuestion=available.get(index);
         System.out.println("Question ID"+randQuestion.getId());
-       // final String sql = "update game_storage set answered = true where question_id=?;";
-       // jdbcTemplate.update(sql,randQuestion.getId());
+        final String sql = "update game_storage set answered = true where question_id=?;";
+        jdbcTemplate.update(sql,randQuestion.getId());
 
         return randQuestion;
     }
