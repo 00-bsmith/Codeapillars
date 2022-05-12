@@ -240,7 +240,6 @@ const Game = (props) => {
     } else {
      
       if (duration === 5) {
-        
         setDuration(10);
       } else {
        
