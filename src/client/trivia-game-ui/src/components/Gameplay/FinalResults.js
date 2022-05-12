@@ -149,7 +149,7 @@ const FinalResults = (props) => {
         <hr />
       </h2>
       {/* <table className="table table-striped table-hover " > */}
-      <table className="table table-borderless table-hover " >
+      <table className="table table-borderless table-hover" >
         <thead>
           <tr>
             <th scope="col">Question</th>
@@ -158,10 +158,10 @@ const FinalResults = (props) => {
             <th scope="col">&nbsp;</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody >
           {questions.map((question) => (
             <tr key={question.id}>
-              <td>{decode(question.question)}</td>
+              <td >{decode(question.question)}</td>
               <td>{decode(question.allAnswers[0])}</td>
               <td>{question.earnedPoints}</td>
               <td></td>

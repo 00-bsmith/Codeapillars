@@ -146,7 +146,7 @@ const LeaderBoard = () => {
         Short Round Leaderboard
         <hr />
       </h2>
-      {/* <table className="table table-striped table-hover " > */}
+      
       <table className="table table-borderless table-hover " >
         <thead>
           <tr>
@@ -183,7 +183,7 @@ const LeaderBoard = () => {
         Medium Round Leaderboard
         <hr />
       </h2>
-      {/* <table className="table table-striped table-hover"> */}
+      
       <table className="table table-borderless table-hover " >
         <thead>
           <tr>
@@ -220,7 +220,7 @@ const LeaderBoard = () => {
         Long Round Leaderboard
         <hr />
       </h2>
-      {/* <table className="table table-striped table-hover"> */}
+      
       <table className="table table-borderless table-hover " >
         <thead>
           <tr>

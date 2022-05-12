@@ -68,7 +68,6 @@ Admin Login
 
       {auth.user && (
         <>
-        {/* <Container> */}
           <Navbar collapseOnSelect expand="lg" sticky="top" bg="dark" variant="dark">
             <Container style={{}}>
             <Navbar.Brand href="/"> 
@@ -134,7 +133,7 @@ Admin Logout
               </Navbar.Collapse>
             </Container>
           </Navbar>
-          {/* </Container> */}
+          
         </>
       )}
     </>
