@@ -7,6 +7,7 @@ const FinalResults = (props) => {
   const [currentScore, setCurrentScore] = useState(0);
   const [initials, setInitials] = useState("");
   const [questions, setQuestions] = useState([]);
+  const [scores, setScores] = useState([])
   const [errors, setErrors] = useState([]);
   const [buttonSwitch, setButtonSwitch] = useState(false);
 
@@ -34,7 +35,7 @@ const FinalResults = (props) => {
   const handleSubmit = async () => {
     let scoreEntry = {
       initials: initials,
-      score: props.currentScore,
+      score: currentScore,
       scoreDateTime: date2
     };
 
@@ -83,6 +84,13 @@ const FinalResults = (props) => {
   useEffect(() => {
     getData();
   }, []);
+
+  useEffect(() => {
+    for (let i=0; i<questions.length, i++;) {
+      setCurrentScore(currentScore + questions[i].earnedPoints);
+    }
+    console.log("Current Score: " + currentScore);
+  }, [questions])
   
   return (
     <>
@@ -105,7 +113,7 @@ const FinalResults = (props) => {
         <div className="row">
           <div className="col">
             <div className="text-center">
-              Your Total Score is: <Score currentScore={props.currentScore} />
+              Your Total Score is: <Score currentScore={currentScore} />
             </div>
           </div>
 
