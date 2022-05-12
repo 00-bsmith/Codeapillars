@@ -35,12 +35,10 @@ export const Question = (props) => {
 
   useEffect(() => {
     props.getData();
-    console.log("I'M THE QUESTION UseEFFECT HOOK - line 38" + props.question);
-  }, []);
+  }, []); // [] means run only once when component is mounted
+ 
 
   useEffect(() => {
-    console.log(props.correctAnswer);
-    console.log(props.answers);
     shuffle(props.answers);
     setShuffledAnswers(props.answers);
     console.log(props.answers);
@@ -79,13 +77,6 @@ export const Question = (props) => {
     console.log(props.gameId);
   }, [props.gameId]);
 
-  useEffect(() => {
-    console.log(props.answered);
-  }, [props.answered]);
-
-  useEffect(() => {
-    console.log(props.correct);
-  }, [props.correct]);
 
 //   const handleSubmit = async () => {
 //     let tempCorrect = false;

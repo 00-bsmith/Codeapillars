@@ -111,11 +111,12 @@ function Timer(props) {
           //  original parameter:   onComplete={() => ({ shouldRepeat: true, delay: 0 })}
 
           onComplete={() => {
-            props.setCurrentTime(0); //B added this to force current time to 0
-            props.playRound();
+            console.log("onComplete");
+           // props.setCurrentTime(0); //B added this to force current time to 0
+            props.playRound();//
             
 
-            return { shouldRepeat: false, delay: 1 };
+            return { shouldRepeat: true, delay: 1 };
           }}
         >
           {props.renderTime}

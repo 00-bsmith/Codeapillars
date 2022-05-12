@@ -4,6 +4,7 @@ import Round from "./Round";
 import Timer from "../Clock/Timer";
 import Question from "../Gameplay/Question";
 import "./Game.css";
+import FinalResults from "./FinalResults";
 import { Link } from "react-router-dom";
 
 const Game = (props) => {
@@ -41,7 +42,6 @@ const Game = (props) => {
   const [correct, setCorrect] = useState(false);
 
   let globalScore=0;
-  let usedIds=[];
 
   
 
@@ -54,19 +54,15 @@ const Game = (props) => {
       calculateScore();
     }
     setIsPlaying(false);
-    // console.log("secs: " + currentTime);
-    // console.log("dur: " + duration);
-    // console.log("Time Stopped @: " + currentTime);
   };
-
 
   const renderTime = ({ remainingTime }) => {
     if (remainingTime === 0) {
-      if(duration===10){
+      if (duration === 10) {
         setCurrentTime(0);
         console.log("Time is up!");
       }
-      
+
       return <div className="timer">Time is Up!</div>;
     }
     setCurrentTime(remainingTime);
@@ -90,47 +86,38 @@ const Game = (props) => {
     }
   };
 
-
-
-
   const calculateScore = () => {
     if (duration === 10) {
-      if(currentTime === 0){
-        globalScore=0;
+      if (currentTime === 0) {
+        globalScore = 0;
         getScore(globalScore);
-      }
-      else{
-      const time = duration - Math.round(currentTime);
-      console.log("Time: " + time);
-      console.log("current time: " +currentTime);
-      console.log("seconds: " + seconds);
-      console.log("reamaining time: " + remainingTime);
-      const a = time / duration;
-      console.log("a: " + a);
-      const b = a / 1.2;
-      console.log("b: " + b);
-      const c = 1 - b;
-      console.log("c: " + c);
-      const d = c * 100;
-      console.log("d: " + d);
-      //let score = d;
-      globalScore=d;
-      globalScore=Math.round(globalScore);
-     // setScore(Math.round(score));
-      getScore(globalScore);
+      } else {
+        const time = duration - Math.round(currentTime);
+        console.log("Time: " + time);
+        console.log("current time: " + currentTime);
+        console.log("seconds: " + seconds);
+        console.log("reamaining time: " + remainingTime);
+        const a = time / duration;
+        console.log("a: " + a);
+        const b = a / 1.2;
+        console.log("b: " + b);
+        const c = 1 - b;
+        console.log("c: " + c);
+        const d = c * 100;
+        console.log("d: " + d);
+        //let score = d;
+        globalScore = d;
+        globalScore = Math.round(globalScore);
+        // setScore(Math.round(score));
+        getScore(globalScore);
       }
     }
   };
 
-
-
-
-
-
   const handleQuestionSubmit = async () => {
     setButtonSwitch(true);
     //stopTimer();
-    
+
     let tempCorrect = false;
     console.log("Answer: " + answer);
     console.log("Correct Answer: " + correctAnswer);
@@ -138,22 +125,23 @@ const Game = (props) => {
       tempCorrect = true;
       console.log("Correct!");
       calculateScore();
-    }else{
-      globalScore=0;
+    } else {
+      globalScore = 0;
     }
     let tempAnswered = true;
-    console.log("Answered!");
 
-    console.log("Before Object: " + globalScore);
+
+
+    
     let updatedQuestion = {
       id: questionId,
       gameId: gameId,
-      answered: tempAnswered,
+      answered: true,
       correct: tempCorrect,
       earnedPoints: globalScore,
     };
     console.log(updatedQuestion);
-    
+
     const body = JSON.stringify(updatedQuestion);
 
     try {
@@ -182,8 +170,9 @@ const Game = (props) => {
     }
   };
 
-
   const getData = async () => {
+    console.log("Getting data...");
+    
     fetch(`http://localhost:8080/api/question/${gameId}/next`)
       .then((response) => response.json())
       .then((data) => {
@@ -200,29 +189,18 @@ const Game = (props) => {
       })
       .catch((error) => console.log(error));
     setButtonSwitch(false);
+
   };
-
-
-
 
   // Functions from Timer.js (being passed down as props)
 
-
-
-
-
-
-
   // probably wont need this restart functionality here. Perhaps on the results page to get next question?
- 
 
   // not sure about this reset. Currently it isn't working here.
-
-
-
-
+  let finalResultsSwitch = false;
   const playRound = () => {
     // there is no current difficulty, this can be modified in future iterations to include easy, medium and hard, changing the larger duration number accordingly.
+    console.log("Playing round");
     let roundCount;
     if (props.type === 1) {
       roundCount = 7;
@@ -231,28 +209,29 @@ const Game = (props) => {
     } else if (props.type === 3) {
       roundCount = 30;
     }
-    if (round === roundCount && duration === 10) {
-      console.log("IS THIS THE LAST ROUND?");
-      if(buttonSwitch===false){
-        console.log("SUBMIT ON LAST ROUND?");
+    if (round === roundCount && duration === 10) {//if the round is the last one and the duration is 10 seconds
+     
+      if(buttonSwitch===false){//
+       console.log("endGame Submit");
       handleQuestionSubmit();
       }
       //getData(); // the very last qustion doesn't need to fetch data again
       setRemainingTime(0);
       setIsPlaying(false);
-    } else {
-      console.log("Not last round?");
-      if (duration === 5) {
-        console.log("If statement");
+    } else {//if the round is not the last one
+     
+      if (duration === 5) {//if the duration is 5 seconds
+        
         setDuration(10);
-      } else {
-        console.log("Else statement");
+      } else {//if the duration is 10 seconds
+       
         if(buttonSwitch===false){
+          console.log("Midgame submit");
           handleQuestionSubmit();
-          
+          //getData();//try this here
           }
-          // request sent here after 10-sec timer and before 5-second timer 
-        getData();
+          console.log("Calling getData");
+        getData();//this is the one that fetches the next question
         setRound(round + 1);
         setDuration(5);
         getRound(round);
@@ -289,7 +268,7 @@ const Game = (props) => {
         if (data !== 0) {
           setGameId(data);
           if (data) {
-            // console.log("Game ID: " + data);
+            
           }
         } else {
           setErrors(data);
@@ -301,26 +280,14 @@ const Game = (props) => {
       console.log(error);
     }
 
-    // fetch(
-    //   `http://localhost:8080/api/question/build/${props.type}`,
-    //   {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //   }
-    // ).then((response) => response.json())
-    // .then((data) => setGameId(data))
-    // .catch((error) => console.log(error));
+
   };
 
   useEffect(() => {
     buildGame();
-    console.log("type: " + props.type);
   }, []);
 
   useEffect(() => {
-    console.log("Game ID: " + gameId);
     if (gameId !== 0) {
       setQuestionSwitch(1);
     }
@@ -427,6 +394,21 @@ const Game = (props) => {
         "Getting question..."
       )}
 
+      {finalResultsSwitch === true ? (
+        <div className="row">
+          <div className="col">
+            <Link
+              to={`/finalResults`}
+              className="btn btn-success mb-3 ml-2"
+              type="submit"
+            >
+              Start Game
+            </Link>
+          </div>
+        </div>
+      ) : (
+        ""
+      )}
       {/* // write roundResult function:  */}
       {/* if correct answer = "That's right!" */}
       {/* if wrong answer = "Nope, wrong answer." */}
@@ -439,8 +421,7 @@ const Game = (props) => {
 };
 export default Game;
 
-
-  /* <div className="container mt-2">
+/* <div className="container mt-2">
         <div className="row">
           <div className="col xs={2} md={3}">
             <div className="text-center">
@@ -463,4 +444,3 @@ export default Game;
           </div>
         </div>
       </div> */
-
