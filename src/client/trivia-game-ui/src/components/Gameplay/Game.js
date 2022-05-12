@@ -4,6 +4,8 @@ import Round from "./Round";
 import Timer from "../Clock/Timer";
 import Question from "../Gameplay/Question";
 import "./Game.css";
+import FinalResults from "./FinalResults";
+import { Link } from "react-router-dom";
 
 const Game = (props) => {
   const [currentScore, setCurrentScore] = useState(0);
@@ -54,14 +56,13 @@ const Game = (props) => {
     setIsPlaying(false);
   };
 
-
   const renderTime = ({ remainingTime }) => {
     if (remainingTime === 0) {
-      if(duration===10){
+      if (duration === 10) {
         setCurrentTime(0);
         console.log("Time is up!");
       }
-      
+
       return <div className="timer">Time is Up!</div>;
     }
     setCurrentTime(remainingTime);
@@ -85,13 +86,29 @@ const Game = (props) => {
     }
   };
 
-
-
-
   const calculateScore = () => {
     if (duration === 10) {
-      if(currentTime === 0){
-        globalScore=0;
+      if (currentTime === 0) {
+        globalScore = 0;
+        getScore(globalScore);
+      } else {
+        const time = duration - Math.round(currentTime);
+        console.log("Time: " + time);
+        console.log("current time: " + currentTime);
+        console.log("seconds: " + seconds);
+        console.log("reamaining time: " + remainingTime);
+        const a = time / duration;
+        console.log("a: " + a);
+        const b = a / 1.2;
+        console.log("b: " + b);
+        const c = 1 - b;
+        console.log("c: " + c);
+        const d = c * 100;
+        console.log("d: " + d);
+        //let score = d;
+        globalScore = d;
+        globalScore = Math.round(globalScore);
+        // setScore(Math.round(score));
         getScore(globalScore);
       }
       else{
@@ -114,15 +131,10 @@ const Game = (props) => {
     }
   };
 
-
-
-
-
-
   const handleQuestionSubmit = async () => {
     setButtonSwitch(true);
     //stopTimer();
-    
+
     let tempCorrect = false;
     console.log("Answer: " + answer);
     console.log("Correct Answer: " + correctAnswer);
@@ -130,8 +142,8 @@ const Game = (props) => {
       tempCorrect = true;
       console.log("Correct!");
       calculateScore();
-    }else{
-      globalScore=0;
+    } else {
+      globalScore = 0;
     }
     let tempAnswered = true;
 
@@ -146,7 +158,7 @@ const Game = (props) => {
       earnedPoints: globalScore,
     };
     console.log(updatedQuestion);
-    
+
     const body = JSON.stringify(updatedQuestion);
 
     try {
@@ -175,7 +187,6 @@ const Game = (props) => {
     }
   };
 
-
   const getData = async () => {
 
     
@@ -198,25 +209,12 @@ const Game = (props) => {
 
   };
 
-
-
-
   // Functions from Timer.js (being passed down as props)
 
-
-
-
-
-
-
   // probably wont need this restart functionality here. Perhaps on the results page to get next question?
- 
 
   // not sure about this reset. Currently it isn't working here.
-
-
-
-
+  let finalResultsSwitch = false;
   const playRound = () => {
     // there is no current difficulty, this can be modified in future iterations to include easy, medium and hard, changing the larger duration number accordingly.
     console.log("Playing round");
@@ -407,6 +405,21 @@ const Game = (props) => {
         "Getting question..."
       )}
 
+      {finalResultsSwitch === true ? (
+        <div className="row">
+          <div className="col">
+            <Link
+              to={`/finalResults`}
+              className="btn btn-success mb-3 ml-2"
+              type="submit"
+            >
+              Start Game
+            </Link>
+          </div>
+        </div>
+      ) : (
+        ""
+      )}
       {/* // write roundResult function:  */}
       {/* if correct answer = "That's right!" */}
       {/* if wrong answer = "Nope, wrong answer." */}
@@ -419,8 +432,7 @@ const Game = (props) => {
 };
 export default Game;
 
-
-  /* <div className="container mt-2">
+/* <div className="container mt-2">
         <div className="row">
           <div className="col xs={2} md={3}">
             <div className="text-center">
@@ -443,4 +455,3 @@ export default Game;
           </div>
         </div>
       </div> */
-
