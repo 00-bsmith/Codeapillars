@@ -359,7 +359,6 @@ const Game = (props) => {
       </div>
 
       <div className="col">
-            {/* <img src={"images/TP-sm-med.png"}  alt="TriviaPillar" /> */}
             <Link to="/finalResults" className="btn btn-danger mb-3 ml-2">Final Results</Link>
           </div>
 

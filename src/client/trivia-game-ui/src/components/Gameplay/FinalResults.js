@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import Score from "./Score";
 
 const FinalResults = () => {
@@ -52,6 +53,12 @@ const FinalResults = () => {
       </div>
 
       <br />
+
+      <div className="text-center">
+      <Link to="/gamelength" className="btn btn-danger mb-3 ml-2 ">Play Again</Link>
+      </div>
+
+      
 
       <p>Final Results - this isn't grabbing the the correct score yet.</p>
     </>
