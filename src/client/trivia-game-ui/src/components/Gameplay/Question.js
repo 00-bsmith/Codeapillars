@@ -35,12 +35,10 @@ export const Question = (props) => {
 
   useEffect(() => {
     props.getData();
-    console.log(props.question);
-  }, []);
+  }, []); //THIS WAS PROCCING EVERY UPDATE
+  //now the first question isnt updating
 
   useEffect(() => {
-    console.log(props.correctAnswer);
-    console.log(props.answers);
     shuffle(props.answers);
     setShuffledAnswers(props.answers);
     console.log(props.answers);
@@ -52,7 +50,7 @@ export const Question = (props) => {
       randomIndex;
 
     // While there remain elements to shuffle.
-    while (currentIndex != 0) {
+    while (currentIndex !== 0) {
       // Pick a remaining element.
       randomIndex = Math.floor(Math.random() * currentIndex);
       currentIndex--;
@@ -79,13 +77,6 @@ export const Question = (props) => {
     console.log(props.gameId);
   }, [props.gameId]);
 
-  useEffect(() => {
-    console.log(props.answered);
-  }, [props.answered]);
-
-  useEffect(() => {
-    console.log(props.correct);
-  }, [props.correct]);
 
 //   const handleSubmit = async () => {
 //     let tempCorrect = false;

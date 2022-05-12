@@ -115,7 +115,7 @@ function Timer(props) {
             props.playRound();
             
 
-            return { shouldRepeat: false, delay: 1 };
+            return { shouldRepeat: true, delay: 1 };
           }}
         >
           {props.renderTime}
