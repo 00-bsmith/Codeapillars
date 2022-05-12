@@ -197,7 +197,7 @@ const Game = (props) => {
   // probably wont need this restart functionality here. Perhaps on the results page to get next question?
 
   // not sure about this reset. Currently it isn't working here.
-  let finalResultsSwitch = false;
+  let finalResultsSwitch = true;
   const playRound = () => {
     // there is no current difficulty, this can be modified in future iterations to include easy, medium and hard, changing the larger duration number accordingly.
     console.log("Playing round");
@@ -268,9 +268,6 @@ const Game = (props) => {
         console.log(data);
         if (data !== 0) {
           setGameId(data);
-          if (data) {
-            
-          }
         } else {
           setErrors(data);
         }
@@ -287,6 +284,11 @@ const Game = (props) => {
   useEffect(() => {
     buildGame();
   }, []);
+
+  useEffect(() => {
+    console.log("Current Score Here: " + currentScore);
+    console.log("Type Here: " + props.type);
+  }, [currentScore]);
 
   useEffect(() => {
     if (gameId !== 0) {
@@ -359,10 +361,6 @@ const Game = (props) => {
         </h4>
       </div>
 
-      <div className="col">
-            <Link to="/finalResults" className="btn btn-danger mb-3 ml-2">Final Results</Link>
-          </div>
-
       {questionSwitch === 1 ? (
         <div className="container mt-4">
           <div className="row">
@@ -401,8 +399,10 @@ const Game = (props) => {
               to={`/finalResults`}
               className="btn btn-success mb-3 ml-2"
               type="submit"
+              currentScore={currentScore}
+              type1={props.type}
             >
-              Start Game
+              Game Results
             </Link>
           </div>
         </div>

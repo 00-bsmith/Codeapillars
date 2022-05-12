@@ -40,6 +40,7 @@ const GameLength = (props) => {
 
 const handleChangeType = (e) => {
   props.setType(e.target.value);
+  console.log("Type: " + props.type);
 }
 
   return (

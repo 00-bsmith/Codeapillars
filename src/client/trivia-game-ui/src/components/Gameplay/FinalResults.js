@@ -4,18 +4,66 @@ import Score from "./Score";
 
 const FinalResults = (props) => {
   const [currentScore, setCurrentScore] = useState(0);
+  const [initials, setInitials] = useState("");
+  const [errors, setErrors] = useState([]);
 
   let length;
-  if (props.type === 1) {
+  let buttonSwitch = false;
+
+  if (props.type1 === 1) {
     length = "short";
-  } else if (props.type === 2) {
+    console.log("Length: Short");
+  } else if (props.type1 === 2) {
     length = "medium";
-  } else if (props.type === 3) {
+    console.log("Length: Medium");
+  } else if (props.type1 === 3) {
     length = "long";
+    console.log("Length: Long");
   }
 
-  const handleSubmit = () => {
-    
+  const handleChangeInitials = (e) => {
+    setInitials(e.target.value);
+  }
+
+  var date = new Date();
+  // date.toISOString(); //"2011-12-19T15:28:46.493Z"
+  var date2 = date.toISOString().slice(0, -5);
+
+  const handleSubmit = async () => {
+    let scoreEntry = {
+      initials: initials,
+      score: props.currentScore,
+      scoreDateTime: date2
+    };
+
+    const body = JSON.stringify(scoreEntry);
+
+    try {
+      const response = await fetch(
+        `http://localhost:8080/api/score/${length}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: body,
+        }
+      );
+
+      if (response.status === 201 || response.status === 400) {
+        const data = await response.json();
+        console.log(data);
+        if (data != 0) {
+          buttonSwitch = true;
+        } else {
+          setErrors(data);
+        }
+      } else {
+        throw new Error("Server Error: Something unexpected went wrong.");
+      }
+    } catch (error) {
+      console.log(error);
+    }
   }
   
   return (
@@ -39,7 +87,7 @@ const FinalResults = (props) => {
         <div className="row">
           <div className="col">
             <div className="text-center">
-              Your Total Score is: <Score currentScore={currentScore} />
+              Your Total Score is: <Score currentScore={props.currentScore} />
             </div>
           </div>
 
@@ -54,11 +102,13 @@ const FinalResults = (props) => {
                 id="inlineFormInputName2"
                 placeholder="3 Initials"
                 maxLength={3}
+                onChange={handleChangeInitials}
               />
-
+            {(buttonSwitch == false) ? (
               <div className="col">
-            <button type="submit" className="btn btn-success mb-2">Submit</button>
-            </div>
+              <button type="button" className="btn btn-success mb-2" onClick={handleSubmit}>Submit</button>
+              </div>
+            ) : ""}
             
             </form>
           </div>
