@@ -155,7 +155,7 @@ let totalPoints=0;
       <Link to="/gamelength" className="btn btn-danger mb-3 ml-2 ">Play Again</Link>
       </div>
 
-      {/* <p>Final Results - this isn't grabbing the the correct score yet.</p> */}
+    
 
       <div  className="container2 mt-2 mb-4">
         <div className="text-center">
@@ -164,7 +164,7 @@ let totalPoints=0;
         Final Results
         <hr />
       </h2>
-      {/* <table className="table table-striped table-hover " > */}
+      
       <table className="table table-borderless table-hover" >
         <thead>
           <tr>

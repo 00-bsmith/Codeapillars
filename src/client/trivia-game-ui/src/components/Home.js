@@ -41,7 +41,7 @@ export const Home = () => {
 
     </div>
     
-    <div className="row">
+    {/* <div className="row"> */}
 
       {/* <div className="col">
         <p>These buttons are here just to access the pages for styling and functionality</p>
@@ -53,12 +53,12 @@ export const Home = () => {
          
 
         
-        <div className="col">
+        {/* <div className="col">
           <div className="text-center">
             <Link to="/finalResults" className="btn btn-danger mb-3 ml-2">Final Results</Link>
           </div>
           </div>
-  </div>  
+  </div>   */}
       
     </>
   );

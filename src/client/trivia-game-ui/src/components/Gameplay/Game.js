@@ -195,9 +195,7 @@ const Game = (props) => {
 
   // Functions from Timer.js (being passed down as props)
 
-  // probably wont need this restart functionality here. Perhaps on the results page to get next question?
 
-  // not sure about this reset. Currently it isn't working here.
   const playRound = () => {
     // there is no current difficulty, this can be modified in future iterations to include easy, medium and hard, changing the larger duration number accordingly.
    // console.log("Playing round");
@@ -387,7 +385,7 @@ const Game = (props) => {
               getData={getData}
               handleQuestionSubmit={handleQuestionSubmit}
             />
-            {/* <AnswerOptions /> */}
+           
           </div>
         </div>
       ) : (
@@ -412,13 +410,7 @@ const Game = (props) => {
         <>
         </>
       )}
-      {/* // write roundResult function:  */}
-      {/* if correct answer = "That's right!" */}
-      {/* if wrong answer = "Nope, wrong answer." */}
-      {/* Then display the {question} and the {correct_answer} */}
-      {/* /display their score for this round */}
-      {/*       Next Question
-          {/* this needs to just START the NEXT round timer and increment the round*/}
+ 
     </>
   );
 };
