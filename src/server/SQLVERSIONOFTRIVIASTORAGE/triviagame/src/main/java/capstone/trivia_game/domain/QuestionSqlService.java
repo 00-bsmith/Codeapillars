@@ -111,9 +111,9 @@ public class QuestionSqlService {
             result.addMessage("Question must be correct or incorrect", ResultType.INVALID);
         }
 
-        if (question.getAnswered() == null) {
-            result.addMessage("Question must be answered or unanswered", ResultType.INVALID);
-        }
+//        if (question.getAnswered() == null) {
+//            result.addMessage("Question must be answered or unanswered", ResultType.INVALID);
+//        }
 
         if (question.getEarnedPoints() < 0 || question.getEarnedPoints() > MAX_SCORE) {
             result.addMessage("Question must have earned valid points", ResultType.INVALID);
@@ -127,6 +127,7 @@ public class QuestionSqlService {
     }
 
     public Question getNext(int gameId){
+        System.out.println("SERVICE GET NEXT CALLED");
         return  repository.getNext(gameId);
     }
 }

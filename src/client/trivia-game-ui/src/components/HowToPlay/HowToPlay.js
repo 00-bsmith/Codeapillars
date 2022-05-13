@@ -23,17 +23,17 @@ const HowToPlay = () => {
  
 <div className="containerH2Pa">
     <p> You will be given five seconds to read the question, and will not be able to answer the question during that time. </p>
-    <p> After the five seconds have elapsed, you will be given fifteen seconds to select and submit an answer to the question. </p>
+    <p> After the five seconds have elapsed, you will be given ten seconds to select and submit an answer to the question. </p>
     </div>
 
     <div className="containerH2Pb">
   <p> If you answer the question correctly, you will be awarded points based on how quickly you answered the question, with your maximum score being 100 points per round. If you answered incorrectly or did not submit an answer in time, you will be awarded zero points.</p>
-  <p>*EDIT* You will be shown the question along with the correct answer and the score for the round</p>
+  {/* <p>*EDIT* After submitting your answer, you will be shown the question along with the correct answer and your score for the round.</p> */}
 </div>
 
 <div className="containerH2Pc">
-  <p>      *EDIT* After the final round concludes, you will be shown a list of the questions you were asked, along with the correct answers and your final score. </p>
-  <p>  If you receive a high enough final score, you will be prompted to enter your initials and will be shown on our leaderboard!</p>
+  <p> After the final round concludes, you will be shown a list of the questions you were asked, along with the correct answers and your final score. </p>
+  <p>  If you receive a high enough final score, you will be prompted to enter your initials and they will be shown on our leaderboard!</p>
 </div>
     
     </>

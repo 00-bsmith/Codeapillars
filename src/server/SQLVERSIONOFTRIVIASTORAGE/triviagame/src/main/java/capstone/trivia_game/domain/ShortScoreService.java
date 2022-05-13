@@ -288,10 +288,14 @@ public class ShortScoreService {
             result.addMessage("Score cannot be greater than 700", ResultType.INVALID);
         }
 
-        if (scoreEntry.getScoreDateTime().isAfter(LocalDateTime.now())) {
-            result.addMessage("Date cannot be in the future", ResultType.INVALID);
-        }
+//        if (scoreEntry.getScoreDateTime().isAfter(LocalDateTime.now())) {
+//            result.addMessage("Date cannot be in the future", ResultType.INVALID);
+//        }
 
         return result;
+    }
+
+    public List<ScoreEntry> findRanking(){
+        return repository.findRanking();
     }
 }
