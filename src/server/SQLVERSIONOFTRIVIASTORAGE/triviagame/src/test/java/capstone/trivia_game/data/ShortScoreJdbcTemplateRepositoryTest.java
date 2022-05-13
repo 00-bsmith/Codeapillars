@@ -10,13 +10,13 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
+@SpringBootTest //(webEnvironment = SpringBootTest.WebEnvironment.NONE)
 class ShortScoreJdbcTemplateRepositoryTest {
 
     @Autowired
     ShortScoreJdbcTemplateRepository repository;
-    //known good state isnt hard coded
-    //use this
+    //get_known_good_state isn't hard coded due to SQL issues
+    //please use this or rerun the schema script prior to running these tests
     /*
     * insert into short_high_score (initials, score, date) values ("BJS", "1021", now());
 insert into short_high_score (initials, score, date) values ("2FH", "1025", now());

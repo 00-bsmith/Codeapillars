@@ -10,8 +10,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
+@SpringBootTest //(webEnvironment = SpringBootTest.WebEnvironment.NONE)
 class QuestionJdbcTemplateRepositoryTest {
+
+    // UNCOMMENT mvcHandlerMappingIntrospector() IN SecurityConfig BEFORE RUNNING THESE TESTS
 
     @Autowired
     QuestionJdbcTemplateRepository repository;

@@ -60,6 +60,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 
+    // UNCOMMENT THIS BEAN BEFORE RUNNING QUESTIONJDBCTEMPLATEREPOSITORYTEST TESTS
 //    @Bean(name = "mvcHandlerMappingIntrospector")
 //    public HandlerMappingIntrospector mvcHandlerMappingIntrospector() {
 //        return new HandlerMappingIntrospector();
