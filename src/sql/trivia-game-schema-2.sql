@@ -118,11 +118,11 @@ DROP TABLE IF EXISTS `trivia-game`.`game_storage` ;
 CREATE TABLE IF NOT EXISTS `trivia-game`.`game_storage` (
   `question_id` INT NOT NULL AUTO_INCREMENT,
   `game_id` INT NOT NULL,
-  `correct_answer` VARCHAR(100) NOT NULL,
-  `incorrect_answer_1` VARCHAR(100) NOT NULL,
-  `incorrect_answer_2` VARCHAR(100) NOT NULL,
-  `incorrect_answer_3` VARCHAR(100) NOT NULL,
-  `question` VARCHAR(200) NOT NULL,
+  `correct_answer` VARCHAR(400) NOT NULL,
+  `incorrect_answer_1` VARCHAR(400) NOT NULL,
+  `incorrect_answer_2` VARCHAR(400) NOT NULL,
+  `incorrect_answer_3` VARCHAR(400) NOT NULL,
+  `question` VARCHAR(500) NOT NULL,
   `earned_points` INT NOT NULL DEFAULT 0,
   `answered` boolean NOT NULL DEFAULT FALSE,
   `correct` boolean NOT NULL DEFAULT FALSE,
@@ -180,9 +180,9 @@ SET SQL_SAFE_UPDATES = 0;
 call get_known_good_state;
 SET SQL_SAFE_UPDATES = 1;
         
-        insert into app_role (`name`) values
-    ('USER'),
-    ('ADMIN');
+insert into app_role (`name`) values
+('USER'),
+('ADMIN');
 
 -- passwords are set to "P@ssw0rd!"
 insert into app_user (username, password_hash, disabled)
