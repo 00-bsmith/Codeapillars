@@ -34,6 +34,6 @@ class QuestionSqlServiceTest {
     }
 
     Question makeQuestion() {
-
+        return null;
     }
 }
