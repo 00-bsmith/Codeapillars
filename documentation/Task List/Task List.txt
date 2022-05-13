@@ -1,0 +1,39 @@
+Project Task List
+
+-Design Game (1 hour)
+-Wireframe Diagram (1 hour)
+-Layer Diagram (1 hour)
+-Class Diagram (2 hours)
+-Database Schema Diagram (1 hour)
+-Flowchart Diagram (1 hour)
+
+-Hiscores Page
+	-SQL Backend (1 hour)
+	-Springboot Controller (3 hours)
+	-JavaScript CSS Page (3 hours)
+
+-Logo/Icon Design (2 hours)
+
+-Login Functionality 
+	-Springboot (1 hour)
+	-React (2 hours)
+
+-SQL "Known Good State" Procedure for Testing (1 hour)
+
+-User Guide/Documentation (How to Play Page) (1 hour)
+
+-Countdown Clock (4 hours)
+
+-Gameplay Functionality
+	-HTTP API Calls to Trivia API (4 hours)
+	-Storing Questions (4 hours)
+	-Scoring (4 hours)
+	-Store Results (4 hours)
+
+-AWS Deployment
+	-RDS Database (3 hours)
+	-Spring/EBS API Server (3 hours)
+	-Client Page Server (3 hours)
+
+-Overall UI Styling/Design (4 hours)
+
