@@ -35,7 +35,7 @@ function App() {
 
 
   const login = (token) => {
-    console.log(token);
+    //console.log(token);
     localStorage.setItem(TOKEN_KEY, token);
     var tokenObj;
     try {
@@ -44,7 +44,7 @@ function App() {
       console.log(error);
     }
 
-    console.log(tokenObj);
+    //console.log(tokenObj);
 
     const { sub: username, authorities: roleString } = tokenObj;
 
@@ -58,7 +58,7 @@ function App() {
         return roles.includes(role);
       },
     };
-    console.log(user);
+    //console.log(user);
 
     setUser(user);
 

@@ -61,7 +61,7 @@ const Game = (props) => {
     if (remainingTime === 0) {
       if (duration === 10) {
         setCurrentTime(0);
-        console.log("Time is up!");
+        //console.log("Time is up!");
       }
 
       return <div className="timer">Time is Up!</div>;
@@ -94,18 +94,18 @@ const Game = (props) => {
         getScore(globalScore);
       } else {
         const time = duration - Math.round(currentTime);
-        console.log("Time: " + time);
-        console.log("current time: " + currentTime);
-        console.log("seconds: " + seconds);
-        console.log("reamaining time: " + remainingTime);
+        // console.log("Time: " + time);
+        // console.log("current time: " + currentTime);
+        // console.log("seconds: " + seconds);
+        // console.log("reamaining time: " + remainingTime);
         const a = time / duration;
-        console.log("a: " + a);
+        //console.log("a: " + a);
         const b = a / 1.2;
-        console.log("b: " + b);
+       // console.log("b: " + b);
         const c = 1 - b;
-        console.log("c: " + c);
+       // console.log("c: " + c);
         const d = c * 100;
-        console.log("d: " + d);
+       // console.log("d: " + d);
         //let score = d;
         globalScore = d;
         globalScore = Math.round(globalScore);
@@ -120,11 +120,11 @@ const Game = (props) => {
     //stopTimer();
 
     let tempCorrect = false;
-    console.log("Answer: " + answer);
-    console.log("Correct Answer: " + correctAnswer);
+   // console.log("Answer: " + answer);
+   // console.log("Correct Answer: " + correctAnswer);
     if (answer === correctAnswer) {
       tempCorrect = true;
-      console.log("Correct!");
+     // console.log("Correct!");
       calculateScore();
     } else {
       globalScore = 0;
@@ -141,7 +141,7 @@ const Game = (props) => {
       correct: tempCorrect,
       earnedPoints: globalScore,
     };
-    console.log(updatedQuestion);
+    //console.log(updatedQuestion);
 
     const body = JSON.stringify(updatedQuestion);
 
@@ -158,7 +158,7 @@ const Game = (props) => {
       );
 
       if (response.status === 204) {
-        console.log("Success");
+       // console.log("Success");
         setErrors([]);
       } else if (response.status === 400) {
         const data = await response.json();
@@ -172,13 +172,13 @@ const Game = (props) => {
   };
 
   const getData = async () => {
-    console.log("Getting data...");
+    //console.log("Getting data...");
     
     fetch(`http://localhost:8080/api/question/${props.gameId}/next`)
       .then((response) => response.json())
       .then((data) => {
         setQuestion(data);
-        console.log(data);
+       // console.log(data);
         setQuestionId(data.id);
         setQuestionTitle(data.question);
         setAnswers(data.allAnswers);
@@ -200,9 +200,9 @@ const Game = (props) => {
   // not sure about this reset. Currently it isn't working here.
   const playRound = () => {
     // there is no current difficulty, this can be modified in future iterations to include easy, medium and hard, changing the larger duration number accordingly.
-    console.log("Playing round");
+   // console.log("Playing round");
     let roundCount;
-    console.log("Props.Type: " + props.type);
+  //  console.log("Props.Type: " + props.type);
     if (props.type == 1) {
       roundCount = 7;
     } else if (props.type == 2) {
@@ -210,11 +210,11 @@ const Game = (props) => {
     } else if (props.type == 3) {
       roundCount = 30;
     }
-    console.log("Round #: " + round + "/ " + roundCount); 
+  //  console.log("Round #: " + round + "/ " + roundCount); 
     if (round === roundCount && duration === 10) {//if the round is the last one and the duration is 10 seconds
      
       if(buttonSwitch===false){//
-       console.log("endGame Submit");
+      // console.log("endGame Submit");
       handleQuestionSubmit();
       }
       //getData(); // the very last qustion doesn't need to fetch data again
@@ -229,11 +229,11 @@ const Game = (props) => {
       } else {//if the duration is 10 seconds
        
         if(buttonSwitch===false){
-          console.log("Midgame submit");
+         // console.log("Midgame submit");
           handleQuestionSubmit();
           //getData();//try this here
           }
-          console.log("Calling getData");
+        //  console.log("Calling getData");
         getData();//this is the one that fetches the next question
         setRound(round + 1);
         setDuration(5);
@@ -267,7 +267,7 @@ const Game = (props) => {
 
       if (response.status === 201 || response.status === 400) {
         const data = await response.json();
-        console.log(data);
+       // console.log(data);
         if (data !== 0) {
           props.setGameId(data);
         } else {
@@ -287,10 +287,10 @@ const Game = (props) => {
     buildGame();
   }, []);
 
-  useEffect(() => {
-    console.log("Current Score Here: " + currentScore);
-    console.log("Type Here: " + props.type);
-  }, [currentScore]);
+  // useEffect(() => {
+  // //  console.log("Current Score Here: " + currentScore);
+  // //  console.log("Type Here: " + props.type);
+  // }, [currentScore]);
 
   useEffect(() => {
     if (props.gameId !== 0) {

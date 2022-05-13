@@ -10,18 +10,19 @@ const FinalResults = (props) => {
   const [scores, setScores] = useState([])
   const [errors, setErrors] = useState([]);
   const [buttonSwitch, setButtonSwitch] = useState(false);
+  const [globalTotalPoints, setGlobalTotalPoints] = useState(0);
 
   let length;
 
   if (props.type == 1) {
     length = "short";
-    console.log("Length: Short");
+    //console.log("Length: Short");
   } else if (props.type == 2) {
     length = "medium";
-    console.log("Length: Medium");
+    //console.log("Length: Medium");
   } else if (props.type == 3) {
     length = "long";
-    console.log("Length: Long");
+   // console.log("Length: Long");
   }
 
   const handleChangeInitials = (e) => {
@@ -33,9 +34,10 @@ const FinalResults = (props) => {
   var date2 = date.toISOString().slice(0, -5);
 
   const handleSubmit = async () => {
+    setButtonSwitch(true);
     let scoreEntry = {
       initials: initials,
-      score: currentScore,
+      score: globalTotalPoints,
       scoreDateTime: date2
     };
 
@@ -55,7 +57,7 @@ const FinalResults = (props) => {
 
       if (response.status === 201 || response.status === 400) {
         const data = await response.json();
-        console.log(data);
+       // console.log(data);
         if (data != 0) {
           setButtonSwitch(true);
         } else {
@@ -65,10 +67,11 @@ const FinalResults = (props) => {
         throw new Error("Server Error: Something unexpected went wrong.");
       }
     } catch (error) {
-      console.log(error);
+    // console.log(error);
     }
   }
-
+let jsonArray;
+let totalPoints=0;
   const getData = async () => {
     // console.log("Getting data...");
     
@@ -76,21 +79,26 @@ const FinalResults = (props) => {
       .then((response) => response.json())
       .then((data) => {
         setQuestions(data);
+        jsonArray=JSON.parse(JSON.stringify(data));
+        for(let i=0;i<jsonArray.length;i++){
+         // console.log("Adding: "+jsonArray[i].earnedPoints);
+          totalPoints+=jsonArray[i].earnedPoints;
+         // console.log("Total: "+totalPoints);
+          setGlobalTotalPoints(totalPoints);
+         // console.log("Global Total: "+globalTotalPoints);
+        }
+        
       })
       .catch((error) => console.log(error));
-  
+      //console.log(totalPoints);
+      // console.log("GLOBAL: "+globalTotalPoints);
   };
 
   useEffect(() => {
     getData();
   }, []);
 
-  useEffect(() => {
-    for (let i=0; i<questions.length, i++;) {
-      setCurrentScore(currentScore + questions[i].earnedPoints);
-    }
-    console.log("Current Score: " + currentScore);
-  }, [questions])
+
   
   return (
     <>
@@ -113,7 +121,7 @@ const FinalResults = (props) => {
         <div className="row">
           <div className="col">
             <div className="text-center">
-              Your Total Score is: <Score currentScore={currentScore} />
+              Your Total Score is: <Score currentScore={globalTotalPoints} />
             </div>
           </div>
 

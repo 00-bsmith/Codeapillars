@@ -41,8 +41,8 @@ export const Question = (props) => {
   useEffect(() => {
     shuffle(props.answers);
     setShuffledAnswers(props.answers);
-    console.log(props.answers);
-    console.log(props.correctAnswer);
+    // console.log(props.answers);
+    // console.log(props.correctAnswer);
   }, [props.correctAnswer]);
 
   function shuffle(array) {
@@ -69,13 +69,13 @@ export const Question = (props) => {
     props.setAnswer(event.target.id);
   };
 
-  useEffect(() => {
-    console.log(props.questionId);
-  }, [props.questionId]);
+  // useEffect(() => {
+  //   console.log(props.questionId);
+  // }, [props.questionId]);
 
-  useEffect(() => {
-    console.log(props.gameId);
-  }, [props.gameId]);
+  // useEffect(() => {
+  //   console.log(props.gameId);
+  // }, [props.gameId]);
 
 
 //   const handleSubmit = async () => {
