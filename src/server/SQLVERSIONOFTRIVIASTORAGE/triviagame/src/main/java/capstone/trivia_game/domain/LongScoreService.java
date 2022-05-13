@@ -284,13 +284,18 @@ public class LongScoreService {
         }
 
         if (scoreEntry.getScore() > 3000) {
-            result.addMessage("Score cannot be greater than 700", ResultType.INVALID);
+            result.addMessage("Score cannot be greater than 3000", ResultType.INVALID);
         }
 
-        if (scoreEntry.getScoreDateTime().isAfter(LocalDateTime.now())) {
-            result.addMessage("Date cannot be in the future", ResultType.INVALID);
-        }
+//        if (scoreEntry.getScoreDateTime().isAfter(LocalDateTime.now())) {
+//            result.addMessage("Date cannot be in the future", ResultType.INVALID);
+//        }
 
         return result;
+    }
+
+
+    public List<ScoreEntry> findRanking(){
+        return repository.findRanking();
     }
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-function Score({currentScore}) {
+function Score(props) {
 
     return (
         <>
@@ -10,7 +10,7 @@ function Score({currentScore}) {
             <div className="row">
             {/* <div className="col"><h3 className='score'>Player One:</h3></div> */}
                
-                <p style={{fontSize: 25}}>{currentScore}</p>
+                <p style={{fontSize: 25}}>{props.currentScore}</p>
 
             </div>
 

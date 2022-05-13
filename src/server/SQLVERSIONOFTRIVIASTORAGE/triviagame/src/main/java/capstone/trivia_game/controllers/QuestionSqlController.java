@@ -108,7 +108,7 @@ public class QuestionSqlController {
 
     @GetMapping("/{gameId}/next")
     public ResponseEntity<Question> getNext(@PathVariable int gameId){
-        if(service.getNext(gameId)==null){
+        if(service.getAvailableFromGame(gameId).size()==0){
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         }
         else{

@@ -20,7 +20,7 @@ const LeaderBoard = () => {
       // }
     };
 
-    fetch("http://localhost:8080/api/score/short", init)
+    fetch("http://localhost:8080/api/score/short/hiscores", init)
       .then((response) => response.json())
       .then((data) => setShortScoreEntries(data))
       .catch((error) => console.log(error));
@@ -38,7 +38,7 @@ const LeaderBoard = () => {
       // }
     };
 
-    fetch("http://localhost:8080/api/score/medium", init)
+    fetch("http://localhost:8080/api/score/medium/hiscores", init)
       .then((response) => response.json())
       .then((data) => setMediumScoreEntries(data))
       .catch((error) => console.log(error));
@@ -55,7 +55,7 @@ const LeaderBoard = () => {
       // }
     };
 
-    fetch("http://localhost:8080/api/score/long", init)
+    fetch("http://localhost:8080/api/score/long/hiscores", init)
       .then((response) => response.json())
       .then((data) => setLongScoreEntries(data))
       .catch((error) => console.log(error));
@@ -146,7 +146,7 @@ const LeaderBoard = () => {
         Short Round Leaderboard
         <hr />
       </h2>
-      {/* <table className="table table-striped table-hover " > */}
+      
       <table className="table table-borderless table-hover " >
         <thead>
           <tr>
@@ -183,7 +183,7 @@ const LeaderBoard = () => {
         Medium Round Leaderboard
         <hr />
       </h2>
-      {/* <table className="table table-striped table-hover"> */}
+      
       <table className="table table-borderless table-hover " >
         <thead>
           <tr>
@@ -220,7 +220,7 @@ const LeaderBoard = () => {
         Long Round Leaderboard
         <hr />
       </h2>
-      {/* <table className="table table-striped table-hover"> */}
+      
       <table className="table table-borderless table-hover " >
         <thead>
           <tr>

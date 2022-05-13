@@ -20,6 +20,7 @@ import HowToPlay from "./components/HowToPlay/HowToPlay";
 import NavBar from "./components/NavBar";
 import { Navbar } from "react-bootstrap";
 import GameLength from "./components/Gameplay/GameLength";
+import FinalResults from "./components/Gameplay/FinalResults";
 
 
 
@@ -28,8 +29,13 @@ const TOKEN_KEY = "user-api-token";
 function App() {
   const [user, setUser] = useState(null);
 
+  const [type, setType] = useState(1);
+
+  const [gameId, setGameId] = useState(0);
+
+
   const login = (token) => {
-    console.log(token);
+    //console.log(token);
     localStorage.setItem(TOKEN_KEY, token);
     var tokenObj;
     try {
@@ -38,7 +44,7 @@ function App() {
       console.log(error);
     }
 
-    console.log(tokenObj);
+    //console.log(tokenObj);
 
     const { sub: username, authorities: roleString } = tokenObj;
 
@@ -52,7 +58,7 @@ function App() {
         return roles.includes(role);
       },
     };
-    console.log(user);
+    //console.log(user);
 
     setUser(user);
 
@@ -70,8 +76,6 @@ function App() {
     logout,
   };
 
-  
-
   return (
     <AuthContext.Provider value={auth}>
       <Router>
@@ -80,31 +84,6 @@ function App() {
           <Route exact path="/">
             <Header />
             <Home />
-          </Route>
-
-          <Route path="/login">
-            <Header />
-            <Login />
-          </Route>
-
-          <Route path="/admin">
-            <Navbar />
-            <Admin />
-          </Route>
-
-          <Route path="/gamelength">
-            <NavBar />
-            <GameLength />
-          </Route>
-
-          <Route path="/game">
-            <NavBar />
-            <Game />
-          </Route>
-
-          <Route path="/results">
-            <NavBar />
-            <Results />
           </Route>
 
           <Route path="/howtoplay">
@@ -119,10 +98,58 @@ function App() {
             <LeaderBoard />
           </Route>
 
+          <Route path="/login">
+            <Header />
+            <Login />
+          </Route>
+
+          <Route path="/admin">
+            <Navbar />
+            <Admin />
+          </Route>
+
+          <Route path="/gamelength">
+            <NavBar />
+            <GameLength 
+            type = {type}
+            setType = {setType}
+            />
+          </Route>
+
+          <Route path="/game">
+            <NavBar />
+            <Game 
+            type = {type}
+            setType = {setType}
+            gameId = {gameId}
+            setGameId = {setGameId}
+            />
+          </Route>
+
+          <Route path="/results">
+            <NavBar />
+            <Results />
+          </Route>
+
+          <Route path="/finalResults">
+            <NavBar />
+            <FinalResults 
+            type = {type}
+            gameId = {gameId}
+            setGameId = {setGameId}
+            // will this work?
+            // currentScore = {currentScore}
+            // setCurrentScore = {setCurrentScore}
+            />
+          </Route>
+
+
+
           <Route path="*">
             <NavBar />
             <NotFound />
           </Route>
+
         </Switch>
       </Router>
     </AuthContext.Provider>

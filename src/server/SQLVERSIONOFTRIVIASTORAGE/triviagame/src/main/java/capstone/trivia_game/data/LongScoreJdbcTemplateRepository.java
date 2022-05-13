@@ -92,4 +92,10 @@ public class LongScoreJdbcTemplateRepository implements ScoreRepository{
     public boolean deleteById(int scoreId) {
         return jdbcTemplate.update("delete from long_high_score where score_id = ?;", scoreId)>0;
     }
+
+    @Override
+    public List<ScoreEntry> findRanking() {
+        final String sql = "select score_id, initials, score, date from long_high_score order by score desc, `date` asc limit 50;";
+        return jdbcTemplate.query(sql,new ScoreMapper());
+    }
 }

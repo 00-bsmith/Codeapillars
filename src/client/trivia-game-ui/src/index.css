@@ -34,9 +34,6 @@ code {
 }
 
 body {
-  
-  /* width: 270px;
-  height: 270px; */
   margin: auto;
   margin-top: 3%;
   text-align: center;
@@ -122,6 +119,8 @@ btn-primary {
 .btn-danger:hover {
   background-color: #eb665a !important
 }
+
+
 
 
 
