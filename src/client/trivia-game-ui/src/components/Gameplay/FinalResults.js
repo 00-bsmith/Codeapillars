@@ -11,7 +11,7 @@ const FinalResults = (props) => {
   const [errors, setErrors] = useState([]);
   const [buttonSwitch, setButtonSwitch] = useState(false);
   const [globalTotalPoints, setGlobalTotalPoints] = useState(0);
-
+  const apiUrl = window.API_URL;
   let length;
 
   if (props.type == 1) {
@@ -45,7 +45,7 @@ const FinalResults = (props) => {
 
     try {
       const response = await fetch(
-        `http://localhost:8080/api/score/${length}`,
+        `${apiUrl}/score/${length}`,
         {
           method: "POST",
           headers: {
@@ -75,7 +75,7 @@ let totalPoints=0;
   const getData = async () => {
     // console.log("Getting data...");
     
-    fetch(`http://localhost:8080/api/question/game/${props.gameId}`)
+    fetch(`${apiUrl}/question/game/${props.gameId}`)
       .then((response) => response.json())
       .then((data) => {
         setQuestions(data);

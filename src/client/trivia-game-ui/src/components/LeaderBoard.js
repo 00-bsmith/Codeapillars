@@ -11,7 +11,7 @@ const LeaderBoard = () => {
   // const [scoreDateTime, setScoreDateTime] = useState("");
 
   const auth = useContext(AuthContext);
-
+  const apiUrl = window.API_URL;
   const getShortData = async () => {
     const init = {
       method: "GET",
@@ -20,7 +20,7 @@ const LeaderBoard = () => {
       // }
     };
 
-    fetch("http://localhost:8080/api/score/short/hiscores", init)
+    fetch(`${apiUrl}/score/short/hiscores`, init)
       .then((response) => response.json())
       .then((data) => setShortScoreEntries(data))
       .catch((error) => console.log(error));
@@ -38,7 +38,7 @@ const LeaderBoard = () => {
       // }
     };
 
-    fetch("http://localhost:8080/api/score/medium/hiscores", init)
+    fetch(`${apiUrl}/score/medium/hiscores`, init)
       .then((response) => response.json())
       .then((data) => setMediumScoreEntries(data))
       .catch((error) => console.log(error));
@@ -55,7 +55,7 @@ const LeaderBoard = () => {
       // }
     };
 
-    fetch("http://localhost:8080/api/score/long/hiscores", init)
+    fetch(`${apiUrl}/score/long/hiscores`, init)
       .then((response) => response.json())
       .then((data) => setLongScoreEntries(data))
       .catch((error) => console.log(error));
@@ -67,7 +67,7 @@ const LeaderBoard = () => {
   const handleShortDelete = async (scoreId) => {
     try {
       const response = await fetch(
-        `http://localhost:8080/api/score/short/${scoreId}`,
+        `${apiUrl}/score/short/${scoreId}`,
         {
           method: "DELETE",
           headers: {
@@ -92,7 +92,7 @@ const LeaderBoard = () => {
   const handleMediumDelete = async (scoreId) => {
     try {
       const response = await fetch(
-        `http://localhost:8080/api/score/medium/${scoreId}`,
+        `${apiUrl}/score/medium/${scoreId}`,
         {
           method: "DELETE",
           headers: {
@@ -117,7 +117,7 @@ const LeaderBoard = () => {
   const handleLongDelete = async (scoreId) => {
     try {
       const response = await fetch(
-        `http://localhost:8080/api/score/long/${scoreId}`,
+        `${apiUrl}/score/long/${scoreId}`,
         {
           method: "DELETE",
           headers: {

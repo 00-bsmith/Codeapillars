@@ -22,7 +22,7 @@ import { Navbar } from "react-bootstrap";
 import GameLength from "./components/Gameplay/GameLength";
 import FinalResults from "./components/Gameplay/FinalResults";
 
-
+const apiUrl = window.API_URL;
 
 const TOKEN_KEY = "user-api-token";
 

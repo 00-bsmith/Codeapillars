@@ -44,7 +44,7 @@ const Game = (props) => {
 
   let globalScore=0;
 
-  
+  const apiUrl = window.API_URL;
 
 
 
@@ -147,7 +147,7 @@ const Game = (props) => {
 
     try {
       const response = await fetch(
-        `http://localhost:8080/api/question/${questionId}`,
+        `${apiUrl}/question/${questionId}`,
         {
           method: "PUT",
           headers: {
@@ -174,7 +174,7 @@ const Game = (props) => {
   const getData = async () => {
     //console.log("Getting data...");
     
-    fetch(`http://localhost:8080/api/question/${props.gameId}/next`)
+    fetch(`${apiUrl}/question/${props.gameId}/next`)
       .then((response) => response.json())
       .then((data) => {
         setQuestion(data);
@@ -254,7 +254,7 @@ const Game = (props) => {
     //Fetch Http response here
     try {
       const response = await fetch(
-        `http://localhost:8080/api/question/build/${props.type}`,
+        `${apiUrl}/question/build/${props.type}`,
         {
           method: "POST",
           headers: {

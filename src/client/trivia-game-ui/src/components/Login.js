@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import AuthContext from "../AuthContext";
 import Errors from "./Errors";
-
+const apiUrl = window.API_URL;
 const Login = () => {
     // Create default user for useState hook
   const initUser = {
@@ -38,7 +38,7 @@ const Login = () => {
       body: JSON.stringify(user),
     };
 
-    fetch("http://localhost:8080/authenticate", init)
+    fetch("http://triviaapi-env-1.eba-rrpk9t3g.us-east-1.elasticbeanstalk.com/authenticate", init)
       .then((response) => {
         if (response.status === 200) {
           return response.json();
