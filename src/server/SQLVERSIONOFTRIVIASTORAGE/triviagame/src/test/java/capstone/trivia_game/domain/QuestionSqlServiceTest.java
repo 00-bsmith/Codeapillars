@@ -1,6 +1,7 @@
 package capstone.trivia_game.domain;
 
 import capstone.trivia_game.data.QuestionJdbcTemplateRepository;
+import capstone.trivia_game.models.Question;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -25,5 +26,14 @@ class QuestionSqlServiceTest {
 //        int expected = 7;
 //        int actual = repository.findByGameId(builtGameId).size();
 //        assertEquals(expected, actual);
+    }
+
+    @Test
+    void shouldFindAll() {
+
+    }
+
+    Question makeQuestion() {
+
     }
 }
