@@ -15,7 +15,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import LeaderBoard from "./components/LeaderBoard";
 import Admin from "./components/Admin";
 import Game from "./components/Gameplay/Game";
-import Results from "./components/Gameplay/Results";
+// import Results from "./components/Gameplay/Results";
 import HowToPlay from "./components/HowToPlay/HowToPlay";
 import NavBar from "./components/NavBar";
 import { Navbar } from "react-bootstrap";
@@ -126,10 +126,10 @@ function App() {
             />
           </Route>
 
-          <Route path="/results">
+          {/* <Route path="/results">
             <NavBar />
             <Results />
-          </Route>
+          </Route> */}
 
           <Route path="/finalResults">
             <NavBar />

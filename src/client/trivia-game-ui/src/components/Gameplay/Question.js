@@ -141,54 +141,54 @@ export const Question = (props) => {
         <div>
           {props.duration === 10 && props.buttonSwitch === false ? (
             <form className="answers">
-              <div class="form-check">
+              <div className="form-check">
                 <input
-                  class="form-check-input"
+                  className="form-check-input"
                   type="radio"
                   name="answer"
                   id={shuffledAnswers[0]}
                   onChange={handleChange}
                 />
-                <label class="form-check-label" for="answer">
+                <label className="form-check-label" for="answer">
                   {decode(shuffledAnswers[0])}
                 </label>
               </div>
 
-              <div class="form-check">
+              <div className="form-check">
                 <input
-                  class="form-check-input"
+                  className="form-check-input"
                   type="radio"
                   name="answer"
                   id={shuffledAnswers[1]}
                   onChange={handleChange}
                 />
-                <label class="form-check-label" for="answer">
+                <label className="form-check-label" for="answer">
                   {decode(shuffledAnswers[1])}
                 </label>
               </div>
 
-              <div class="form-check">
+              <div className="form-check">
                 <input
-                  class="form-check-input"
+                  className="form-check-input"
                   type="radio"
                   name="answer"
                   id={shuffledAnswers[2]}
                   onChange={handleChange}
                 />
-                <label class="form-check-label" for="answer">
+                <label className="form-check-label" for="answer">
                   {decode(shuffledAnswers[2])}
                 </label>
               </div>
 
-              <div class="form-check">
+              <div className="form-check">
                 <input
-                  class="form-check-input"
+                  className="form-check-input"
                   type="radio"
                   name="answer"
                   id={shuffledAnswers[3]}
                   onChange={handleChange}
                 />
-                <label class="form-check-label" for="answer">
+                <label className="form-check-label" for="answer">
                   {decode(shuffledAnswers[3])}
                 </label>
               </div>
@@ -206,58 +206,58 @@ export const Question = (props) => {
           ) : (
             <div>
               <form className="answers">
-                <div class="form-check">
+                <div className="form-check">
                   <input
-                    class="form-check-input"
+                    className="form-check-input"
                     type="radio"
                     name="answerDisabled"
                     id="answerDisabled"
                     onChange={handleChange}
                     disabled
                   />
-                  <label class="form-check-label" for="answerDisabled">
+                  <label className="form-check-label" for="answerDisabled">
                     {decode(shuffledAnswers[0])}
                   </label>
                 </div>
 
-                <div class="form-check">
+                <div className="form-check">
                   <input
-                    class="form-check-input"
+                    className="form-check-input"
                     type="radio"
                     name="answerDisabled"
                     id="answerDisabled"
                     onChange={handleChange}
                     disabled
                   />
-                  <label class="form-check-label" for="answerDisabled">
+                  <label className="form-check-label" for="answerDisabled">
                     {decode(shuffledAnswers[1])}
                   </label>
                 </div>
 
-                <div class="form-check">
+                <div className="form-check">
                   <input
-                    class="form-check-input"
+                    className="form-check-input"
                     type="radio"
                     name="answerDisabled"
                     id="answerDisabled"
                     onChange={handleChange}
                     disabled
                   />
-                  <label class="form-check-label" for="answerDisabled">
+                  <label className="form-check-label" for="answerDisabled">
                     {decode(shuffledAnswers[2])}
                   </label>
                 </div>
 
-                <div class="form-check">
+                <div className="form-check">
                   <input
-                    class="form-check-input"
+                    className="form-check-input"
                     type="radio"
                     name="answerDisabled"
                     id="answerDisabled"
                     onChange={handleChange}
                     disabled
                   />
-                  <label class="form-check-label" for="answerDisabled">
+                  <label className="form-check-label" for="answerDisabled">
                     {decode(shuffledAnswers[3])}
                   </label>
                 </div>
@@ -266,54 +266,54 @@ export const Question = (props) => {
           )}
         </div>
 
-        {/* <div class="form-check">
+        {/* <div className="form-check">
           <input
-            class="form-check-input"
+            className="form-check-input"
             type="radio"
             name="answer"
             id="answer"
             onChange={handleChange}
           />
-          <label class="form-check-label" for="answer">
+          <label className="form-check-label" for="answer">
             {decode(shuffledAnswers[0])}
           </label>
         </div>
 
-        <div class="form-check">
+        <div className="form-check">
           <input
-            class="form-check-input"
+            className="form-check-input"
             type="radio"
             name="answer"
             id="answer"
             onChange={handleChange}
           />
-          <label class="form-check-label" for="answer">
+          <label className="form-check-label" for="answer">
             {decode(shuffledAnswers[1])}
           </label>
         </div>
 
-        <div class="form-check">
+        <div className="form-check">
           <input
-            class="form-check-input"
+            className="form-check-input"
             type="radio"
             name="answer"
             id="answer"
             onChange={handleChange}
           />
-          <label class="form-check-label" for="answer">
+          <label className="form-check-label" for="answer">
             {decode(shuffledAnswers[2])}
           </label>
         </div>
 
-        <div class="form-check">
+        <div className="form-check">
           <input
-            class="form-check-input"
+            className="form-check-input"
             type="radio"
             name="answer"
             id="answer"
             onChange={handleChange}
           />
-          <label class="form-check-label" for="answer">
+          <label className="form-check-label" for="answer">
             {decode(shuffledAnswers[3])}
           </label>
         </div> */}
