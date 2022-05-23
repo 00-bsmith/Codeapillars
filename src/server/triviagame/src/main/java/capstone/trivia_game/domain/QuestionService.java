@@ -2,12 +2,14 @@ package capstone.trivia_game.domain;
 
 import capstone.trivia_game.data.QuestionDatabase;
 import capstone.trivia_game.models.Question;
+import org.springframework.stereotype.Service;
 
 import javax.xml.crypto.Data;
 import java.io.IOException;
 import java.util.List;
 import java.util.Random;
 
+@Service
 public class QuestionService {
     private final QuestionDatabase database;
     private int id;
